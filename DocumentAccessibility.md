@@ -170,6 +170,10 @@ Both the LaTeX Tagged PDF Project and LaTeXML are only compatible with some pack
 
 We recommend you check out [University of Utah Accessibility Essentials](https://cte.utah.edu/instructor-education/accessibility-essentials/index.php) for general information.
 
+### Math equations in Word
+
+Coming soon
+
 # Checking document accessibility
 
 The University of Utah provides several tools to help assess accessibility of documents.
@@ -180,7 +184,8 @@ The University of Utah provides several tools to help assess accessibility of do
         - Warning, retagging a document already tagged by LaTeX apparently produces worse tagging.
     - Alt text can be added to images missing pictures.
     - Titles can be added
-- Use the UDOIT tool in Canvas.
+- Use the UDOIT tool in Canvas.  [Link to a UDOIT training video](https://mediaspace.utah.edu/media/t/1_7wzbzaa0/393149263)
     - Some issues can be remediated in the tool.
 - Canvas' built in accessibility checker.
+    - Can also fix some issues.  
 - AXE Monitor (which detects issues with pdfs on webpages)
