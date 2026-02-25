@@ -71,8 +71,8 @@ From the command line, you run `lualatex` instead of `pdflatex` and if all goes 
 If you are using overleaf, you may alternately change your compiler in `File`, `Settings`, `Compiler`.
 
 For examples see:
-[Sample review sheet with mathml, article class](ReviewSheetMathML-ArticleClass.tex)
-[Sample worksheet with mathml, exam class](ReviewSheetMathML-ExamClass.tex)
+- [Sample review sheet with mathml, article class](ReviewSheetMathML-ArticleClass.tex)
+- [Sample worksheet with mathml, exam class](ReviewSheetMathML-ExamClass.tex)
 
 
 #### Option 2:  pdflatex and latex source alt text
@@ -101,8 +101,8 @@ The start of your document should probably look like this
 Compile the document as normal with pdflatex.
 
 For examples see:
-[Sample review sheet with math/alt/use, article class](ReviewSheetMathAltUse-ArticleClass.tex)
-[Sample worksheet with math/alt/use, exam class](ReviewSheetMathAltUse-ExamClass.tex)
+- [Sample review sheet with math/alt/use, article class](ReviewSheetMathAltUse-ArticleClass.tex)
+- [Sample worksheet with math/alt/use, exam class](ReviewSheetMathAltUse-ExamClass.tex)
 
 
 #### Hints and warnings
@@ -125,27 +125,28 @@ For examples see:
     \end{tikzpicture}
     ```
 - ChatGPT tends to be quite good at making alt text.  You can give it an image, a `tikz` diagram, or just your entire document.  
-    - Note `tikz-cd` is not compatible and will not compile if you use it, see [tikz-cd github issue](https://github.com/latex3/tagging-project/issues/30).  You can bypass the error as in the following minimal example provided by Matthew Bertucci.
-        ```
-            \DocumentMetadata{lang=en-US,tagging=on}
-            \documentclass{article}
-            \usepackage{tikz-cd}
-            \AddToHook{env/tikzcd/begin}{\MathCollectFalse}
-            \begin{document}
-            \begin{tikzcd}[alt={some alt text}]
-            A \ar[r] \ar[d] & B \ar[d] \\
-            C \ar[r] & D
-            \end{tikzcd}
-            \end{document}
-        ```
-    - `xypic` doesn't have optimal tagging [xypic github issue](https://github.com/latex3/tagging-project/issues/899).  You may need to load packages in a certain order.
-        ```
-            \usepackage{luatex85}
-            \usepackage[all]{xy}
-            \usepackage{unicode-math}
-        ```
-        In the future, we hope to provide some code below for adding alt text to xymatrix in the future.
-
+- Note `tikz-cd` is not compatible and will not compile if you use it, see [tikz-cd github issue](https://github.com/latex3/tagging-project/issues/30).  You can bypass the error as in the following minimal example provided by Matthew Bertucci.
+    ```
+        \DocumentMetadata{lang=en-US,tagging=on}
+        \documentclass{article}
+        \usepackage{tikz-cd}
+        \AddToHook{env/tikzcd/begin}{\MathCollectFalse}
+        \begin{document}
+        \begin{tikzcd}[alt={some alt text}]
+        A \ar[r] \ar[d] & B \ar[d] \\
+        C \ar[r] & D
+        \end{tikzcd}
+        \end{document}
+    ```
+- `xypic` doesn't have optimal tagging [xypic github issue](https://github.com/latex3/tagging-project/issues/899).  You may need to load packages in a certain order.
+    ```
+        \usepackage{luatex85}
+        \usepackage[all]{xy}
+        \usepackage{unicode-math}
+    ```
+    In the future, we hope to provide some code below for adding alt text to xymatrix in the future.
+- `enumitem` and `titlesec` are not compatible.  However, the [enumext package](https://ctan.org/pkg/enumext) has many replacement features.  In fact, there is even a new list implementation in LaTeX with new features.  See for instance [the example on Handling lists and other block structures](https://latex3.github.io/tagging-project/documentation/usage-instructions) at the LaTeX tagging project.
+- `beamer` is not compatible at all. The [ltx-talk class](https://ctan.org/pkg/ltx-talk) can replace some features.
 
 ### LaTeXML
 
