@@ -6,6 +6,8 @@ For a broader, campus-wide overview, see the [University of Utah Accessibility E
 
 Another excellent resource (especially for STEM workflows) is [Yao‑Yuan Mao's accessibility page (Physics)](https://yymao.github.io/accessibility/).
 
+Nothing on this document is legal advice.  It is simply information that may help improve accessibility.
+
 ---
 
 ## Key points
@@ -52,7 +54,7 @@ Accessibility starts with authoring habits.
 
 ### Do
 
-- Use built-in **heading styles** in Word/Google Docs.
+- Use built-in **heading styles** in Word/Google Docs (or `\section` and `\begin{theorem} ... \end{theorem}` type commands in LaTeX)
 - Use built-in **list tools** (numbered/bulleted lists).
 - Use meaningful **link text** (e.g., “Homework 3 (PDF)” instead of “click here”).
 - If you include tables:
@@ -78,7 +80,7 @@ Alt text should communicate the *purpose* of the visual in context.
 
 There are now workable options for producing more accessible PDFs from LaTeX, but compatibility still depends on your document class and packages.
 
-Regardless, the [Center for Disability & Access (CDA)](https://disability.utah.edu/) recommends that **all LaTeX** documents also have their source code uploaded.
+Regardless, the [Center for Disability & Access (CDA)](https://disability.utah.edu/) asks that **all LaTeX** documents also have their source code uploaded.
 
 ### The LaTeX Tagged PDF Project
 
@@ -103,7 +105,7 @@ You need certain information **before** `\documentclass`:
   lang        = en-US,
   pdfstandard = ua-2,
   tagging     = on,
-  tagging-setup = { math/setup = mathml-SE }
+  tagging-setup = { math/setup = {mathml-SE} }
 }
 \documentclass{article} % or another supported class
 % various other packages
@@ -120,8 +122,9 @@ You need certain information **before** `\documentclass`:
 
 Compile with `lualatex` (instead of `pdflatex`).
 
+- If you do not delete the line `% !TeX program = lualatex` this may happen automatically
 - Command line: run `lualatex <filename>.tex`
-- Overleaf: set **Menu → Compiler → LuaLaTeX**
+- Overleaf: set **File → Settings → Compiler → LuaLaTeX**
 
 Examples:
 - [Sample review sheet with MathML, article class](ReviewSheetMathML-ArticleClass.tex)
@@ -131,7 +134,7 @@ Examples:
 
 ### Option 2: pdfLaTeX + “LaTeX source” alt text for formulas
 
-This option also tags the PDF, and it uses LaTeX source as a fallback text alternative for math. This can sometimes satisfy automated checkers better, but the spoken output may be less natural (and custom macros may appear verbatim).
+This option also tags the PDF, and it uses LaTeX source as a fallback text alternative for math. This can sometimes satisfy automated checkers better, but the spoken output may be less natural (and custom macros may appear verbatim).  
 
 Again, put this **before** `\documentclass`:
 
@@ -140,7 +143,7 @@ Again, put this **before** `\documentclass`:
   lang        = en-US,
   pdfstandard = ua-2,
   tagging     = on,
-  tagging-setup = { math/alt/use }
+  tagging-setup = { math/alt/use }  %%you can use both via tagging-setup = {math/alt/use, math/setup = {mathml-SE}}   but then only the latex code is read in the screen reader I have experimented with
 }
 \documentclass{article} % or another supported class
 % various other packages
@@ -150,6 +153,7 @@ Again, put this **before** `\documentclass`:
 \begin{document}
 \title{Your title}
 %\author{Your name or other information}
+\date{} %%optional if you want to turn the date off 
 \maketitle
 % ... the rest of your document ...
 \end{document}
@@ -187,7 +191,7 @@ Examples:
 
 #### Images and diagrams: add alt text (or mark decorative content)
 
-All meaningful graphics must have alt text. Many workflows support an `alt={...}` key:
+All meaningful graphics must have alt text. Many commands support an `alt={...}` key:
 
 ```latex
 \includegraphics[alt={Alt text for the image},scale=0.3]{MyImage.jpg}
@@ -199,7 +203,7 @@ For purely decorative images, prefer marking as an artifact so screen readers sk
 \includegraphics[artifact,scale=0.3]{DecorativeRule.png}
 ```
 
-TikZ examples (support may vary by setup; test with your workflow):
+TikZ examples (support may vary by setup; test with your workflow; `tikz`, `tikzpicture` and `picture` environment support the `[alt]` key):
 
 ```latex
 \begin{tikzpicture}[scale=.30,alt={A line segment from A to B}]
@@ -244,12 +248,14 @@ C \ar[r] & D
 \usepackage{unicode-math}
 ```
 
-- `enumitem` and `titlesec` are not compatible with some tagging setups.
-  - Consider alternatives like [enumext](https://ctan.org/pkg/enumext) which has many features.
+  - Examples with alt text will be available in the future.
+
+- `enumitem` and `titlesec` are not compatible.
+  - Consider alternatives for `enumitem` like [enumext](https://ctan.org/pkg/enumext) which has many features.
   - See also examples under “Handling lists and other block structures” in the tagging docs:
     [LaTeX tagging project usage instructions](https://latex3.github.io/tagging-project/documentation/usage-instructions)
 
-- `beamer` is not compatible with full tagging at this time.
+- `beamer` is not compatible at this time.
   - Consider the more limited [ltx-talk class](https://ctan.org/pkg/ltx-talk) for some talk/presentation workflows.
 
 ---
