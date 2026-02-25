@@ -1,191 +1,326 @@
 # Making documents more accessible in mathematics
 
-This page discusses options to help make documents accessible, especially from the perspective of Mathematics.
+This page summarizes practical steps for making math-heavy documents more accessible to students who use screen readers, magnifiers, alternative input devices, and other assistive technologies.
 
-Another excellent resource following:  [Yao‑Yuan Mao's page on accessibility for the physics department](https://yymao.github.io/accessibility/)
+For a broader, campus-wide overview, see the [University of Utah Accessibility Essentials](https://cte.utah.edu/instructor-education/accessibility-essentials/index.php).
 
-## Requirements
+Another excellent resource (especially for STEM workflows) is [Yao‑Yuan Mao's accessibility page (Physics)](https://yymao.github.io/accessibility/).
 
-All documents must 
-- have alt text on images (including equations)
-- have all colorful content high contrast (and not use only color to highlight important text)
-- be compatible with reading assistance software
-- and more.
+---
 
-For more information see [University of Utah Accessibility Essentials](https://cte.utah.edu/instructor-education/accessibility-essentials/index.php).
+## Key points
 
-## All documents
+At a high level, the following are important.
 
-All documents need to use semantic markup commands, and text should be readable.  In particular:
+1. **Use structure (semantic markup)**: real headings, real lists, real tables (not bold text pretending to be a heading).
+2. **Never use images of text** (including screenshots of equations).
+3. **Give every meaningful figure/diagram a text alternative** (alt text or surrounding description).
+4. **Don’t rely on color alone** to convey meaning; ensure **high contrast**.
+5. **Export/produce a properly tagged PDF (or provide HTML/EPUB)**.
+6. **Check accessibility** we have built-in checkers (Canvas/UDOIT) and you can access Acrobat Pro.
+
+---
+
+## Requirements and expectations
+
+All instructional documents must, at minimum:
+
+- **Be readable as text** (not scanned images of text).
+- Use **semantic structure**:
+  - headings
+  - lists
+  - table structure (including header rows)
+- Provide **text alternatives** for non-text content:
+  - figures, plots, diagrams, screenshots
+  - math (see options below if using LaTeX)
+- Use **high contrast** and **not rely on color alone** to communicate meaning.
+- Be compatible with **reading assistance software** (screen readers, magnifiers, text-to-speech).
+
+For detailed guidance, see [University of Utah Accessibility Essentials](https://cte.utah.edu/instructor-education/accessibility-essentials/index.php).
+
+---
+
+## Guidance for all documents (Word, Google Docs, LaTeX, etc.)
+
+Accessibility starts with authoring habits.
 
 ### Do NOT
 
-- Denote sections of text using bold or a larger font.
-- Insert images of blocks of text (write the text).  
+- **Fake headings** by using bold, underline, or a larger font size.
+- Insert **images of blocks of text** (including screenshots of a PDF page).
+- Use **color alone** to indicate “important” content (e.g., “items in red are due next week”).
 
 ### Do
 
-- Use headings in Word or Google Docs
-- Use \section \subsection \begin{theorem} and \end{theorem} etc in LaTeX
-- Use list structures built into whatever system you are using.
+- Use built-in **heading styles** in Word/Google Docs.
+- Use built-in **list tools** (numbered/bulleted lists).
+- Use meaningful **link text** (e.g., “Homework 3 (PDF)” instead of “click here”).
+- If you include tables:
+  - keep them simple when possible,
+  - use header rows,
+
+---
+
+## Writing good alt text (especially for mathematical diagrams)
+
+Alt text should communicate the *purpose* of the visual in context.
+
+- **Keep it concise** when the figure is simple.
+- If a full description is long, put the details in nearby text and keep alt text short (e.g., “See description in the paragraph below.”).
+- For **graphs**: name axes/units, the main trend, and key features (intercepts, peaks, asymptotes, comparisons).
+- For **diagrams** (commutative diagrams, geometry figures): describe the objects and relations (what maps to what; what is congruent; what is perpendicular), not just “a triangle.”
+
+> Tip: AI tools can help draft alt text, but you must review it for correctness and for the course context.
+
+---
 
 ## LaTeX documents
 
-There are new options to help automatically make LaTeX documents accessible.
+There are now workable options for producing more accessible PDFs from LaTeX, but compatibility still depends on your document class and packages.
+
+Regardless, the [Center for Disability & Access (CDA)](https://disability.utah.edu/) recommends that **all LaTeX** documents also have their source code uploaded.
 
 ### The LaTeX Tagged PDF Project
 
-This option requires minimal changes to workflow.
+The LaTeX tagged PDF workflow requires a modern TeX distribution.
 
-- For more information see [The LaTeX Tagged PDF Project](https://latex3.github.io/tagging-project/).
+- Learn more: [The LaTeX Tagged PDF Project](https://latex3.github.io/tagging-project/)
+- **Requirement:** TeX Live 2025 or later.
 
-- No matter what, you will need TeXLive 2025 or later.
+There are two common approaches.
 
-There are two main ways to use this.
+---
 
-#### Option 1:  lualatex and MathML alt text
+### Option 1 (more accessible in some screen readers): LuaLaTeX + MathML tagging
 
-This option will automatically tag your pdf reasonably assuming semantic markup and a compatible document class and packages.  All equations will also be give MathML alt text which some screen readers can access.
+This option aims for a properly tagged PDF and tags math using MathML (which some screen readers and PDF viewers can use effectively).
 
-The start of your document should look like this.
+You need certain information **before** `\documentclass`:
 
 ```latex
-% !TEX program = lualatex
-{
+% !TeX program = lualatex
+\DocumentMetadata{
   lang        = en-US,
   pdfstandard = ua-2,
-  pdfversion = 2.0,
-  tagging=on,
-  tagging-setup={math/setup={mathml-SE}}  
+  tagging     = on,
+  tagging-setup = { math/setup = mathml-SE }
 }
-\documentclass{article} %or another class
-%various other packges
-\usepackage{unicode-math}
-%more packages, etc
-%%the rest of your document
-%%use the \maketitle command
+\documentclass{article} % or another supported class
+% various other packages
+\usepackage{unicode-math} %%important
+% more packages, etc.
+\begin{document}
+\title{Your title}
+%\author{Your name or other information}
+\date{} %%optional if you want to turn the date off 
+\maketitle
+% ... the rest of your document ...
+\end{document}
 ```
 
-Then you need to compile this using lualatex (which will probably happen automatically if you didn't delete the line `% !TEX program = lualatex`).  
-From the command line, you run `lualatex` instead of `pdflatex` and if all goes well it will create an accessible pdf.
-If you are using overleaf, you may alternately change your compiler in `File`, `Settings`, `Compiler`.
+Compile with `lualatex` (instead of `pdflatex`).
 
-For examples see:
-- [Sample review sheet with mathml, article class](ReviewSheetMathML-ArticleClass.tex)
-- [Sample worksheet with mathml, exam class](ReviewSheetMathML-ExamClass.tex)
+- Command line: run `lualatex <filename>.tex`
+- Overleaf: set **Menu → Compiler → LuaLaTeX**
 
+Examples:
+- [Sample review sheet with MathML, article class](ReviewSheetMathML-ArticleClass.tex)
+- [Sample worksheet with MathML, exam class](ReviewSheetMathML-ExamClass.tex)
 
-#### Option 2:  pdflatex and latex source alt text
+---
 
-This will also automatically tag your pdf reasonably assuming semantic markup and a compatible document class and packages.  All equations will be given their LaTeX source as the alt text (your custom macros are there as well).
+### Option 2: pdfLaTeX + “LaTeX source” alt text for formulas
 
-The start of your document should probably look like this
+This option also tags the PDF, and it uses LaTeX source as a fallback text alternative for math. This can sometimes satisfy automated checkers better, but the spoken output may be less natural (and custom macros may appear verbatim).
+
+Again, put this **before** `\documentclass`:
 
 ```latex
-{
+\DocumentMetadata{
   lang        = en-US,
   pdfstandard = ua-2,
-  pdfversion = 2.0,
-  tagging=on,
-  tagging-setup={math/alt/use}  
+  tagging     = on,
+  tagging-setup = { math/alt/use }
 }
-\documentclass{article} %or another class
-%various other packges
+\documentclass{article} % or another supported class
+% various other packages
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-%more packages, etc
-%%the rest of your document
-%%use the \maketitle command
+% more packages, etc.
+\begin{document}
+\title{Your title}
+%\author{Your name or other information}
+\maketitle
+% ... the rest of your document ...
+\end{document}
 ```
 
-Compile the document as normal with pdflatex.
+Compile as normal with `pdflatex`.
 
-For examples see:
+Examples:
 - [Sample review sheet with math/alt/use, article class](ReviewSheetMathAltUse-ArticleClass.tex)
 - [Sample worksheet with math/alt/use, exam class](ReviewSheetMathAltUse-ExamClass.tex)
 
+---
 
-#### Hints and warnings
+### LaTeX hints, warnings, and common fixes
 
-- The built in canvas scanner cannot detect the mathml and will report your document is missing alt text if you use Option #1.  Compatible screen readers and pdf viewers can read the mathml though.
-- lualatex sometimes compiles much more slowly than pdflatex, but any document tagging system will make your documents compile more slowly.
-- You should use the `\maketitle` command to automatically title the pdf.  If you don't like the large spacing this produces, you can do things like:
-    ```latex
-    \title{\vspace{-1.5cm}My Title\vspace{-2cm}}
-    \date{}
-    \maketitle
-    ```
-- All your images need alt text.  In many cases this is done with an `alt` option
-    ```latex
-    \includegraphics[alt={Alt text for an image},scale=0.3]{MyImage.jpg}
-    \begin{tikzpicture}[scale=.30,alt={a cool diagram}]
-        \coordinate (A) at (0,0);
-        \coordinate (B) at (1,1);    
-        \draw (A)--(B);
-    \end{tikzpicture}
-    ```
-- ChatGPT tends to be quite good at making alt text.  You can give it an image, a `tikz` diagram, or just your entire document.  
-- Note `tikz-cd` is not compatible and will not compile if you use it, see [tikz-cd github issue](https://github.com/latex3/tagging-project/issues/30).  You can bypass the error as in the following minimal example provided by Matthew Bertucci.
-    ```
-        \DocumentMetadata{lang=en-US,tagging=on}
-        \documentclass{article}
-        \usepackage{tikz-cd}
-        \AddToHook{env/tikzcd/begin}{\MathCollectFalse}
-        \begin{document}
-        \begin{tikzcd}[alt={some alt text}]
-        A \ar[r] \ar[d] & B \ar[d] \\
-        C \ar[r] & D
-        \end{tikzcd}
-        \end{document}
-    ```
-- `xypic` doesn't have optimal tagging [xypic github issue](https://github.com/latex3/tagging-project/issues/899).  You may need to load packages in a certain order.
-    ```
-        \usepackage{luatex85}
-        \usepackage[all]{xy}
-        \usepackage{unicode-math}
-    ```
-    In the future, we hope to provide some code below for adding alt text to xymatrix in the future.
-- `enumitem` and `titlesec` are not compatible.  However, the [enumext package](https://ctan.org/pkg/enumext) has many replacement features.  In fact, there is even a new list implementation in LaTeX with new features.  See for instance [the example on Handling lists and other block structures](https://latex3.github.io/tagging-project/documentation/usage-instructions) at the LaTeX tagging project.
-- `beamer` is not compatible at all. The [ltx-talk class](https://ctan.org/pkg/ltx-talk) can replace some features.
+#### Tool limitations (Canvas/LMS checkers)
 
-### LaTeXML
+- **Canvas’ built-in accessibility checker currently does not detect MathML math tagging** and may report “missing alt text” even when MathML is present.
 
-This option can produce html or epub files, which are widely viewed as more accessible than pdfs.  However, this tool can be more challenging to install and the output may require manual remediation.
+#### Compilation time
 
-- Check out [LaTeXML](https://math.nist.gov/~BMiller/LaTeXML/)
-- For more discussion in the context of theses, see [UIC Math Thesis Template](https://github.com/juliusross1/Accessible-LaTeX-Thesis-Template)
+- `lualatex` may compile more slowly than `pdflatex`.
+- Any tagging workflow can slow compilation, especially on larger documents.
 
-It is fairly robust. It is was the arXiv uses to make html versions of preprints.
+#### Titles and document metadata
 
-### Caveats
+- Use `\title{...}`, `\author{...}`, `\date{...}`, and `\maketitle` to populate visible title content.
+- If you dislike the default spacing, adjust the title formatting carefully (avoid breaking structure). For example:
 
-Both the LaTeX Tagged PDF Project and LaTeXML are only compatible with some packages and document classes, others may or may not even compile, or even if they do, they may break accessibility.
+```latex
+\title{\vspace{-1.5cm}My Title\vspace{-2cm}}
+\date{}
+\maketitle
+```
 
-- [LaTeX Tagged PDF Compatible Classes and Packages](https://latex3.github.io/tagging-project/tagging-status/)
+#### Images and diagrams: add alt text (or mark decorative content)
 
-- [Included Bindings for LaTeXML](https://math.nist.gov/~BMiller/LaTeXML/manual/included.bindings/)
+All meaningful graphics must have alt text. Many workflows support an `alt={...}` key:
 
+```latex
+\includegraphics[alt={Alt text for the image},scale=0.3]{MyImage.jpg}
+```
 
-## Word documents 
+For purely decorative images, prefer marking as an artifact so screen readers skip it:
 
-We recommend you check out [University of Utah Accessibility Essentials](https://cte.utah.edu/instructor-education/accessibility-essentials/index.php) for general information.
+```latex
+\includegraphics[artifact,scale=0.3]{DecorativeRule.png}
+```
+
+TikZ examples (support may vary by setup; test with your workflow):
+
+```latex
+\begin{tikzpicture}[scale=.30,alt={A line segment from A to B}]
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (1,1);
+  \draw (A)--(B);
+\end{tikzpicture}
+```
+
+#### Tables: specify header rows when possible
+
+If you include tables, identify header rows so screen readers can interpret them better:
+
+```latex
+\tagpdfsetup{table/header-rows={1}}
+\begin{tabular}{|c|c|c|}
+%%
+\end{tabular}
+
+```
+
+#### Package compatibility notes
+
+- `tikz-cd` is currently not compatible in some tagging workflows and may fail to compile.
+  - See: [tikz-cd tagging issue](https://github.com/latex3/tagging-project/issues/30)
+  - A workaround (from a minimal example by Matthew Bertucci):
+
+```latex
+\DocumentMetadata{lang=en-US,tagging=on}
+\documentclass{article}
+\usepackage{tikz-cd}
+\AddToHook{env/tikzcd/begin}{\MathCollectFalse}
+\begin{document}
+\begin{tikzcd}[alt={A commutative square: A→B, A→C, B→D, C→D}]
+A \ar[r] \ar[d] & B \ar[d] \\
+C \ar[r] & D
+\end{tikzcd}
+\end{document}
+```
+
+- `xypic` may not tag optimally and may require package order adjustments.
+  - See: [xypic tagging issue](https://github.com/latex3/tagging-project/issues/899)
+  - Load order that may help:
+
+```latex
+\usepackage{luatex85}
+\usepackage[all]{xy}
+\usepackage{unicode-math}
+```
+
+- `enumitem` and `titlesec` are not compatible with some tagging setups.
+  - Consider alternatives like [enumext](https://ctan.org/pkg/enumext) which has many features.
+  - See also examples under “Handling lists and other block structures” in the tagging docs:
+    [LaTeX tagging project usage instructions](https://latex3.github.io/tagging-project/documentation/usage-instructions)
+
+- `beamer` is not compatible with full tagging at this time.
+  - Consider the more limited [ltx-talk class](https://ctan.org/pkg/ltx-talk) for some talk/presentation workflows.
+
+---
+
+## LaTeXML (HTML/EPUB output)
+
+LaTeXML can produce **HTML** or **EPUB**, which are often easier for assistive technology than PDF. Installation and output cleanup can be more demanding, and some documents require manual remediation.
+
+- [LaTeXML](https://math.nist.gov/~BMiller/LaTeXML/)
+- For thesis-related discussion/templates: [UIC Math Thesis Template](https://github.com/juliusross1/Accessible-LaTeX-Thesis-Template)
+
+---
+
+## Caveats: compatibility is not universal
+
+Both the LaTeX Tagged PDF Project and LaTeXML are only compatible with some packages and document classes. Others may not compile, or may compile but yield poor accessibility.
+
+- Tagged PDF compatibility list:
+  [LaTeX Tagged PDF Compatible Classes and Packages](https://latex3.github.io/tagging-project/tagging-status/)
+
+- LaTeXML bindings:
+  [Included Bindings for LaTeXML](https://math.nist.gov/~BMiller/LaTeXML/manual/included.bindings/)
+
+---
+
+## Word documents
+
+For general guidance, see:
+[University of Utah Accessibility Essentials](https://cte.utah.edu/instructor-education/accessibility-essentials/index.php)
 
 ### Math equations in Word
 
-Coming soon
+- Use Word’s built-in **Equation Editor** (not screenshots).
+- Add **alt text** to figures/plots/diagrams.
+- Run Word’s **Accessibility Checker** (Review → Check Accessibility).
+- It is probably better not to export to PDF.
 
-# Checking document accessibility
+---
 
-The University of Utah provides several tools to help assess accessibility of documents.
+## Checking document accessibility
 
-- You can get Adobe Acrobat Pro, [Request access to adobe acrobat pro](https://software-catalog.app.utah.edu/adobe/creative-cloud/request), this can also help remediate documents.
-    - From there, select the tool "Prepare for accessibility" then select "Check for accessibility".  
-    - Untagged documents can be tagged.
-        - Warning, retagging a document already tagged by LaTeX apparently produces worse tagging.
-    - Alt text can be added to images missing pictures.
-    - Titles can be added
-- Use the UDOIT tool in Canvas.  [Link to a UDOIT training video](https://mediaspace.utah.edu/media/t/1_7wzbzaa0/393149263)
-    - Some issues can be remediated in the tool.
-- Canvas' built in accessibility checker.
-    - Can also fix some issues.  
-- AXE Monitor (which detects issues with pdfs on webpages)
+The University of Utah provides several tools to help assess document accessibility.
+
+### Adobe Acrobat Pro (PDF checking and remediation)
+
+- Request access: [Request access to Adobe Acrobat Pro](https://software-catalog.app.utah.edu/adobe/creative-cloud/request)
+- In Acrobat Pro:
+  - Use “Prepare for accessibility” then “Check for accessibility”.
+  - Untagged documents can be tagged.
+
+> Warning: Re-tagging a PDF that was already tagged well (for example, by a LaTeX tagging workflow) will sometimes make the tagging worse. If possible, fix issues at the source document instead of re-tagging.
+
+Acrobat can also:
+- Add **alt text** to images missing alt text.
+- Add or edit **document title metadata**.
+
+### Canvas tools
+
+- UDOIT in Canvas:
+  - Training video: [UDOIT training video](https://mediaspace.utah.edu/media/t/1_7wzbzaa0/393149263)
+  - Some issues can be remediated inside the tool.
+- Canvas built-in accessibility checker:
+  - Can detect some issues and fix some issues in-editor.
+
+### Web scanning tools
+
+- AXE Monitor (detects issues with PDFs linked on webpages)
+
