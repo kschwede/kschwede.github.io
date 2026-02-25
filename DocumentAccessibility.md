@@ -14,9 +14,9 @@ At a high level, the following are important.
 
 1. **Use structure (semantic markup)**: real headings, real lists, real tables (not bold text pretending to be a heading).
 2. **Never use images of text** (including screenshots of equations).
-3. **Give every meaningful figure/diagram a text alternative** (alt text or surrounding description).
+3. **Give every meaningful figure/diagram a text alternative** (use alt text and potentially a longer surrounding description, for ways to do this see [W3.org's suggestions](https://www.w3.org/WAI/tutorials/images/complex/#approach-2-describing-the-location-of-the-long-description-in-the-alt-attribute)).
 4. **Don’t rely on color alone** to convey meaning; ensure **high contrast**.
-5. **Export/produce a properly tagged PDF (or provide HTML/EPUB)**.
+5. **Export/produce a properly tagged PDF (if using LaTeX, provide the source code and/or provide HTML/EPUB)**.
 6. **Check accessibility** we have built-in checkers (Canvas/UDOIT) and you can access Acrobat Pro.
 
 ---
@@ -209,17 +209,11 @@ TikZ examples (support may vary by setup; test with your workflow):
 \end{tikzpicture}
 ```
 
-#### Tables: specify header rows when possible
+#### Tables: specify header rows 
 
 If you include tables, identify header rows so screen readers can interpret them better:
 
-```latex
-\tagpdfsetup{table/header-rows={1}}
-\begin{tabular}{|c|c|c|}
-%%
-\end{tabular}
-
-```
+See the examples here:  [Tagged PDF Usage Instructions - Handling Tables](https://latex3.github.io/tagging-project/documentation/usage-instructions).
 
 #### Package compatibility notes
 
