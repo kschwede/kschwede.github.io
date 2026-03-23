@@ -1,0 +1,105 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Gal}{\textnormal{Gal}}
+\newcommand{\Aut}{\textnormal{Aut}}
+\newcommand{\Emb}{\textnormal{Emb}}
+\newcommand{\Tr}{\textnormal{Tr}}
+\newcommand{\N}{\textnormal{N}}
+
+
+\begin{document}
+\title{HW \#3 -- Math 6320\\Spring 2015}
+\author{Due: Tuesday February 17th}
+\maketitle
+
+\begin{enumerate}
+\item Exhibit an \emph{explicit} isomorphism between the splitting fields of $x^3 - x + 1$ and $x^3 - x - 1$ over $\bF_3$. 
+\item Explicitly show that $\bQ(\sqrt{2}, \sqrt{3}, \sqrt{5})$ is a simple extension of $\bQ$ by finding a generator.
+\item Show that $\bF_p(x,y) / \bF_p(x^p, y^p)$ is \emph{not} a simple extension.   
+\item Is $\bQ(2^{1/3})$ a subfield of a cyclotomic extension of $\bQ$?
+\item Let $K/F$ be any finite extension, let $L$ be a Galois extension of $F$ containing $K$ and let $H \leq \Gal(L/F)$ be the subgroup corresponding to $K$.  For any $\alpha \in K$ define the \emph{norm} of $\alpha$ to be
+    \[
+    {\N}_{K/F}(\alpha) = \prod_{\overline{\sigma} \in G/H} \overline{\sigma}(\alpha).
+    \]
+    Note here that $G/H$ is just the set of cosets of $H$.  Likewise we define the \emph{trace} of $\alpha$ to be 
+    \[
+    {\Tr}_{K/F}(\alpha) = \sum_{\overline{\sigma} \in G/H} \overline{\sigma}(\alpha).
+    \]
+    In other words, the norm is a product of Galois conjugates and the trace is a sum of Galois conjugates (if $K/F$ is Galois, it is a product/sum over all Galois conjugates).  Of course,
+    \begin{itemize}
+    \item[(a)]  Show that $\N_{K/F}(\alpha) \in F$ and $\Tr_{K/F}(\alpha) \in F$.  
+    \item[(b)]  Prove that the norm is multiplicative ($\N_{K/F}(\alpha \beta) = \N_{K/F}(\alpha) \N_{K/F}(\beta)$) and that the trace is additive ($\Tr_{K/F}(\alpha \beta) = \Tr_{K/F}(\alpha) + \Tr_{K/F}(\beta)$)
+    \item[(c)]  If $K = L = F(\sqrt{c})$ is a degree two extension, find formulas for $\N(a + b\sqrt{c})$ and $\Tr(a + b \sqrt{c})$.
+    \end{itemize}
+\item Let $K/F$ be a finite separable extension.  Then each element $\alpha \in K$ gives us an $F$-linear map $(\times \alpha) : K \to K$.  We can of course pick a basis for $K/F$ and so consider $(\times \alpha)$ as a matrix $m_{\alpha}$.  Then consider maps $t : K \to F$ and $n : K \to F$ defined by
+    \[
+    t(\alpha) = {\textnormal{trace}}(m_{\alpha}), n(\alpha) = {\textnormal{det}}(m_{\alpha})
+    \]
+    where here trace just means sum up the diagonal.  Is it true that $t = \Tr_{K/F}$ and $n = \N_{K/F}$?
+\item Fix notation as in the last two problems.  If $\alpha \in F$, show that $\N(\alpha) = \alpha^n$ and $\Tr(\alpha) = n\alpha$ where $n = [K:F]$.
+\item Fix notation as in the last three problems.  Let $F = \bQ, K = \bQ(2^{1/3})$ and $\alpha = 2^{1/3}$.  Compute ${\N}_{K/F}(2^{1/3})$ and ${\Tr}_{K/F}(2^{1/3})$.
+\end{enumerate}
+
+\end{document}
+

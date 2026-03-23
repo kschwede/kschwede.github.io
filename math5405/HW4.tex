@@ -1,0 +1,65 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,fullpage}
+\usepackage{enumerate}
+\RequirePackage[dvipsnames,usenames]{color}
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+
+\begin{document}
+\title{Homework \#4 -- Math 5405\\Spring 2016}
+\author{Due: Tuesday  4/26/2016}
+\maketitle
+These are mostly taken from Trappe and Washington.
+\begin{enumerate}
+\item Two codewords were sent using the Hamming [7,4] code and were received as 0100111 and 0101010.  Each one contains at most one error.  Correct the errors.
+\item Let $C$ be the binary code $\{ (0,0,1), (1,1,1), (1,0,0), (0,1,0)\}$.  Show that $C$ is not linear and compute $d(C)$.
+\item Let $C \subseteq \mathbb{F}^n$ be a linear code and let $u + C$ and $v + C$ be cosets of $C$.  Show that $u + C = v + C$ if and only if $u - v \in C$.  Further show that every element of $\mathbb{F}^n$ is in exactly one coset.  
+\item Let $C$ be the cyclic binary code of length 4 with generating polynomial $g(x) = x^2 + 1$.  Which of the following polynomials correspond to elements of $C$?
+\[
+1+x+x^3, 1+x+x^2+x^3, x^2 + x^3
+\]
+\end{enumerate}
+
+\end{document}
+

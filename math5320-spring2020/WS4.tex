@@ -1,0 +1,130 @@
+\documentclass[10pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\usepackage{multicol}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+
+
+\begin{document}
+\title{Worksheet \#4-- Math 5320\\Fall 2019}
+\author{Due Monday, March 2nd, in Gradescope}
+
+\maketitle
+You may work in groups of up to 3 on this assignment.  Only one assignment needs to be turned in per group.  It still needs to be turned in on gradescope.  
+\vskip 3pt
+First we recall:
+\vskip 3pt
+\noindent
+{\bf Eisenstein's Criterion.}  {\it Suppose $f(x) = a_n x^n + \dots + a_0 \in \bZ[x]$ is a nonconstant polynomial and $p \in \bZ$ is prime.  If $p$ does not divide $a_n$, $p$ divides every other $a_i$ and $p^2$ does not divide $a_0$, then $f(x)$ is irreducible in $\bQ[x]$.}
+\vskip 3pt
+\noindent
+{\bf 1.}  First suppose that $\phi : \bZ[x] \to \bZ[x]$ is a ring homomorphism.  Noticed it is completely determined by where it sends $1$ and suppose that $\phi(x) = h(x)$ with $\deg h(x) > 0$.  Show that if $\phi(f(x)) = f(h(x))$ is irreducible, then $f(x)$ is also irreducible. 
+\newpage
+\noindent
+{\bf 2.}  With notation as in {\bf 1.}, give at least four examples of non-identity ring homomorphisms $\phi$ such that $\phi$ is an isomorphism.
+\vskip 150pt
+\noindent
+{\bf 3.}  Suppose $p \in \bZ$ is prime.  Notice that the polynomial 
+\[
+    C_p(x) = x^{p-1} + x^{p-2} + \dots + x^{1} + 1 = {x^p - 1 \over x-1} 
+\]
+is not something that you can apply Eisenstein's criterion to  (this is called the $p$th \emph{cyclotomic polynomial}).  However, in the special cases of $p = 2, 3, 5$, explicitly show that $C(x+1)$ is irreducible by using Eisenstein's criterion.  
+\newpage
+\noindent
+{\bf 4.}  Show that for any prime $p$ that 
+\[
+    C_p(x+1) = {(x+1)^p - 1 \over x} 
+\]
+is irreducible.  You may use the binomial formula.  In particular show that ${p \choose i}$ is divisible by $p$ for each $1 \leq i \leq p-1$.
+\newpage
+\noindent
+{\bf 5.}  Show that each of the following polynomials are irreducible.
+\vskip 3pt
+{\bf (a)}  $x^5 - 4x^2 + 66$.
+\vskip 3pt
+{\bf (b)}  $x^3 + 3x^2 + 5x + 5$.
+\vskip 3pt
+{\bf (c)}  $30 x^n - 91$ for any $n > 0$.  
+\vskip 3pt
+{\bf (d)}  $x^4 + 4x + 1$.
+\newpage
+\noindent
+{\bf 6.}  Consider the polynomial $f(x) = x^3 + x^2 + x + 2$.  In which of the following rings of polynomials is $f$ irreducible?  Justify your answer.
+\begin{itemize}
+\item[(a)]  $\bR[x]$
+\item[(b)]  $\bC[x]$
+\item[(c)]  $\bZ/{2}[x]$
+\item[(d)]  $\bZ/{3}[x]$
+\item[(e)]  $\bZ/{5}[x]$
+\item[(f)]  $\bQ[x]$
+\end{itemize}
+\newpage
+\noindent
+{\bf 7.}  Consider $3x^2 + 4x + 3 \in \mathbb{Z}_{\text{mod} 5}[x]$.  Show it factors both as $(3x + 2)(x+4)$ and as $(4x + 1)(2x+3)$.  Explain why this \emph{does NOT} contradict unique factorization of polynomials.
+\vskip 250pt
+\noindent
+{\bf 8.}  Show that $x^4 + 1$ is irreducible in $\bQ[x]$ but not irreducible in $\bR[x]$.
+\vskip 3pt
+\emph{Hint: } For $\bQ[x]$, try a linear shift.  For $\bR[x]$, try a factorization into two quadratic terms
+
+
+\end{document} 

@@ -1,0 +1,119 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Gal}{\textnormal{Gal}}
+\newcommand{\Aut}{\textnormal{Aut}}
+\newcommand{\Emb}{\textnormal{Emb}}
+\newcommand{\Tr}{\textnormal{Tr}}
+\newcommand{\N}{\textnormal{N}}
+\newcommand{\Hom}{\textnormal{Hom}}
+\newcommand{\Spec}{\textnormal{Spec}}
+
+
+\begin{document}
+\title{HW \#5 -- Math 6320\\Spring 2015}
+\author{Due: Tuesday March 10th}
+\maketitle
+
+\begin{enumerate}
+\item Suppose that $W_1 \subseteq W_2$ are multiplicative sets in a ring $R$ and $M$ is an $R$-module.  Show that $W_2^{-1}(W_1^{-1} M) \cong W_2^{-1} M$.
+\item Suppose that $N \subseteq M$ are $R$-modules and $W \subseteq R$ is a multiplicative set.  Show directly that $W^{-1}(M/N) \cong W^{-1} M / W^{-1}N$. Here we are using the fact that $W^{-1} N$ can be identified with a submodule of $W^{-1} M$.
+\item  We consider localizing at prime ideals.
+   \begin{itemize}
+       \item[(a)]  Suppose that $A$ is a ring and that for each prime ideal $P \in \Spec A$, the local ring $A_P := (A \setminus P)^{-1} A$ is an integral domain.  Show that $A$ need not be an integral domain.
+       \item[(b)]  However, if $M$ and $N$ are $A$-modules with a map $f : M \to N$.  Consider the induced map $f_P : (A \setminus P)^{-1} M =: M_P \to N_P := (A \setminus P)^{-1} N$ for each $P \in \Spec A$.  Show that $f$ is surjective (respectively injective) if and only if $f_P$ is surjective (respectively injective) for every $P \in \Spec A$.
+       \end{itemize}
+   \item Suppose that $R$ is an integral domain and $0 \neq r \in R$.  Set $W = \{1, r, r^2, r^3, \ldots\}$.  Is $R[r^{-1}] \cong W^{-1}R \cong R[x]/\langle xr - 1 \rangle$ where $x$ is an indeterminant?
+   \item Suppose that $k$ is a field.  Consider the following set
+\[
+S := \{ f \in k[x] \;|\; f(0) = f(1) \}.
+\]
+Show that $S$ is a ring.
+Describe $S$ as a quotient of a polynomial ring and describe its prime Spectrum.  Additionally, describe the induced map on $\Spec$s from the inclusion of rings $S \hookrightarrow k[x]$ at least in the case that $k$ is algebraically closed.
+\item Suppose that $k$ is a field and that $f : R \to S$ is a map between finitely generated $k$-algebras (this means that $R$ is of the form $k[x_1, \dots, x_n]/I$, and likewise with $S$, and also that $f$ sends $k$ to $k$).  Show that the function $f^\# : \Spec S \to \Spec R$ sends maximal ideals to maximal ideals.  
+    \vskip 3pt
+\emph{Hint:} You may use the fact that if $K$ is a field and $L \supseteq K$ a field extension such that $L$ is a finitely generated $K$-algebra, then $L$ is a finite field extension.  You may also use the fact that an integral domain which is a module finite extension of a field is itself a field.
+\item Suppose that $A$ and $B$ are rings.  Figure out what $\Spec (A \oplus B)$ is in relation to $\Spec A$ and $\Spec B$.
+\item (\emph{Warning: Hard}) Suppose that $A$ and $B$ are rings, $I$ is an ideal of $A$ with canonical projection $f : A \to A/I$.  Further suppose that we are given a ring homomorphism $g : B \to A/I$.  Consider the following set.
+\[
+C = \{ (a,b) \in A \oplus B | f(a) = g(b) \}.
+\]
+\begin{itemize}
+\item[(a)]  Show that $C$ is a subring of $A \oplus B$.  Note that $C$ has canoical maps to $A$ and to $B$ (call them $p_1$ and $p_2$ respectively).
+\item[(b)]  Show that the elements of $\Spec C$ are in bijection with the set
+\[
+\Big( (\Spec A) \setminus V(I) \Big) \coprod (\Spec B).
+\]
+\emph{Hint: } Consider a prime in $\Spec C$.  There are two possibilities, it either contains $\ker p_2$ or it does not.  In the latter case, invert an appropriate element and analyze what happens.
+\item[(c)]  Describe geometrically $\Spec C$ in the following examples where $k$ is an algebraically closed field.  Additionally describe the map $\Spec A \to \Spec C$ in each case:
+\begin{itemize}
+\item[(i)]  $A := k[x]$, $I = \langle x^2 - 1 \rangle$ and $B = k$.
+\item[(ii)]  $A := k[x,y]$, $I = \langle x \rangle$ and $B = k$.
+\end{itemize}
+\item[(d)]  Suppose now that $g$ is surjective.  Explain why $\Spec C$ is the gluing of $\Spec A$ to $\Spec B$ along $V(I)$.
+\end{itemize}
+The following philosophical statement on the elements of $C$ might help with this problem.  $C$ is made up of the functions in $A \oplus B$ that agree on the set $V(I)$.
+\end{enumerate}
+
+\end{document}
+

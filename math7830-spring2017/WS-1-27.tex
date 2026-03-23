@@ -1,0 +1,165 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.1in,top=1in,right=1.1in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+\theoremstyle{theorem}
+\newtheorem*{mainthm}{Main Theorem}
+\newtheorem*{mainthma}{Main Theorem A}
+\newtheorem*{mainthmb}{Main Theorem B}
+\newtheorem*{mainthmc}{Main Theorem C}
+\newtheorem*{atheorem}{Theorem}
+
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title{In class worksheet \#1, an interpretation of the octahedral axiom}
+\author{January 27th, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+
+You may have seen the following about $R$-modules.
+\vskip 12pt
+Suppose that $g : B \to D$ and $h : C \to D$ are $R$-module homomorphisms.  Then the pullback of $\{B \to D \leftarrow C \}$ is the set of pairs $(b, c) \in B \oplus C$ such that $g(b) = h(c)$.  In other words, it is the kernel of
+\[
+B \oplus C \xrightarrow{g - h} D.
+\]
+Now suppose that we have an exact sequence% with $\alpha, h$ surjective
+\[
+0 \to A \xrightarrow{\alpha\oplus\beta} B \oplus C \xrightarrow{g - h} D
+\]
+In particular, suppose $A$ is isomorphic to the pullback/limit of $\{ B \to D \leftarrow C \}$ in the category of modules.
+\vskip 3pt
+\noindent
+{\bf 1.}  With notation above, show that if we form the two exact sequences
+\[
+\xymatrix{
+0 \ar[r] & K_1 \ar@{.>}[d]_{\gamma} \ar[r]^{i} & A \ar[d]_{\beta }\ar[r]^{\alpha} & B \ar[d]^g \\%\ar[r] & 0 \\
+0 \ar[r] & K_2 \ar[r]_j & C \ar[r]_{h} & D %\ar[r] & 0
+}
+\]
+that the induced map $\gamma$ is an isomorphism.
+\newpage
+\noindent
+{\bf 2.}  If you are not too tired of element chasing, suppose that
+\[
+A \xrightarrow{\alpha \oplus \beta} B \oplus C \xrightarrow{g-h} D \to 0
+\]
+is exact.  In other words, suppose that $D$ is the pushout/colimit of $\{ C \leftarrow A \rightarrow B \}$ in the category of modules.
+
+Prove that if we form two exact sequences
+\[
+\xymatrix{
+A \ar[d]_{\beta }\ar[r]^{\alpha} & B \ar[d]^g \ar[r]^p & Q_1 \ar@{.>}[d]^{\delta} \ar[r] & 0\\%\ar[r] & 0 \\
+C \ar[r]_{h} & D \ar[r]_{q} & Q_2 \ar[r] & 0
+}
+\]
+and $A$ is isomorphic to the pullback as above, that $\delta$ is an isomorphism.
+
+\vfill
+\emph{Remark:}  Various converse statements are also possible and probably even more standard, ie if certain diagrams like the above are exact then various squares are pullbacks and pushouts respectively.  We'll just go this way...
+\newpage
+\noindent
+{\bf 3.}  Let $\sC$ be a triangulated category.  Suppose that we have objects $A, B, C, D$ and arrows $s : A \rightarrow B$, $t : A \rightarrow C$, $u : B \rightarrow D$, $v : C \rightarrow D$ such that
+\[
+\xymatrix{
+A \ar[r]^-{s, -t} & B \oplus C \ar[r]^-{u + v} & D \ar[r]^-r & T(A) \\
+}
+\]
+is an exact triangle.  Show that the following holds:
+If $\xymatrix{A \ar[r]^s & B \ar[r]^\phi & M \ar[r]^-{\psi} & T(A) }$ is an exact triangle, so is $\xymatrix{C \ar[r]^{v} & D \ar[r]^f & M \ar[r]^-g & T(C) }$.  Furthermore show that $\xymatrix{M \ar[r]^-g & T(C)}$ factors through $\xymatrix{M \ar[r]^{\psi} & T(A)}$ and $\xymatrix{B \ar[r]^-{\phi} & M}$ factors through $\xymatrix{B \ar[r]^-{u} & D}$.  In particular, this means we have a map of exact triangles
+\[
+\xymatrix{
+A \ar[d]_t \ar[r]^s & B \ar[r]^\phi \ar[d]^u & M \ar[r]^{\psi} \ar@{=}[d]  & \\
+C \ar[r]^{v} & D \ar[r]^f & M \ar[r]^{g} & .\\
+}
+\]
+\vskip 6pt
+\emph{Hint:} Let $\pi_1$ and $\pi_2$ be the projections from $B \oplus C$ to $B$ and $C$ respectively.  Let $\rho_1$ and $\rho_2$ be the inclusions of $B$ and $C$ into $B \oplus C$.  We have the following exact triangle as well
+\[
+\xymatrix{C \ar[r]^-{\rho_2} & B \oplus C \ar[r]^-{\pi_1} & B \ar[r]^0 & T(C)}
+\]
+Rotate this triangle appropriately.
+
+\end{document}
+
+

@@ -1,0 +1,157 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.1in,top=1in,right=1.1in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+\theoremstyle{theorem}
+\newtheorem*{mainthm}{Main Theorem}
+\newtheorem*{mainthma}{Main Theorem A}
+\newtheorem*{mainthmb}{Main Theorem B}
+\newtheorem*{mainthmc}{Main Theorem C}
+\newtheorem*{atheorem}{Theorem}
+%\newcommand{\myH}{h}
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title{In class worksheet \#2, getting a feel for Serre's condition ${\bf S}_n$}
+\author{March 8th, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+
+Our goal is to prove the following result.
+\begin{proposition*}
+Suppose that $(R, \fram)$ is a $d$-dimensional ${\bf S}_n$ ($n \leq d$) Noetherian equidimensional\footnote{This means for each minimal prime $\frq$ of $R$, $\dim R_{\frq} = \dim R$.} local ring with normalized dualizing complex $\omega_R^{\mydot}$.  Then $\dim \Supp \myH^{-i}(\omega_R^{\mydot}) \leq i - n$ for $i < d$.
+\end{proposition*}
+
+To prove this, you may use the following facts:
+\begin{itemize}
+\item{} Local duality, $\Hom_R(\myR \Hom_R(M, \omega_R^{\mydot}), E) \cong \myR \Gamma_{\fram}(M)$.
+\item{} Since $\myH^{-i}(\omega_R^{\mydot})$ is a finitely generated $R$-module, $\Supp \myH^{-i}(\omega_R^{\mydot}) = V(\Ann_R(\myH^{-i}(\omega_R^{\mydot})))$
+\item{} Since $R$ is equidimensional, $\omega_R = \myH^{-d}(\omega_R^{\mydot})$ has support equal to $\Spec R$.
+\item{} Rings with dualizing complexes are catenary, and so every maximal chain of primes between two fixed primes has the same length.
+\end{itemize}
+\noindent
+{\bf 1.}  For any prime $Q$ of $R$, show that $d = \dim R_Q + \dim R_Q$.  Give an example where this does not hold for a \emph{non-}equidimensional (but otherwise nice) ring.
+\vskip 150pt
+Now we prove the following weak version of the proposition.
+\vskip 3pt
+\noindent
+{\bf 2.}  Suppose that $(R, \fram)$ is a $d$-dimensional Notherian ring with normalized dualizing complex $\omega_R^{\mydot}$.  Show that $h^{i}(\omega_R^{\mydot}) = 0$ for $i > 0$.
+\newpage
+\noindent
+{\bf 3.}  Suppose that $Q \in \Spec R$ is a prime ideal such that $\dim R_Q = c$.  Find a normalized dualizing complex for $R_Q$.
+\vskip 80pt
+\noindent
+{\bf 4.}  Suppose that $(R, \fram)$ is $\Serre_n$ ($n \leq d$) show that $\myH^{-i}(\omega_R^{\mydot}) = 0$ for $i < n$.
+\vskip 125pt
+\noindent
+{\bf 5.}  Prove the proposition from the first page.
+\vskip 3pt
+\emph{Hint:} If $\dim \Supp \myH^{-i}(\omega_R^{\mydot}) > i - n$ for some $i < d$ choose an appropriate prime to localize at, then keep track of the \emph{normalized} dualizing complex.  
+
+%\sol{Fix an $i$ to work with.  We need to show that $\dim \Supp \myH^{-i}(\omega_R^{\mydot}) \leq i - n$ for $i < d$.  Choose $Q$ a minimal prime of a component of the support of $\myH^{-i}(\omega_R^{\mydot})$ which has dimension $> i-n$.  Since $Q$ is a minimal prime of the support, $\dim R/Q > i-n$ and so $i - \dim R/Q < n$.  We know that $(\omega_R^{\mydot}[-\dim R/Q])_Q$ is a normalized dualizing complex for $R_Q$ which is also $\Serre_n$.  Thus
+%\[
+%\myH^{-j}((\omega_R^{\mydot}[-\dim R/Q])_Q) = 0 \text{ for $j < \min(n, \dim R_Q)$.}
+%\]
+%But by construction $R_Q$ is not Cohen-Macaulay (as otherwise its dualizing complex would live in a single degree but it does not), and so $\min(n, \dim R_Q) = n$.  Now, choosing $j = i - \dim R/Q < n$, we see that
+%\[
+%0 = \myH^{-j}((\omega_R^{\mydot}[-\dim R/Q])_Q) = \myH^{-i + \dim R/Q - \dim R/Q}((\omega_R^{\mydot})_Q) = \myH^{-i}((\omega_R^{\mydot})_Q) \neq 0
+%\]
+%a contradiction.
+%}
+\newpage
+Let's do some other applications of dualizing complexes.  Recall that a local ring $(R, \fram)$ is called $F$-injective if for every $i \geq 0$, the induced Frobenius action
+\[
+H^i_{\fram}(R) \to H^i_{\fram}(F_* R)
+\]
+is injective.  A Noetherian ring in general is called $F$-injective if for each maximal ${\fram} \in \Spec R$, $R_{\fram}$ is $F$-injective.
+\vskip 3pt
+\noindent
+{\bf 6.}  Suppose that $(R, \fram)$ is an $F$-finite Noetherian local ring.  Show that for each $Q \in \Spec R$, $R_Q$ is $F$-injective.
+\vskip 200pt
+\noindent
+{\bf 7.}  Suppose that $R$ is an $F$-finite Noetherian ring with dualizing complex $\omega_R^{\mydot}$.  Show that $R$ is $F$-injective if and only if the induced map $F_* \omega_{R^{\mydot}} \cong \omega_{F_* R}^{\mydot} \to \omega_R^{\mydot}$ surjects on all cohomology (\ie, $F_* \myH^i (\omega_R^{\mydot}) \to \myH^i \omega_R^{\mydot}$ for all $i$).
+
+
+\end{document}
+
+

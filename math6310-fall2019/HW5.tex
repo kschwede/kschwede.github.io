@@ -1,0 +1,128 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+%\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+
+\begin{document}
+\title{HW \#5 -- Math 6310\\Fall 2019}
+\author{Due: Wednesday, November 13th}
+\maketitle
+\noindent
+{\bf 1.}  Suppose $D$ is a PID and $M$ is a finitely generated $D$-module.  Prove that 
+\[
+    M \cong D/\langle f_1(x) \rangle \oplus \dots \oplus D/\langle f_l(x) \rangle
+\]
+where $f_i | f_{i-1}$ for $i = 2, \dots, l$ and where the $f_i$ are monic polynomials.  Furthermore, show that this decomposition is unique.
+\vfill
+In many texts, rational canonical form also means that associated polynomials of the block diagonal divide each other in the way above (or maybe $f_i | f_{i+1}$).
+\newpage
+\noindent
+{\bf 2.}  Determine the possible characteristic and minimal polynomials of an $n\times n$ matrix over $\bC$ that has rank $1$.
+\newpage
+\noindent
+{\bf 3.}  Let $G$ be a finite Abelian group under addition and let $n > 0$ be an integer.  Show that the map $\phi : G \to G$ which sends $x \mapsto n x$ is a homomorphism, further show it is an isomorphism if and only if $\gcd(|G|, n) = 1$.
+\newpage
+\noindent
+{\bf 4.}  Determine, up to conjugacy, all $3\times 3$ matrices $M$ over $\bQ$ that satisfy $M^3=2M^2$.
+\newpage
+\noindent
+{\bf 5.}  Suppose that $k$ is the field with 3 elements and let $R = k[x]$.  Identify eleven different (up to isomorphism) $R$-modules $M$ such that $|M| = 9$. 
+\newpage
+\noindent
+{\bf 6.}  Determine up to similarity, all \emph{real} $5 \times 5$-matrices with characteristic polynomial $x(x^2+1)^2$.  
+\newpage
+\noindent
+{\bf 7.}  Let $M$ be a $3 \times 3$ complex matrix with $M^6=M^4$ and $M^4+M^2=2M^3$. Determine the possible Jordan forms of $M$.
+\newpage
+\noindent
+{\bf 8.}  Write down the rational and Jordan canonical forms of the following matrix (viewed over $\bC$)
+\[
+    \left[
+        \begin{array}{cccc}
+            1 & 0 & 0 & 0\\
+            0 & 1 & 0 & 0\\
+            -2 & -2 & 0 & 1\\
+            -2 & 0 & -1 & -2
+        \end{array}
+    \right].
+\]
+\emph{Hint:}  Let $V = \bC^4$ and view $\bC[x]$ acting on $V$ where $x$ acts as that matrix.  The 4 $\bC$-basis elements generate $V$, but there are relations between them when viewed over $\bC[x]$.
+\newpage
+\noindent
+{\bf 9.}  Compute the characteristic polynomial, the minimal polynomial, the Jordan normal form, and the rational canonical form of the matrix.
+\[
+    \left[
+        \begin{array}{ccc}
+            3 & 1 & -1 \\
+            2 & 2 & -1 \\
+            2 & 2 & 0
+        \end{array}
+    \right].
+\]
+
+
+\end{document}
+

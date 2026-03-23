@@ -1,0 +1,129 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.1in,top=1in,right=1.1in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+\theoremstyle{theorem}
+\newtheorem*{mainthm}{Main Theorem}
+\newtheorem*{mainthma}{Main Theorem A}
+\newtheorem*{mainthmb}{Main Theorem B}
+\newtheorem*{mainthmc}{Main Theorem C}
+\newtheorem*{atheorem}{Theorem}
+
+
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title{Exercises for Characteristic $p$ commutative algebra\\January 18th, 2017}
+\author{Due, January 27th, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+
+\begin{enumerate}[label=(\arabic*)]
+\item Write down a basis for $F^e_* \bF_p[x_1, \ldots, x_n]$ over $\bF_p[x_1, \ldots, x_n]$.
+\item Write down a basis for $F^e_* \bF_p(t)[x_1, \ldots, x_n]$ over $\bF_p(t)[x_1, \ldots, x_n]$.
+\item If $I = \langle f_1, \ldots, f_t \rangle \subseteq R$ is an ideal in a ring of characteristic $p > 0$, we use $I^{[p^e]}$ to denote the ideal $\langle f_1^{p^e}, \ldots, f_t^{p^e} \rangle$.  Show that $I^{[p^e]}$ is independent of the choice of generators $f_i$ and also show that the formulas:
+    \[
+    I F^e_* R = F^e_* I^{[p^e]} \text{ and } I R^{1/p^e} = (I^{[p^e]})^{1/p^e}
+    \]
+    hold.
+\item If $R = k[x^2, x^3]$, verify that $R^{1/p}$ is not a free $R$-module for any prime $p$.
+\item Use the fact that a Noetherian local ring is regular if and only if it has finite global dimension to prove that if $R$ is a regular local ring, then so is $R_Q$ for any $Q \in \Spec R$.
+\item Find the singular locus of the following rings $R$, try to simplify this ideal as much as possible (in particular, take the radical of the ideal defining the singular locus if you can).
+\vskip 3pt \noindent
+(ie, find an ideal which defines the primes $Q$ in $\Spec R$ such that $R_Q$ is not a regular local ring.  Note you'll have to figure out the dimension of each ring.).
+\begin{enumerate}
+\item $k = \overline{k}, R = k[x,y,z]/\langle y^3- x^2 z \rangle$.
+\item $k = \overline{k}, R = k[x,y,z,w]/\langle z^2 - yw, yz - xw, y^2 - xz \rangle$.
+\item (you may want the help of a computer) $k = \overline{k},$  $$R = k[x,y,z,w]/\langle yz-xw,z^3-yw^2,xz^2-y^2w,y^3-x^2z \rangle.$$
+\end{enumerate}
+\item Consider the following singular local rings defined over $k = \overline{k}, \mathrm{char} k \neq 2$.  See if you can identify which ones remain domains after completion at the identified maximal ideal.
+\begin{enumerate}
+\item $k[x,y]/\langle y^2 - x^3 \rangle$ localized at the origin $\langle x, y \rangle$.
+\item $k[x,y]/\langle y^2 - x^2(x-1) \rangle$ localized at the origin $\langle x,y \rangle$.
+\item $k[x,y,z]/\langle xy^2 - z^2\rangle$ localized at the origin $\langle x, y, z \rangle$.
+\end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}
+
+

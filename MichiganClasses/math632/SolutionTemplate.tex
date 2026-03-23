@@ -1,0 +1,41 @@
+%%This is a standard LaTeX2e article document template. personal version 12/5/200%%
+\documentclass[12pt,twoside,fullpage]{amsart}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%packages%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\input Math632Macros.sty
+\input xy %This is a package for doing commutative diagrams
+\xyoption{all}
+
+\begin{document}
+\begin{problem}
+Let $\phi : \sF \rightarrow \sG$ be a morphism of sheaves.
+\begin{itemize}
+\item[(a)]  Show that $\im \phi \cong \sF / \ker \phi$.
+\item[(b)]  Show that $\coker \phi \cong \sG / \im \phi$.
+\end{itemize}
+\end{problem}
+\begin{proof}
+Insert proof here.
+\end{proof}
+You don't need to worry about numbering the problems, latex will automatically number them once we combine them.
+
+\vskip 50pt
+
+
+For your convenience, here are some symbols, placed in ``Math632Macros.sty'' that you might find useful.
+
+\begin{itemize}
+\item[(i)]  The structure sheaf of a variety $X$, $\OO_X$.
+\item[(ii)]  A curly Hom used for sheaves, $\sHom$.
+\item[(iii)]  The complex number, $\bC$.
+\item[(iv)]  The spectrum of a ring, $\Spec R$.
+\item[(v)]  The proj of a graded ring, $\Proj R$.
+\item[(vi)]  The support of a sheaf $\sF$, $\Supp \sF$.
+\item[(vii)]  The picard group of a variety, $\pic X$.
+\item[(viii)]  The annihilator of a module $M$, $\Ann_R M$.
+\end{itemize}
+
+\end{document}

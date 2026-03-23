@@ -1,0 +1,61 @@
+%%This is a standard LaTeX2e article document template. personal version 12/5/200%%
+\documentclass[11pt,twoside,fullpage]{amsart}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%packages%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{epsf}
+%        \usepackage{graphicx}
+%        \usepackage[scanall]{psfrag}
+%\pagestyle{empty}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{fullpage}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textheight}{9.5in}
+%\setlength{\textwidth}{7in}
+%\setlength{\leftmargin}{-0.5in}
+%\setlength{\headsep}{0in}          %%%
+%\setlength{\headheight}{0in}
+%\newcommand{\tld}{\widetilde }
+%\newcommand{\bR}{\mathbb{R}}
+\pagestyle{empty}
+\input kmacros3.sty
+\input xy
+\xyoption{all}
+
+\begin{document}
+\title{Homework \#2\\Math 186--1\\Winter 2010}
+\author{Due Tuesday January 19th}
+\maketitle
+
+\begin{itemize}
+\item[(1)]  Prove that $\cos(x + y) = \cos(x) \cos(y) - \sin(x) \sin(y)$.
+\item[(2)]  Prove in detail the fact that $\sin'(\pi) = 1$ (which is equal to $\cos(\pi)$).  We briefly discussed this in class (and the book gives a big hint if you read it).
+\item[(3)]  Prove that
+\[
+ \arcsin(a) + \arcsin(b) = \arcsin\left(a\sqrt{1 - b^2} + b(\sqrt{1-a^2}) \right)
+\]
+\item[(4)]  Find $\lim_{x \to \infty} \sin({1 \over x})$.
+\item[(5)]  Prove that $|\sin(x) - \sin(y) | \leq |x - y|$.  Then prove that the $\leq$ sign can be replaced by $<$ if $x \neq y$.
+\item[(6)]  Compute the derivatives with respect to $x$ of the following functions.
+\begin{itemize}
+\item[(a)]  $f(x) = e^{e^{e^{\sin(x)}}}$.
+\item[(b)]  $g(x) = \left(\arcsin\left({e^{x} \over \cos(x) }\right) \right)^{\log_{10}(x)}$.
+\item[(c)]  $h(x) = \int^{x}_1 e^{\sin^2(t)} dt$.
+\end{itemize}
+\item[(7)]  Find $\lim_{x \to 0^+} x^x$.
+\item[(8)]  Suppose that $f : \bR \to \bR$ is differentiable and never zero.
+\begin{itemize}
+ \item[(a)]  Prove that $\log(|f|)' = f'/f$.
+\item[(b)]  Suppose that $f' = cf$ for some constant $c$.  Show that $f(x) = k e^{cx}$ for some number $k$.
+\end{itemize}
+\item[(9)]  Prove that
+\[
+ 1 + x + {x^2 \over 2!} + {x^3 \over 3!} + {x^4 \over 4!} + \dots + {x^n \over n!} \leq e^x
+\]
+for any $x \geq 0$ and any integer $n > 0$.  Hint:  Use induction on $n$ and take derivatives.
+\item[(10)]  Suppose that $f$ satisfies $f' = f$ and $f(x+y) = f(x) f(y)$ for all $x$ and $y$.  Prove that $f(x) = e^x$ or that $f = 0$.
+\end{itemize}
+
+\end{document}

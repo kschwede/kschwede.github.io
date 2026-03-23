@@ -1,0 +1,155 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+\usepackage{mathrsfs}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bA}{\mathbb{A}}
+%\newcommand{\cF}{\mathcal{F}}
+%\newcommand{\cG}{\mathcal{G}}
+%\newcommand{\cH}{\mathcal{H}}
+\newcommand{\image}{\mathrm{im}\,}
+\newcommand{\coker}{\mathrm{coker}\,}
+\newcommand{\Hom}{\mathrm{Hom}\,}
+\newcommand{\depth}{\mathrm{depth}\,}
+\newcommand{\Supp}{\mathrm{Supp}\,}
+\newcommand{\Spec}{\mathrm{Spec}\,}
+\newcommand{\Ann}{\mathrm{Ann}\,}
+\newcommand{\sH}{\mathscr{H}\,}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\fram}{\mathfrak{m}}
+\newcommand{\Div}{\mathrm{Div}}
+
+\begin{document}
+\title{Worksheet \#5 -- Math 6140\\Spring 2019}
+\author{Due Wednesday, April 3rd}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+The following exercises are essentially Hartshorne, III, Exercise 2.3.  \vskip 9pt
+\noindent
+Suppose that $X$ is a topological space and $Z \subseteq X$ is closed.  Consider the functor $\Gamma_Z(X, \bullet)$ which is defined by $\Gamma_Z(X, \cF) = \{s \in \Gamma(X, \cF)\;|\; \Supp(s) \subseteq Y \}$.\footnote{Recall that $\Supp(s) = \{x \in X\;|\;0\neq s_x \in \cF_x\}$.}  It is straightforward to see that this is a left exact functor.  The right derived functors are denoted by $H^i_Z(X, \bullet)$, and by the usual arguments, given a short exact sequence of Abelian groups,
+\[
+0 \to \cE \to \cF \to \cG \to 0
+\]
+we obtain a long exact sequence
+\[
+0 \to H^0_Z(X, \cE) \to H^0_Z(X, \cF) \to H^0_Z(X, \cG) \to H^1_Z(X, \cE) \to H^1_Z(X, \cF) \to H^1_Z(X, \cG) \to \dots
+\]
+\noindent
+{\bf 1.}  Show that if $\cE$ is flasque, then $H^i_Z(X, \cE) = 0$ for $i > 0$.
+\vskip 3pt
+\emph{Hint:} Show that if $\cE$ is flasque in the above short exact sequence, then $H^0_Z(X, \cF) \twoheadrightarrow H^0_Z(X, \cG)$ surjects.
+\newpage
+\noindent
+{\bf 2.}  Let $U = X \setminus Z$.  Show that for any $\cF$, there is a long exact sequence:
+\[
+0 \to H^0_Z(X, \cF) \to H^0(X, \cF) \to H^0(U, \cF) \to H^1_Z(X, \cF) \to H^1(X, \cF) \to H^1(U, \cF) \to \dots
+\]
+\vskip 3pt
+\emph{Hint:} See worksheet 1, exercise \#8, and show that sequence from that exercise is exact if $\cF$ is flasque.  Also feel free to use anything from Chapter III, Section 1 of Hartshorne (or other sources for formal nonsense).
+\vskip 250pt
+\noindent
+{\bf 3.}  Suppose that $A$ is a ring and that $I \subseteq A$ is a finitely generated ideal.  Consider the functor from $A$-modules to $A$-modules defined by $\Gamma_I(M) = \{m \in M \;|\; I^n m = 0 \text{ for some $n > 0$.} \}$.  Show that this functor is left exact.  Its right derived functors are denoted $H^i_I(\bullet)$ and are called local cohomology.
+\vskip 200pt
+\newpage
+\noindent
+{\bf 4.}  Suppose that $A$ is a Noetherian ring, $I \subseteq A$ is an ideal, and $M$ is an $A$-module.  Let $X = \mathrm{Spec}\; A$ and $Z = V(I) \subseteq X$.  Prove that
+\[
+H^i_I(M) = H^i_Z(X, \widetilde{M})
+\]
+for all $i > 0$.
+\vskip 200pt
+What follows are essentially exercises from Hartshorne chapter III section 3.
+\vskip 3pt
+Suppose that $A$ is a ring, $M$ is a finitely generated $A$-module and $I \subseteq A$ is an ideal.  Further suppose that $M \neq I M$.  Recall that the \emph{$I$-depth of $M$, or the depth\footnote{Some CA sources call this grade, Hartshorne calls it depth, as does the stacks project.  I'll stick with their terminology.  In the case of a local ring with $I = \fram$, these notions agree.} of $M$ along $I$} is the maximum length of a sequence of elements $\{x_1, \dots, x_d\} \subseteq I$ so that $x_{i+1}$ is not a zero divisor on $M/(x_1, \dots, x_{i})M$.  This is denoted by $\depth_I M$.
+\vskip 9pt
+\noindent
+{\bf 5.}  For $A, I, M$ as above, show that $\depth_I M \geq k$ if and only if $H^i_I(M) = 0$ for all $i < k$.  
+\vskip 3pt
+\emph{Hint:} Use induction, the base case $k = 1$ is straightforward.
+\newpage
+Suppose $(X, \O_X)$ is a scheme.  A coherent sheaf $\cF$ of $\O_X$-modules is said to satisfy \emph{Serre's $\mathrm{S}_k$ property} if for each point $p \in X$ (including non-closed points), we have that $\depth_{\fram_p} \cF_p \geq \min(\dim \O_{X,p}, k)$.  Likewise, a finitely generated module $M$ over a ring $A$ is $\mathrm{S}_k$ if for each $Q \in \Spec A$, we have $\depth_Q M_Q \geq \min(\dim A_Q, k)$, this is equivalent to $\widetilde M$ satisfying $\mathrm{S}_k$ in the above sense.  \footnote{Warning, in some texts, $\dim \O_{X,p}$ or $\dim A_Q$ is replaced by $\dim \cF_p$ or $\dim M_Q$.}
+\vskip 9pt
+\noindent
+{\bf 6.}  Suppose $X$ is a scheme and $Z \subseteq X$ is a closed subscheme of codimension\footnote{Codimension $\geq k$ means for every irreducible component $Z_i$ of $Z$, there exists a chain of irreducible subsets $Z_i = Y_0 \subseteq Y_1 \subseteq \dots Y_k \subseteq X$.} $\geq k$.  Show that if $\cF$ is $\mathrm{S}_k$, then $H^i_Z(X, \cF) = 0$ for all $i < k$.  If you just want to do the case where $k = 2$, that is fine too, and somewhat easier.  
+\vskip 3pt
+\emph{Hint:} Fix $k$ and use induction on $i$.  Fix a point $p \in Z$ (maybe even a generic point of $Z$) and consider the long exact sequence you get by from $H^i_Z(X, \bullet)$.  On the other hand, you can apply $H^i_p(X, \bullet)$ to this long exact sequence (or really to the short exact sequences you can break up the long exact sequence into).  This is a bit easier if you know spectral sequences, in which case just consider the spectral sequence obtained by composing the derived functors $H^j_p(X, \bullet)$ and $H^i_Z(X, \bullet)$.
+\newpage
+\noindent
+{\bf 7.}  Conclude that if $\cF$ is $\mathrm{S}_2$ and $Z \subseteq X$ is codimension 2, then $\Gamma(X, \cF) = \Gamma(X \setminus Z, \cF)$.
+\vskip 250pt
+\noindent
+{\bf 8.}  Suppose again that $X$ is a scheme, that $\cF$ is $\mathrm{S}_2$ and $Z \subseteq X$ is codimension 2.  Let $U = X \setminus Z$ and suppose that $i : U \to X$ is the (open) inclusion.  Show that $i_* \cF|_U \cong \cF$.  
+
+\end{document}
+

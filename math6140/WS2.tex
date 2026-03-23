@@ -1,0 +1,123 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+\usepackage{mathrsfs}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bA}{\mathbb{A}}
+%\newcommand{\cF}{\mathcal{F}}
+%\newcommand{\cG}{\mathcal{G}}
+%\newcommand{\cH}{\mathcal{H}}
+\newcommand{\image}{\mathrm{im}\,}
+\newcommand{\coker}{\mathrm{coker}\,}
+\newcommand{\Hom}{\mathrm{Hom}\,}
+\newcommand{\Supp}{\mathrm{Supp}\,}
+\newcommand{\Ann}{\mathrm{Ann}\,}
+\newcommand{\sH}{\mathscr{H}\,}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+
+\begin{document}
+\title{Worksheet \#2 -- Math 6140\\Spring 2019}
+\author{Due Friday, February 1st (electronically)}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+{\bf 1.}  Suppose that $\phi : Y \to X$ is a regular map of quasi-projective varieties and that $\cE$ a locally free sheaf of $\O_X$-modules.  Prove that $\phi^* \cE$ is also locally free as a sheaf of $\O_Y$-modules.
+\vskip 200pt
+\noindent
+{\bf 2.}  Suppose that $\phi : Y \to X$ is a regular map of quasi-projective varieties.  Suppose that $\cE$ is a locally free sheaf of $\O_X$-modules on $X$.  Further suppose that $\cF$ is a sheaf of $\O_Y$-modules.  Prove that there is a natural isomorphism of $\O_Y$-modules
+\[
+(\phi_* \cF) \otimes_{\cO_X} \cE \cong \phi_* (\cF  \otimes_{\cO_Y} \phi^* \cE).
+\]
+(don't actually prove the ``natural'' part, but at least state what you would have to show)
+\newpage
+\noindent
+{\bf 3.}  Let $X$ be a quasi-projective variety and suppose that $\cF$ is a coherent sheaf on $X$.  Suppose that there is another coherent sheaf $\cG$ on $X$ such that
+\[
+\cF \otimes_{\cO_X} \cG \cong \cO_X.
+\]
+Prove that $\cF$ is locally free and of rank 1.
+\vskip 3pt
+\emph{Hint:} Nakayama's lemma and the ideas surrounding it may help.
+\vskip 250pt
+\noindent
+{\bf 4.}  Suppose that $X$ is a quasi-projective variety and that $\cF$ is a locally free sheaf of rank $1$ on $X$.  Prove that there exists a coherent sheaf $\cG$ so that
+\[
+\cF \otimes_{\cO_X} \cG \cong \cO_X.
+\]
+In view of this problem and its predecessor, locally free sheaves of rank 1 are called \emph{invertible sheaves}.
+\newpage
+\noindent
+{\bf 5.} Suppose $X$ is an affine variety and that $R = k[X]$.  Suppose that $M$ is an $R$-module.  For any $m \in M = \Gamma(X, \widetilde{M})$, show that $\Supp m = Z(\Ann_R m)$.  Here $\Ann_R m = 0 :_R m = \{r \in R \;|\; rm = 0 \}$ and $\Supp m$ is defined as in the previous worksheet.
+\vskip 250pt
+\noindent
+{\bf 6.}  With notation as above, if $M$ is finitely generated, show that $\Supp \widetilde M = Z(\Ann_R M)$.
+\end{document}
+

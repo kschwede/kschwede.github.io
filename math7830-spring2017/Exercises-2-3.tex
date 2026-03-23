@@ -1,0 +1,122 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.1in,top=1in,right=1.1in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+\theoremstyle{theorem}
+\newtheorem*{mainthm}{Main Theorem}
+\newtheorem*{mainthma}{Main Theorem A}
+\newtheorem*{mainthmb}{Main Theorem B}
+\newtheorem*{mainthmc}{Main Theorem C}
+\newtheorem*{atheorem}{Theorem}
+
+
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title{Exercises for Characteristic $p$ commutative algebra\\February 3rd, 2017}
+\author{Due, February 13th, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+
+\begin{enumerate}[label=(\arabic*)]
+\item If we have a morphism of complexes, $A^{\mydot} \xrightarrow{\alpha} B^{\mydot}$, then we can always take the cone $C(\alpha)^{\mydot} = C^{\mydot} =  A[1]^{\mydot} \oplus B^{\mydot}$ with differential
+\[
+C^i = A^{i+1} \oplus B^i \xrightarrow{-d_A^{i+1}, \alpha^i + d_B^i} A^{i+2} \oplus B^{i+1}.
+\]
+Verify that this really is a complex.
+\item Suppose that $0 \to A^{\mydot} \xrightarrow{\alpha} B^{\mydot} \xrightarrow{\beta} D^{\mydot} \to 0$ is a short exact sequence of complexes.  Show that $D^{\mydot}$ is quasi-isomorphic to the cone $C(\alpha)^{\mydot}$.  
+\item Consider the ring $R = {\overline \bF}_p[x]$.  Show that the perfection $R^{\infty}$ of $R$ is ${\overline \bF}_p[x, x^{1/p}, x^{1/p^2}, \ldots]$ and that the map $\Spec R^{\infty} \to \Spec R$ is a bijection.
+\item More generally, suppose that $R$ is a Noetherian ring and $R^{\infty}$ is its perfection (which as we've seen is usually not Noetherian).  Is $\Spec R^{\infty} \to \Spec R$ always a bijection?
+\item Suppose $R$ is an $F$-finite Noetherian ring.  Show that $R$ is $F$-split if and only if $R_{\fram}$ is $F$-split for every maximal ideal $\fram \subseteq R$.
+\item Suppose we have an extension of rings $R \subseteq S$ and that $M$ is an $S$-module.  Suppose that $\Hom_R(S, R) \cong S$ as $S$-modules.  We have a map
+    \[
+        \Hom_S(M, S) \times \Hom_R(S, R) \to \Hom_R(M, R)
+    \]
+    by composition $(\alpha, \beta) \mapsto \beta \circ \alpha$.  Show that this map is surjective.
+\item Suppose that we have inclusions $R \subseteq S \subseteq T$ of rings and that $\Hom_R(S, R) \cong_S S$ and that $\Hom_S(T,S) \cong_T T$.  Choose $\Phi \in \Hom_R(S, R)$ which generates the $\Hom$-module as an $S$-module and $\Psi \in \Hom_S(T, S)$ generating the $\Hom$-module as a $T$-module.  Prove that $\Phi \circ \Psi$ generates $\Hom_R(T, R)$ as a $T$-module.
+\end{enumerate}
+
+
+
+\end{document}
+
+

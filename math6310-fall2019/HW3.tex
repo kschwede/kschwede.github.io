@@ -1,0 +1,140 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+%\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Aut}{\mathrm{Aut}}
+
+\begin{document}
+\title{HW \#3 -- Math 6310\\Fall 2019}
+\author{Due: Friday, October 4th}
+\maketitle
+{\bf Definition 1.}  Suppose $R$ is a commutative integral domain.  A subset $W \subseteq R$ containing $1$ and not containing $0$ is called a \emph{multiplicative set} if for any $a,b \in W$, we have $ab \in W$.  (Note the conditions on 1 and 0 are not always assumed in the literature, we make them here for convenience).
+
+In this case, we define $W^{-1}R$ to be the set of pairs $(a, b)$ such that $a \in R$ and $b \in W$, modulo the equivalence relation where $(a_1, b_1) \sim (a_2, b_2)$ if $a_1 b_2 = a_2 b_1$.  The equivalence class of $(a,b)$ we denote by $a/b$.  
+
+$W^{-1}R$ forms a ring under the familiar rules for adding and multiplying fractions (you may take this as given).  
+
+Furthermore, the map 
+\[
+    \phi : R \to W^{-1} R
+    \]
+sending $r \mapsto r/1$ is a ring homomorphism (you may also take it as given).
+
+\begin{enumerate}
+    \item Suppose that $R$ is a commutative integral domain, $W \subseteq R$ is a multiplicative set and $Q \subseteq R$ is a prime ideal such that $W \cap Q = \emptyset$.  Show that the set
+    \[
+    W^{-1} Q := \{ x/w \;|\; x \in Q, w \in W \} \subseteq W^{-1} R
+    \]
+    is a prime ideal of $W^{-1} R$.
+    \vskip 3pt
+    \emph{Hint:}  We checked this in class.
+    \newpage
+    \item  Suppose that $R$ is a
+    commutative integral domain and $W \subseteq R$ is a multiplicative set.  Suppose that $P \subseteq W^{-1} R$ is a prime ideal and set $Q = P \cap R$ (where the intersection is taken with the isomorphic copy of $R \subseteq W^{-1}(R)$).  Show that $Q \cap W = \emptyset$ and that $W^{-1} Q = P$.
+    \vskip 9pt
+    Conclude that the prime ideals of $W^{-1} R$ are in bijection with the prime ideals $Q$ in $R$ such that $W \cap Q = \emptyset$.
+    \newpage
+    \item  Suppose that $W \subseteq R$ is a multiplicative set in a commutative integral domain, and $W$ is made up of only units (= invertible elements) of $R$.  Show that the map $\phi : R \to W^{-1} R$ from the first page is an isomorphism of rings.
+    \newpage
+    \item  Suppose that $R$ is a commutative integral domain, $W \subseteq R$ is a multiplicative set and $\psi : R \to S$ is a ring homomorphism between commutative rings.  Further suppose that for each $w \in W$, there is some $s \in S$ such that $s \psi(w) = 1_S$.  Show that one can factor $\psi$ as follows
+    \[
+    \xymatrix{
+    R \ar[dr]_-{\phi} \ar[rr]^{\psi} & & S\\
+    & W^{-1} R \ar@{.>}[ur]_-{\alpha}
+    }
+    \]
+    and that the map $\alpha$ is unique.  This is called the \emph{universal property of localization}.
+    \newpage
+    \item Suppose that $R$ is a commutative integral domain and pick a nonzero $r \in R$.  Set $W = \{1, r, r^2, r^3, \dots\}$.  Show that we have an isomorphism between rings $R[x]/\langle rx - 1 \rangle \cong W^{-1}R$.  
+    \newpage
+    \item Show that any finite integral domain is a division ring.
+    \newpage
+    \item Do either of these distributive laws, for ideals $I, J, K$ in a commutative ring $R$ hold?
+    \[
+        \begin{array}{c}
+            I\cdot (J + K) = I \cdot J + I \cdot K\\
+            I \cap (J + K) = I \cap J + I \cap K
+        \end{array}
+    \]
+    \newpage
+    \item Suppose $R$ is a commutative ring and $I, J \subseteq R$ are ideals such that $I + J = R$ (in this case we say the ideals are (strongly) relatively prime).  Prove that $I \cap J = I \cdot J$.  What does this say for ideals in $\bZ$?
+    \newpage
+    \item Suppose that $R$ is a ring with ideals $I_1, I_2, \dots, I_k$ ideals such that $I_i + I_j = R$ for $i \neq j$.  Show that the system of equations 
+    \[
+        \begin{array}{rcl}
+            x + I_1 & = & a_1 + I_1 \\
+            x + I_2 & = & a_2 + I_2 \\
+            \dots & = & \dots \\
+            x+ I_k & = & a_k + I_k\\
+        \end{array}
+    \]
+    always has a solution.  \vskip 3pt
+    \emph{Hint:} First prove the case when $k = 2$ and show that two solutions differ by an element of $I_1 \cap I_2$.  You can then do induction and at some point you'll also want to show that $I_j + \bigcap_{i \neq j} I_i = R$.  
+    \newpage
+    \item Suppose that $I_1, I_2, \dots, I_k \subseteq R$ are ideals such that $I_i + I_j = R$ for $i \neq j$.  Prove that we have an isomorphism:
+        \[
+            R/(I_1 \cap I_2 \cap \dots \cap I_k) \cong (R/I_1) \oplus (R/I_2) \oplus \dots \oplus (R/I_k)
+        \]        
+\end{enumerate}
+
+\end{document}
+

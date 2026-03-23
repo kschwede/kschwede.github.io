@@ -1,0 +1,165 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.1in,top=1in,right=1.1in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+\theoremstyle{theorem}
+\newtheorem*{mainthm}{Main Theorem}
+\newtheorem*{mainthma}{Main Theorem A}
+\newtheorem*{mainthmb}{Main Theorem B}
+\newtheorem*{mainthmc}{Main Theorem C}
+\newtheorem*{atheorem}{Theorem}
+
+
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title{Exercises for Characteristic $p$ commutative algebra\\February 27rd, 2017}
+\author{Due, Friday March 10th, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+
+\begin{enumerate}[label=(\arabic*)]
+\item For $R$ a Noetherian ring, $I \subseteq R$ an ideal and $U = \Spec R \setminus V(I)$ we defined for any $R$-module $M$
+\[
+\Gamma(U, M) = \ker \Big( \bigoplus_j M_{f_j} \to \bigoplus_{a < b} M_{f_{a} f_b} \big)
+\]
+where $I = \langle f_1, \ldots, f_m \rangle$.  Prove that $\Gamma(U, M)$ is independent of the choice of generators of $I$.
+\item
+Suppose that $R$ is a Noetherian ring.  Recall that an object $\omega^{\mydot} \in D^b_{f.g.}(R)$ is called a \emph{dualizing complex for $R$} if the following two conditions are satisfied.
+\begin{itemize}
+\item[(a)] $\omega^{\mydot}$ has finite injective dimension (is quasi-isomorphic to a bounded complex of injectives) and,
+\item[(b)] The functor $\myD(\blank) = \myR \Hom_R(\blank, \omega^{\mydot})$ has the property that the canonical map $C^{\mydot} \to \myD(\myD(C^{\mydot}))$ is an isomorphism for all $C^{\mydot} \in D^b_{f.g.}(R)$.
+\item[(b')] Or equivalently to (b), $R \cong \myR \Hom_R(\omega^{\mydot}, \omega^{\mydot})$.
+\end{itemize}
+Prove that (b') implies (b) above.
+\vskip 3pt
+\emph{Hint:} If you are stuck you may use the following formula (or prove it if you are feeling ambitious).  For $A^{\mydot}, B^{\mydot}, C^{\mydot} \in D^b_{f.g.}(R)$ with $C^{\mydot}$ quasi-isomorphic to a finite complex of injectives, we have
+\[
+A^{\mydot} \otimes^{\myL}_R \myR \Hom_R(B^{\mydot}, C^{\mydot}) \qis \myR \Hom_R(\myR \Hom_R(A^{\mydot}, B^{\mydot}), C^{\mydot})
+\]
+\item Suppose that $(R, \fram)$ is an $F$-finite Noetherian local ring of characteristic $p > 0$ with a dualizing complex.  Then $\myR \Hom_R(F^e_* R, \omega_R^{\mydot}) =: \omega_{F^e_* R}^{\mydot}$ is a dualizing complex for $F^e_* R$.  Furthermore, $F^e_* \omega_R^{\mydot} \qis \omega_{F^e_* R}^{\mydot}$.
+    \vskip 3pt
+    \emph{Hint:} The fact that it is a dualizing complex was worked out in class.  Dualizing complexes are unique up to shifting and twisting by rank-one projectives.  Use the fact that it is local to handle the rank-1 projective case.  Then use the that the localization of a dualizing complex is a dualizing complex to handle the shift (localize at a minimal prime).
+\item Show that the formation of $R^{\myN}$ (the normalization of $R$) commutes with localization, in particular if $W \subseteq R$ is a multiplicative set then $(W^{-1} R)^{\myN} = W^{-1} (R^{\myN})$.
+\item Suppose that $R = k[x]$ ($\mathrm{char} k \neq 2$) and consider the three points $x = -1, x = 0, x = 1$.  Glue these three points together and find a presentation of the resulting non-normal ring.  Give a geometric justification about why the $\Spec$ of it cannot be embedded as a closed subscheme of $\bA^2 = \Spec k[u,v]$.
+\item Fix $R$ an $F$-finite ring of characteristic $p > 0$, $\fra \subseteq R$ an ideal and $t \geq 0$ a real number.  We say that a pair $(R, \fra^t)$ is \emph{(sharply) $F$-split} if there exists an $e > 0$ and an element
+\[
+\phi \in (F^e_* \fra^{\lceil t(p^e - 1) \rceil}) \cdot \Hom_R(F^e_* R, R)
+\]
+such that $\phi(F^e_* R) = R$.  Prove the following facts about sharply $F$-split pairs.
+\begin{enumerate}
+\item Show that if $(R, \fra^t)$ is sharply $F$-split then for all sufficiently divisible $e > 0$, there exists a $\phi$ as above.
+\item Find an example that is sharply $F$-split but such that a $\phi$ as above does not exist for every $e > 0$.
+\item Suppose that $(R, \fra^t)$ is sharply $F$-split.  Show that there exists $t' \geq t$ with $t' = {b \over p^e - 1}$ such that $(R, \fra^{t'})$ is also sharply $F$-split.
+\item Show that $(R, \fra^t)$ is sharply $F$-split if and only if for every maximal $\fram \in \Spec R$, $(R_{\fram}, \fra_{\fram}^t)$ is sharply $F$-split.
+\item If $(R, \fram)$ is local, then show that $(R, \fra^t)$ is sharply $F$-split if and only if for some $e > 0$ there exists an element $z \in \fra^{\lceil t(p^e - 1)\rceil}$ such that the map
+\[
+\xymatrix@R=0pt{
+R \ar[r] & F^e_* R \\
+1 \ar@{|->}[r] & F^e_* z \\
+}
+\]
+splits as a map of $R$-modules.
+\end{enumerate}
+\item A map of rings $R \to S$ is called \emph{pure} if for every $R$-module $M$, the map $M \to M \otimes_R S$ is injective.  Suppose that $S$ is a finite $R$-module, show that $R \to S$ is pure if and only if $R \to S$ splits as a map of $R$-modules.
+    \vskip 3pt
+    \emph{Hint:} First reduce to the case that $R$ is complete and local and let $E$ be the injective hull of the residue field.  Consider the injective map $E \to E \otimes_R S$ and apply Matlis duality and $\Hom-\tensor$ adjointness.
+    \vskip 3pt
+    \noindent
+    {\bf Remark.} A ring is called \emph{$F$-pure} if the Frobenius map $R \to F_* R$ is pure.  Because of this, and because most rings we study are $F$-finite, the terms $F$-pure or $F$-split are usually synonymous.
+\item Given an ideal $\fra \subseteq R$ in an $F$-finite ring, we define the \emph{$F$-split (or $F$-pure) threshold $\fpt(R, \fra)$ of $(R, \fra)$} to be
+\[
+\fpt(R, \fra) := \{ t \geq 0\;|\; (R, \fra^t) \text{ is sharply $F$-split} \}.
+\]
+Compute the $F$-pure threshold of the following pairs, in all of them $k = \overline{\bF_p}$.
+\begin{enumerate}
+\item $k[x,y]$, $\fra = \langle x^u y ^v \rangle$.
+\item $k[x,y,z]$, $\fra = \langle x^2 y - z^2 \rangle$ (the answer depends on the characteristic).
+\item $k[x,y]$, $\fra = \langle y^2 - x^3 \rangle$ (the answer also depends on the characteristic).
+\end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}
+
+

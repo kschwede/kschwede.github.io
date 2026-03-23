@@ -1,0 +1,106 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Aut}{\mathrm{Aut}}
+
+
+\begin{document}
+\title{Worksheet \#1 -- Math 6310\\Fall 2019}
+\author{Due September 4th, 2019}
+\maketitle
+Let's play around with universal properties.
+
+In general category theory, an \emph{epimorphism} between objects is something that is right cancellative.  In other words, $f$ is an epimorphism, if we have
+\[
+\xymatrix{
+A \ar[r]^f & B \ar@/_1pc/[r]_h \ar@/^1pc/[r]^g & C
+}
+\]
+a diagram, and if we have $g \circ f = h \circ f$, then $g = h$.  (These could be groups and group homomorphisms, or sets and ordinary functions, or ...).
+\vskip 9pt
+\noindent
+{\bf 1.}  Suppose that $A, B, C$ above are sets and $f,g,h$ as above are just functions between sets.  Show that if $f$ is surjective then $f$ is an epimorphism.
+\vskip 170pt
+\noindent
+{\bf 2.}  Prove the converse to {\bf 1.}, if $f$ is an epimorphism, then $f$ is surjective.
+\newpage
+Now we switch to the category of groups.  In other words suppose we have $f : A \to B$ a homomorphism of groups.  We declare $f$ to be an \emph{epi} if $g \circ f = h \circ f$ implies $g = h$.
+\[
+\xymatrix{
+A \ar[r]^f & B \ar@/_1pc/[r]_h \ar@/^1pc/[r]^g & C
+}
+\]
+\vskip 9pt
+\noindent
+{\bf 3.}  In the category of \emph{Abelian groups} (ie, assume, $A,B,C$ are Abelian), show that $f$ is an epi if and only if $f$ is surjective.  (This is still true without the Abelian assumption, but it's a bit harder, and may not fit in the space provided.)
+\vskip 3pt
+\emph{Hint:}  If $f$ is surjective, it should easily be an epi (from the previous page).
+\vskip 175pt
+Now let's think about the category of monoids.  Consider the inclusion map $f : (\bZ_{\geq 0}, +, 0) \to (\bZ, + , 0)$.  Obviously this map is not surjective, however see the next exercise.
+\vskip 9pt
+\noindent
+{\bf 4.}  Show that $f$ is an epi in the category of monoids.
+\vskip 3pt
+\emph{Hint:} Is it true for monoids that $g(-n) = -g(n)$?
+\end{document}
+

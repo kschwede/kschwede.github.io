@@ -1,0 +1,38 @@
+\documentclass[oneside,10pt]{amsart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{graphics,graphicx}
+\usepackage{verbatim}
+%\RequirePackage[usenames]{color}
+\usepackage{color}
+
+\usepackage[left=0.8in,top=1in,right=0.8in,bottom=1in]{geometry}
+\input{kmacros3.sty}
+
+\title{Homework \# 9\\Due Wednesday March 30th}
+\author{Math 435 Spring 2011}
+
+\begin{document}
+\maketitle
+
+In this homework assignment, all rings with be commutative associative with unity (multiplicative identity).  Ring homomorphisms will always be assumed to send $1$ to $1$.  The terms that appear on this homework assignment \emph{WILL} appear on the exam.
+
+\noindent
+{\bf 1.}  An ideal $I$ is called \emph{radical} if for every $x \in R$ such that $x^n \in I$ (for some $n$), then $x \in I$ also.  Prove that $I$ is radical if and only if $R/I$ has no nilpotent elements.\\
+{\bf 2.}  Suppose that $x \in R$ is a nilpotent element.  Prove that $1 + x$ is a unit.\\
+{\bf 3.}  Suppose that $I$ and $J$ are ideals of a ring.  We define $IJ = \{ x \in R | x = ij \text{ for some } i \in I, j \in J \}$.  Show that both $IJ$ and $I \cap J$ are ideals of $R$.  Further show that $IJ \subseteq I \cap J$.  \\
+{\bf 4.}  A ring $R$ is called a \emph{principal ideal domain} if it is an integral domain and every ideal $I \subseteq R$ is principal, in other words $I = (r)$ for some $R$ in $R$.  Show that $\mathbb{Z}[i]$ is a principal ideal domain.  \\
+{\bf 5.}  Consider the ring $R$ of continuous functions $\phi : \mathbb{R} \to \mathbb{R}$.  Prove that the subset $I = \{ f \in R | f(1) = 0\}$ is an ideal but that $A = \{f \in R | f(1) \in \mathbb{Z} \}$ is not an ideal.\\
+{\bf 6.}  Suppose that $A$ is an integral domain of positive characteristic.  Suppose that $I \subsetneq A$ is an ideal.  Prove that $A/I$ has the same characteristic as $A$.  However, give an example which demonstrates that $A/I$ need not be an integral domain.\\
+{\bf 7.}  Suppose that $F$ is a field with finitely many elements.  Prove that the sum of all the elements in the field is equal to zero.\\
+{\bf 8.}  Find the characteristic of $\mathbb{Z}[i]/ (2 + i)$.  \\
+{\bf 9.}  Give an example of a prime ideal which is not maximal.  \\
+{\bf 10.}  Show that the ideal $(2 + \sqrt{2}) \subseteq \mathbb{Z}[\sqrt{2}]$ is not prime.\\
+{\bf 11.}  Suppose that $S$ is a ring.  Show that there is a unique ring homomorphism $\phi : \mathbb{Z} \to S$ which sends $1$ to $1$.  In particular, conclude that there is only one ring homomorphism $\mathbb{Q} \to \mathbb{Q}$ which sends $1$ to $1$.   \\
+{\bf 12.}  Fix a field $k$ and consider the subring $k[x^2, x^3] \subseteq k[x]$ (the former ring is all polynomials with zero coefficient in front of $x$).  Prove that $k[x^2, x^3]$ is not a principal ideal domain.\\
+{\bf 13.}  Suppose that $\phi : R \to S$ is a surjective ring homomorphism.  Prove that if $R$ is a principal ideal domain the every ideal in $S$ is also principal.  However, give an example to show that $S$ need not be an integral domain. \\
+{\bf 14.}   Let $\mathbb{Q}[\sqrt{2}] = \{a + b\sqrt{2} | a, b \in \mathbb{Q} \}$ and $\mathbb{Q}[\sqrt{2}] = \{a + b\sqrt{5} | a, b \in \mathbb{Q} \}$  Prove that both rings are fields but that they are not isomorphic.  
+\end{document}

@@ -1,0 +1,132 @@
+\documentclass[10pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\usepackage{multicol}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+
+\begin{document}
+\title{Worksheet \#1-- Math 5320\\Spring 2020}
+\author{Due Wednesday, January 15th, in Gradescope}
+
+\maketitle
+You may work in groups of up to 3 on this assignment.  Only one assignment needs to be turned in per group.  It still needs to be turned in on gradescope.
+\vskip 9pt
+Recall that a \emph{ring} is a set $R$ with two binary operations, $+, \cdot$ satisfying the following axioms for all $x,y,z \in R$.
+\begin{multicols}{3}
+    \begin{enumerate}
+    \item $(x+y) + z = x+ (y+z)$.
+    \item $\exists 0 \in R$ such that $x + 0 = 0 + x = x$.    
+    \item $\forall x \in R, \exists -x \in R$ such that $x + (-x) = 0$.
+    \item $x+y = y+x$.
+    \item $x(yz) = (xy)z$.
+    \item $\exists 1 \in R$ such that \\$1 x = x1 = x.$
+    \item $xy = yx$ (our book assumes this, most do not, ie in most texts not all rings are \emph{commutative})
+    \item $x(y+z) = xy + xz$.
+    \end{enumerate}
+    \end{multicols}
+\noindent
+{\bf 1.}  Prove that the element $1$ in a ring is unique.
+\vskip 3pt
+\emph{Hint:}  Suppose you have two 1s, say $1$ and $1'$.
+\vskip 130pt
+\noindent
+{\bf 2.}  Show that if $x \in R$ then $0x = 0$.
+\vskip 3pt
+\emph{Hint:} We already showed this in class. 
+\newpage
+\noindent
+{\bf 3.}  Show that $(-1) \cdot x = -x$.
+\vskip 3pt
+\emph{Hint:}  $-x$ is characterized uniquely by the fact that $x + (-x) = 0$ (because inverses are unique in groups, and rings are groups under $+$).
+\vskip 130pt
+\noindent
+{\bf 4.}  Show that $(-1) \cdot (-1) = 1$ in any ring.
+\vskip 130pt
+\noindent
+{\bf 5.}  Consider the ring $R = \bZ/10\bZ$, the integers under addition and multiplication modulo 10.  Find all solutions to the equation $5x = 0$.  
+\vskip 3pt
+\emph{Hint: }  There should be 5 distinct solutions.
+\vskip 130pt
+A ring is called an \emph{integral domain} if $ab = 0$ implies that either $a = 0$ or $b = 0$.
+\vskip 3pt
+\noindent
+{\bf 6.}  Prove that if $R$ is an integral domain and $ax = ay$ for some $a \neq 0$, then $x = y$.  
+\newpage
+\noindent
+{\bf 7.}  Suppose $R$ is a ring such that if $a \neq 0$ and $ax = ay$, then $x = y$.  Prove that $R$ is an integral domain.
+\vskip 150pt
+An element of a ring $x \in R$ is called a \emph{zero divisor} if there exists a nonzero $y \in R$ such that $xy = 0$.   If $x \neq 0$ is not a zero divisor it is called either a \emph{non-zero divisor} or a \emph{regular element}.
+\vskip 3pt
+\noindent
+{\bf 8.}  Suppose $R$ is a ring and $x \in R$.  Show that $x$ cannot simultaneously be both a zero divisor and a unit.  On the other hand, give an example of an element in a ring that is neither a zero divisor or a unit.
+\newpage
+If $f(x) = \sum_{i = 0}^n a_i x^i \in R[x]$, then we use $\deg(f(x))$ to denote the largest $i$ such that $a_i \neq 0$.  It is called the \emph{degree} of $f(x)$.
+\vskip 3pt
+\noindent
+{\bf 9.}  Suppose that $R$ is a ring, $x$ is an indeterminate, and $R[x]$ is the associated polynomial ring.  
+\vskip 3pt
+Show that if $R$ is an integral domain and $f(x), g(x) \in R[x]$, then 
+\[
+    \deg (f(x) \cdot g(x)) = \deg f(x) + \deg g(x).
+\]
+Give an example to show that this does not hold if $R$ is not an integral domain.
+\end{document} 

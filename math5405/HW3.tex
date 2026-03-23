@@ -1,0 +1,89 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,fullpage}
+\usepackage{enumerate}
+\RequirePackage[dvipsnames,usenames]{color}
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+
+\begin{document}
+\title{Homework \#3 -- Math 5405\\Spring 2016}
+\author{Due: Tuesday  3/22/2016}
+\maketitle
+\begin{enumerate}
+\item Suppose you are given the block of data (16 bytes) consisting of all zeroes.  Compute what the output of the 
+\begin{itemize}
+\item[(a)]  {\tt ByteSub} on that data?
+\item[(b)]  What is the output of {\tt ShiftRow} on the output of {\tt ByteSub} from (a)?  (Please use the description of shiftrow from the text, in particular, still output a matrix).
+\item[(c)]  What is the output of {\tt MixColumn} on the output of {\tt ShiftRow} from (b)?
+\item[(d)]  Suppose that the roundkey for this round is made of all 1s.  What is the output of the AddRoundKey phase.  Provide a list of 16 bytes (numbers).
+\end{itemize}
+\item Do Exercise 3 from pages 162-163 of the text Trappe and Washington.
+\item Do Exercise 4 from page 163 of the text Trappe and Washington.
+\item Do Exercise 5 from page 163 of the text Trappe and Washington. 
+\item Let's describe one more factorization algorithm (you can even implement it before class on March 10th).  This is called Pollard's Rho.  If $p$ is a factor of $n$ then the expectation is that this will usually find a factor of $n$ in some constant times $\sqrt{p}$ steps.
+    \begin{itemize}
+    \item[(a)]  Lookup the birthday problem on the internet and find an answer the following question.  How many randomly chosen numbers $x_i$ in the range $0, \ldots, n-1$ are required so that there is at least a 50\% probability that $x_i = x_j$ for some $i \neq j$.  You don't need to prove that your answer is right.
+    \item[(b)]  The idea for us now we create a list of ``random'' numbers less than $n$.  We do this by picking a polynomial $g(x)$ (usually $g(x) = x^2 + 1$), and then setting 
+    \[
+        x_1 = 2, x_2 = g(x_1) \;\text{mod}\;n, \ldots, x_{i+1} = g(x_i) \;\text{mod}\;n, \ldots
+    \]
+    We want to quickly find $i$ and $j$ where $x_i \equiv_p x_j$ so that $d = \gcd(x_i - x_j, n) > 1$.  
+    
+    First define a new sequence $y_i$ as follows.  
+    \[
+        y_1 = x_1 = 2, y_2 = g(g(y_1)) \;\text{mod}\;n, y_3 = g(g(y_2))\;\text{mod}\;n, \ldots, y_{i+1} = g(g(y_i))\;\text{mod}\;n, \ldots
+    \]
+    Prove the following.
+    \vskip 3pt
+    \noindent
+    {\bf Claim:} {\it If $t$ and $l$ are the smallest integers such that $x_{t} \equiv_p x_{t+l}$ (and hence $x_t = x_{t + 2l} = x_{t+3l} = \ldots$), then $x_i \equiv_p y_i$ in at most $t+l$ steps.}
+    \vskip 3pt
+    \emph{Hint:} What is $y_i$ in terms of $x_i$.  Try setting $i = t + l - (t \text{mod} l)$ and showing that $x_i = x_{2i}$.
+    \item[(c)]  Now define the sequences $x_i$ and $y_i$ as in part (b).  If $x_i \equiv_p y_i$ how could you use that to find find a factor $p$ of $n$?
+    \item[(d)]  Write pseudo-code for that uses the above method to find factors of $n$.
+    \end{itemize}
+\end{enumerate}
+
+\end{document}
+

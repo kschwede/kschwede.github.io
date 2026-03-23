@@ -1,0 +1,35 @@
+/*
+ *   bars.css
+ * 
+ *   This stylesheet provides the basic structure of the
+ *   header and footer bars for math pages.
+ */
+
+div.bar {
+  background-color: #007777;
+  display         : block;
+  height          : 1.5em;
+  min-height      : 1.5em }
+
+div.bar a {
+  color         : #FFFFFF;
+  display       : block;
+  font-size     : 0.75em;
+  font-weight   : bold;
+  line-height   : 2em;
+  text-align    : center;
+  vertical-align: middle;
+  width         : 17em }
+
+div.ecos a {
+  display   : inline;
+  padding   : 0 4em 0 2em;
+  text-align: left }
+
+           div.ecos a:first-child,
+div.header div.ecos a:first-child {
+  background-color: #000000;
+  display         : block;
+  float           : right;
+  padding         : 0;
+  text-align      : center }

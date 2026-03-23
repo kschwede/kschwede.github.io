@@ -1,0 +1,132 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Gal}{\textnormal{Gal}}
+\newcommand{\Aut}{\textnormal{Aut}}
+\newcommand{\Emb}{\textnormal{Emb}}
+\newcommand{\Hom}{\textnormal{Hom}}
+
+
+\begin{document}
+\title{WS \#4 -- Math 6310\\Fall 2017}
+\author{Due: Monday, December 4th}
+\maketitle
+
+You are encouraged to work in groups on this.  Only one write up needs to be turned in per group.  We learn about $\Hom$ in this worksheet.  Today, \emph{ALL} rings are commutative.
+\vskip 6pt
+\noindent
+{\bf 1.}  Show that the functor $\Hom_R(\bullet, N)$ is left exact and contravariant.  In other words, if
+\[
+0 \to A \xrightarrow{f} B \xrightarrow{g} C \to 0
+\]
+is an exact sequence of $R$-modules, then
+\[
+0 \to \Hom_R(C, N) \xrightarrow{g'} \Hom_R(B, N) \xrightarrow{f'} \Hom_R(A, N)
+\]
+is exact.  (Did you use the fact that $A \to B$ was injective?)
+\newpage
+\noindent
+{\bf 2.}  We prove a converse to {\bf 1.}   Suppose that $A \to B \to C$ is a sequence of maps between $R$-modules and also that $0 \to \Hom_R(C, N) \xrightarrow{g'} \Hom_R(B, N) \xrightarrow{f'} \Hom_R(A, N)$ is exact for \emph{every} $R$-module $N$.  Prove that $A \to B \to C \to 0$ is exact.
+\vskip 3pt
+\emph{Hint:} The trick is clever choices of $N$ to get different parts of the exactness.
+\vskip 250pt
+\noindent
+{\bf 3.}  Show that the functor $\Hom_R(M, \bullet)$ is right exact and covariant.  In other words if
+\[
+0 \to A \xrightarrow{f} B \xrightarrow{g} C \to 0
+\]
+is an exact sequence of $R$-modules, then show that
+\[
+0 \to \Hom_R(M, A) \xrightarrow{f''} \Hom_R(M, B) \xrightarrow{g''} \Hom_R(M, C)
+\]
+is also exact.  (Did you use the fact that $B \to C$ was surjective?)
+\newpage
+\noindent
+{\bf 4.}  Now we prove a converse to ${\bf 3.}$   Suppose that $A \to B \to C$ is a sequence of maps between $R$-modules and also that $0 \to \Hom_R(M, A) \xrightarrow{f''} \Hom_R(M, B) \xrightarrow{g''} \Hom_R(M, C)$ is exact for \emph{every} $R$-module $M$.  Prove that $0 \to A \to B \to C$ is exact.
+\vskip 3pt
+\emph{Hint:} Clever choices of $M$ are the order of the day.
+\vskip 250pt
+{\bf 5.}  A short exact sequence $0 \to A \xrightarrow{\alpha} B \xrightarrow{\beta} C \to 0$ is called \emph{split exact} if there is a map $\gamma : C \to B$ such that $\beta \circ \gamma : C \to B \to C$ is the identity.  Show that in that case $B \cong A \oplus C$ and $\alpha$ is identified with $a \mapsto (a, 0)$ and $\beta$ is identified with $(a,c) \mapsto c$.
+\vskip 3pt
+\emph{Fact:} In this case, there is also a map $\delta : B \to A$ so that $\delta \circ \alpha : A \to B \to A$ is the identity, which is also equivalent to showing that the short exact sequence is split exact.
+\vskip 250pt
+A $R$-module $P$ is called \emph{projective} if for every \emph{surjective} map of $R$-modules $f : A \to B$ and every $R$-module map $g : P \to B$, there exists a map $h : P \to A$ such that the following diagram commutes:
+    \[
+    \xymatrix{
+    & P \ar@{.>}[dl]_{h} \ar[d]^g \\
+    A \ar[r]_f & B.
+    }
+    \]
+\noindent
+{\bf 6.}    Show that a free module $P = R^{\oplus (...)}$ is projective.  Further show that if $P$ is projective and $P \cong A \oplus B$, then $A$ is also projective.
+\vskip 200pt
+\noindent
+{\bf 7.}  Suppose that $0 \to A \xrightarrow{f} B \xrightarrow{g} P \to 0$ is exact and $P$ is projective, prove that
+    \[
+    0 \to \Hom_R(P, M) \to \Hom_R(B, M) \to \Hom_R(A, M) \to 0
+    \]
+    is exact for every $R$-module $M$.
+    \vskip 3pt
+    \emph{Hint: } Show that if $P$ is projective, then the exact sequence is split exact.
+\end{document}
+

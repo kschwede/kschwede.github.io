@@ -1,0 +1,150 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\codim}{{\mathrm{codim}}}
+\newcommand{\Map}{{\mathrm{Map}}}
+\newcommand{\tld}{\widetilde}
+\newcommand{\fram}{\mathfrak{m}}
+
+
+\begin{document}
+\title{Worksheet \#7 -- Math 6130\\Fall 2018}
+\author{Due Monday, November 12th}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+{\bf Setup.}  Suppose that $X \subseteq \bA^n$ is an affine variety and $I \subseteq k[X]$ is an ideal (cutting out an closed subset $Z(I) = Z \subseteq X$).  Suppose $J \subseteq k[\bA^m]$ is an ideal with $Y = Z(J)$.  Finally suppose we have an injective\footnote{This isn't really necessary, but it makes life easier and the geometry simpler.} $k$-algebra map $\psi : k[\bA^m]/J \hookrightarrow k[X]/I$ that makes $k[X]/I$ into a (usually finite) $k[\bA^m]/J$-module.
+\vskip 3pt
+Consider the subring of $k[X]$:
+\[
+A := \{ f \in k[X] \;|\; \overline{f} \in \psi(k[\bA^m]/J) \subseteq k[X]/I \}.
+\]
+In other words, $A$ is elements of $k[X]$ whose image in $k[X]/I$ is contained the image of $k[\bA^m]/J$ in $k[X]/I$.
+\vskip 9pt
+\noindent
+{\bf 1.}  Show that there is a commutative diagram of $k$-algebra morphisms:
+\[
+\xymatrix{
+k[X] \ar@{->>}[r] & k[X]/I \\
+A \ar@{^{(}->}[u]^{\alpha} \ar[r]_{\beta} & k[\bA^m]/J \ar@{^{(}->}[u]_{\psi}.
+}
+\]
+\vskip 150pt
+\noindent
+{\bf 2.}  Show that the map $\beta$ above is surjective.
+\newpage
+\noindent
+{\bf 3.}  Show that the fraction field of $A$ is the same as the fraction field of $k[X]$.
+\vskip 3pt
+\emph{Hint:} Show that every element of $I$ is in $A$.
+\vskip 150pt
+\noindent
+{\bf 4.}  Assume $\psi$ above is finite.  Show that $k[X]$ is integral over $A$.  Hence, if $X$ is normal, then $k[X]$ is the normalization of $A$.
+\vskip 3pt
+\emph{Hint:} Since $\psi$ is finite, every element $\overline{f}$ of $k[X]/I$ satisfies an integral expression over $k[\bA^m]/J \cong A/(\ker \beta)$ (even though these rings are not domains),
+\[
+\overline{f}^n + \overline{a}_{n-1} \overline{f}^{n-1} + \dots + \overline{a}_1 \overline{f}^{1} + \overline{a}_0 = 0 \in k[X]/I
+\]
+with $a_i \in A$.  %Consider the corresponding equation in $k[X]$ (without the $\overline{\bullet}$) and modify $a_0$ appropriately.
+\vfill
+Suppose $A \cong k[Y]$ for some affine variety $Y$.  We have an induced map of varieties:
+\[
+\xymatrix{
+X \ar@{->>}[d] & \ar@{_{(}->}[l] Z_X(I) \ar@{->>}[d] \\
+Y & \ar@{_{(}->}[l] Z(J).
+}
+\]
+where the vertical surjections are because the ring maps are finite.
+\newpage
+\noindent
+{\bf 5.}  Consider $X = \bA^1$ with $k[X] = k[x]$.  $I = (x(x-1))$.  $J = (0) \subseteq k = k[]$.  Compute $A$ and $Y$ and draw the diagram to show that $X \twoheadrightarrow Y$ is not bijective.
+\vskip 130pt
+\noindent
+{\bf 6.}  Consider $X = \bA^1$ with $k[X] = k[x]$.  $I = (x^2)$.  $J = (0) \subseteq k$.  Compute $A$ and $Y$ and show that $X \to Y$ is bijective.
+\vskip 130pt
+\noindent
+{\bf 7.}  Show that the map $X \to Y$ induces an isomorphism of quasi-affine varieties:
+\[
+X \setminus Z_X(I) \to Y \setminus \mathrm{Image}(Z(J)) = Y \setminus Z(\ker \beta).
+\]
+\emph{Hint:} Invert an element $f \in \ker \beta$ and show that $A[f^{-1}] \to k[X][f^{-1}]$ is an isomorphism.
+\vskip 180pt
+What we have shown so far is that $Y$ is obtained from $X$ excepted that we replaced $Z_X(I)$ (and possibly some tangent data around it as in {\bf 6.}) with $\mathrm{Image}(Z(J))$.  We do one more example.
+\vskip 9pt
+\noindent
+{\bf 8.}  Consider $X = \bA^2$ with $k[X] = k[x,y]$ and set $I = (y)$.  Finally let $J = (0) \subseteq k[t]$ with the map $\psi : k[t] \to k[x,y]/(y) \cong k[x]$ sending $t \mapsto x^2$.  Compute $A$ and describe it geometrically in the case that $\mathrm{char} k \neq 2$.
+\newpage
+%\vskip 150pt
+\noindent
+{\bf 9.}  Suppose that $W$ is a non-normal affine variety with normalization (with respect to $k(W)$), and that $X \to W$ is the normalization (so that $k[W] \hookrightarrow k[X]$ is a finite map, both rings in $k(W)$).  Let $\mathfrak{c} = \{f \in k[W] \;|\; f \cdot k[X] \subseteq k[W] \}$.  Show that $\mathfrak{c}$ is an ideal in both $k[W]$ and $k[X]$.  It is called the \emph{conductor of $X \to W$ (or of $k[W] \subseteq k[X]$)}.
+\vskip 200pt
+\noindent
+{\bf 10.}  If we set $I = \mathfrak{c} \subseteq k[X]$ and write $k[\bA^m]/J = k[W]/\mathfrak{c}$ with $\psi : k[W]/\mathfrak{c} \to k[X]/\mathfrak{c}$ the canonical map, show that the associated $A$ is isomorphic to $k[W]$.  In particular, \emph{every} non-normal affine variety is constructed by replacing a subvariety (and possibly some tangent data) of its normalization with another variety (with tangent data).
+\vfill
+\noindent
+{\bf Extra.}  You might find it amusing to compute $A$ in the case of $X = \bA^2$, $I = (x)$ and $J = (0) \subseteq k$.
+\end{document}
+

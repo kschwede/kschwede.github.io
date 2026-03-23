@@ -1,0 +1,104 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Gal}{\textnormal{Gal}}
+\newcommand{\Aut}{\textnormal{Aut}}
+\newcommand{\Emb}{\textnormal{Emb}}
+\newcommand{\Tr}{\textnormal{Tr}}
+\newcommand{\N}{\textnormal{N}}
+\newcommand{\Hom}{\textnormal{Hom}}
+\newcommand{\Ext}{\textnormal{Ext}}
+\newcommand{\Spec}{\textnormal{Spec}}
+\newcommand{\fram}{\mathfrak{m}}
+\newcommand{\id}{\textnormal{id}}
+\newcommand{\init}{\textnormal{in}}
+\newcommand{\lex}{\textnormal{lex}}
+\newcommand{\grevlex}{\textnormal{grevlex}}
+
+\begin{document}
+\title{HW \#8 -- Math 6320\\Spring 2015}
+\author{Due: Tuesday April 28th}
+\maketitle
+
+\begin{enumerate}
+\item Suppose $S = k[x_1, \ldots, x_r]$ and $f \in S$.  If $\init_{\lex}(f) \in k[x_s, \ldots, x_r]$ for some $s$, then show that $f \in k[x_s, \ldots, x_r]$.
+\item Suppose $S = k[x_1, \ldots, x_r]$ and $f \in S$.  If $f$ is homogeneous with $\init_{\grevlex}(f) \in \langle x_s, \ldots, x_r \rangle$, for some $s$, then show that $f \in \langle x_s, \ldots, x_r \rangle$.
+\item Say $S = k[x_1, \ldots, x_r]$ and that $F$ is a finitely generated free $S$-module with basis and a fixed monomial order $>$.  Suppose that $g_1, \ldots, g_t \in M \subseteq F$.  Suppose that $\init(g_1), \ldots, \init(g_t)$ generated $\init(M)$, then show that $g_1, \ldots, g_t$ generate $M$ and hence is a Gr\"obner basis for $M$.  
+\item Suppose that $R = \bR[x]$, $M$ and $N$ are finitely generated $R$-modules and $L = R/\langle x^2 + 1 \rangle \oplus R^2$.  Suppose that $L \oplus M \cong L \oplus N$.  Prove that $M \cong N$.
+\item Find an ideal $I$ in the ring $A = \bZ[x]$ such that $A/I$ has exactly three prime ideals. Identify the
+ideals and justify your assertion.
+\item Let $G$ be a finite group of order $p^n$, where $p$ is prime and $n\geq 1$. Suppose $G$
+acts on a finite set $S$. Let $S'$ be the subset of $S$ consisting of elements fixed by $G$:
+$$
+S'=\{x\in S\ |\ gx=x\text{ for all }g\in G\}.
+$$
+Prove that the order of $S'$ is congruent to the order of $S$ modulo $p$.
+\item Consider $f = x^6 + 3 \in \bQ[x]$  and let $\alpha \in \bC$ be a root of $f$.  Set $E = \bQ[\alpha]$.  
+\begin{itemize}
+\item[(a)]  Show that $E$ contains a primitive $6$th root of unity.  
+\item[(b)]  Show that $E$ is Galois over $\bQ$.  
+\item[(c)]  How many intermediate fields $\bQ \subseteq F \subseteq E$ are there with $|F : \bQ| = 3$
+\end{itemize}
+\end{enumerate}
+\end{document}
+

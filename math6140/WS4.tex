@@ -1,0 +1,163 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+\usepackage{mathrsfs}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bA}{\mathbb{A}}
+%\newcommand{\cF}{\mathcal{F}}
+%\newcommand{\cG}{\mathcal{G}}
+%\newcommand{\cH}{\mathcal{H}}
+\newcommand{\image}{\mathrm{im}\,}
+\newcommand{\coker}{\mathrm{coker}\,}
+\newcommand{\Hom}{\mathrm{Hom}\,}
+\newcommand{\Supp}{\mathrm{Supp}\,}
+\newcommand{\Ann}{\mathrm{Ann}\,}
+\newcommand{\sH}{\mathscr{H}\,}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\fram}{\mathfrak{m}}
+\newcommand{\Div}{\mathrm{Div}}
+
+\begin{document}
+\title{Worksheet \#4 -- Math 6140\\Spring 2019}
+\author{Due Friday, March 8th}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+We begin with some definitions.
+\vskip 9pt
+{\bf Definition:} {\it 
+A Cartier divisor $D$ on a normal projective variety $X$ is called:
+\begin{itemize} 
+\item[(a)] \emph{very ample} if $|D|$ induces an embedding into projective space.
+\item[(b)] \emph{ample} if $nD$ is very ample for some $n > 0$.
+\item[(c)] \emph{semi-ample} if $|nD|$ is base point free for some $n > 0$.
+\item[(d)] \emph{big} if the induced rational map to projective space $\phi_{|nD|} : X \dashrightarrow \bP^m$ is birational onto its image.
+\end{itemize}
+}
+\vskip 9pt
+The more standard definition of ample is the following:
+{\it
+\begin{itemize}
+\item[(b')]  A Cartier divisor $D$ is \emph{ample} if for any coherent sheaf $\cF$, there exists an integer $n_0$ so that $\cF \otimes \O_X(nD) =: \cF(nD)$ is globally generated for all $n \geq n_0$.  
+\end{itemize}
+}
+These are indeed equivalent, as we'll show shortly.  
+\vskip 9pt
+\noindent
+{\bf 1.}  Suppose that $D$ is very ample and that $E$ is such that $|E|$ is base point free.  Prove that $D+E$ is also very ample.  In particular, conclude that if $D$ is very ample, so is $2D$, $3D$, etc, and likewise with ample.  
+\vskip 3pt
+\emph{Hint:} You have maps $\phi_{|D|} : X \to \bP^r$ and $\phi_{|E|} : X \to \bP^s$.  Consider the induced product map $X \to \bP^r \times \bP^s$.  Show that this corresponds to a linear system that is contained within the linear system $|D+E|$.
+\newpage
+\noindent
+{\bf 2.}  Suppose that $D$ is very ample.  Prove that $D$ satisfies the condition (b') above.  Conclude that ample divisors in the sense of (b) are ample in the sense of (b').
+\vskip 3pt
+\emph{Hint:} Suppose that $i : X \to \bP^n$ is the induced closed embedding.  Prove that $\Gamma(X, \cF(nD)) = \Gamma(\bP^n, (i_* \cF) \otimes_{\O_{\bP^n}} \O_{\bP^n}(n))$.
+\vskip 250pt
+\noindent
+{\bf 3.}  Suppose that $D$ is a semi-ample divisor on $X$.  Further suppose that there are two points $p$ and $q$ so that if $D' \sim nD$ and $p$ or $q$ are in the support of $D'$, then $p$ and $q$ are in the support of $D'$.  Prove that $D$ cannot be ample.  
+\vskip 3pt
+\emph{Hint} Use Lemma 13.28 from the text.
+\newpage
+The following can also be found in Cutkosky/Hartshorne.  Suppose $\phi : X \to \bP^n$ corresponds to a vector space $V \subseteq \Gamma(X, \O_X(D))$ where $D$ is a Cartier divisor.  
+\begin{itemize}
+\item[(i)]  $\phi$ is regular at a point $p$ if and only if the canonical map $V \to \O_X(D) / I_p(D) \cong k$ surjects.  (This map is just the restriction map, followed by quotienting).
+\item[(ii)]  $\phi$ is injective and regular if and only if for every points $p \neq q \in X$, we have that the natural map $V \to (\O_X(D) / I_p(D)) \oplus (\O_X(D) / I_q(D)) \cong k^2$ surjects.  
+\item[(iii)]  $\phi$ is a closed embedding if and only if it is injective and regular and for each $p \in X$, we have that the set $\{ s_p \in \fram_p \O_X(D)_p | s \in V \}$ spans the dual tangent space $(\fram_p \O_X(D)) / (\fram_p^2 \O_X(D)) \cong \fram_p/\fram_p^2$.
+\end{itemize}
+Condition (ii) is usually called $|V|$ separating points and (iii) is called $|V|$ separating tangent vectors.  We've basically done (i) and (ii), we will work on showing (iii) now.  
+\vskip 9pt
+\noindent
+{\bf 4.}  Consider $V = \Gamma(X, \O_X(D))$.  Prove that the condition from (iii) holds if $D$ is very ample in the sense of (b). 
+\vskip 3pt
+\emph{Hint:} Observe that $\O_{\bP^n}(1)$ satisfies the condition in (iii).  
+\vskip 170pt
+\noindent
+{\bf 5.}  Prove that the condition from (iii) really does imply $\phi$ is a closed embedding.  
+\vskip 3pt
+\emph{Hint:}  You may use the following algebra fact.  If $f : R \to S$ is a local map of local rings such that $S$ is a finite $R$-module, $R/\fram_R \to S/\fram_S$ is an isomorphism, and $\fram_R/\fram_R^2 \to \fram_S/\fram_S^2$ is surjective, then $f$ is surjective.  
+\newpage
+\noindent
+{\bf 6.}  Show that (b') implies (b) and thus our different characterizations of ampleness all coincide.
+\vskip 140pt
+\noindent
+{\bf 7.}  Suppose that $i : Y \hookrightarrow  X$ is a closed embedding of projective varieties and that $D \subseteq X$ is an ample (resp. semi-ample) divisor such that $Y \not\subseteq \Supp D$.  Prove that $i^* D = D|_Y$ is ample (resp. semi-ample).
+\vskip 140pt
+\noindent
+{\bf 8.}  Give an example of a projective variety $X$, a closed subvariety $Y \subseteq X$, and a big divisor $D$ on $X$ such that $Y \not\subseteq \Supp D$, so that $D|_Y$ is not big. 
+\vskip 140pt
+\noindent
+{\bf 8.}  Give an example of a surjective map of projective varieties (of dimension $> 0$) $\phi : Y \to X$ and a big divisor $D$ on $X$ such that $\phi^* D$ is not big.  
+\vskip 3pt
+\emph{Hint:} If $D$ is big, then the map associated to $|nD|$ is injective at most points.
+\end{document}
+

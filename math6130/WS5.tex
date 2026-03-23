@@ -1,0 +1,101 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\codim}{{\mathrm{codim}}}
+\newcommand{\Map}{{\mathrm{Map}}}
+
+
+\begin{document}
+\title{Worksheet \#5 -- Math 6130\\Fall 2018}
+\author{Due Monday, October 15th}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+{\bf 1.}  For any two points $p = (a_0 : a_1 : \dots : a_n), q = (b_0 : b_1 : \dots :b_n) \in \bP^n$, show that there is a unique projective line $L$ through those two points and compute the ideal $I(L)$ (based on the above coordinates).  
+\vskip 200pt
+\noindent
+{\bf 2.}  Consider $H \subseteq \bP^n$ defined by $Z(x_n)$.  For a point $(a_0 : a_1 : \dots : a_n = 1) = p \in \bP^n \setminus H$, we can create a map 
+\[
+U = \bP^n \setminus \{ p \} \xrightarrow{\phi_p} H \cong \bP^{n-1}
+\]
+which takes $q \in U$, considers the line $L$ through $p$ and $q$, and takes $q$ to the point $H \cap L$.  Write down formulas for the coordinates of this map and verify it is regular on $U$.  
+\newpage
+\noindent
+{\bf 4.}  Suppose that $E$ is a $d$-dimensional linear subspace of $\bP^n$.  Let $L_1, \dots, L_{n-d}$ be linear forms in $k[x_0, \dots, x_n]$ which define $E$.  We consider the rational map
+\[
+\phi : P^n \xrightarrow{(L_1: \dots : L_n)} \bP^{n-d-1}.
+\]
+Choose a linear subspace $F$ of $\bP^n$ of dimension $n-d-1$ which is disjoint from $E$.  (Simply extend $L_1, \dots, L_{n-d}$ to a $k$-basis of the 1-degree elements of $S(\bP^n)$, say $L_1, \dots, L_{n-d}, M_1, \dots M_{d+1}$ and let those forms define $F$).
+For each $p \in \bP^n \setminus E$, construct $G_p$ the unique $(d+1)$-dimensional linear subspace of $\bP^n$ containing $p$ and $E$.  Show that $G_p$ intersects $F$ in a unique point.
+\vskip 230pt
+\noindent
+{\bf 3.}  With notation as in {\bf 2.}, consider $W = Z(x_n, x_{n-1})$ and choose a point $q \in H \setminus W$.  Again construct a regular map $V = H \setminus W \xrightarrow{\phi_q} W$ as in {\bf 2.}  Now, compute the natural domain of the rational map
+\[
+\phi_q \circ \phi_p
+\]
+and describe the map geometrically as a projection from a linear subspace in the sense of the previous problem.
+\end{document}
+

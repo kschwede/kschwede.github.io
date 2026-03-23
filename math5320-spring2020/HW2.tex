@@ -1,0 +1,109 @@
+\documentclass[10pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\usepackage{multicol}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+
+
+\begin{document}
+\title{Homework \#2 -- Math 5320\\Spring 2020}
+\author{Due Friday, February 14th, in Gradescope}
+
+\maketitle
+
+
+\noindent
+{\bf 1.}  Suppose that $k$ is any field.  For any polynomial $f \in k[x]$, $f = \sum_{k =0}^n a_k x^k$ we can define the \emph{formal derivative} $f' = \sum_{k = 1}^n k a_k x^{k-1}$, which is the usual derivative formula when $k = \bR$.  
+\vskip 3pt
+{\bf (a)}  Prove the product rule $(fg)' = f'g + fg'$, and 
+\vskip 9pt
+{\bf (b)}  prove the chain rule $(f(g(x)))' = f'(g(x)) \cdot g'(x)$.
+\newpage
+\noindent
+{\bf 2.}  Suppose $k$ is a field, $\alpha \in k$, $f \in k[x]$ and $f(\alpha) = 0$.  Prove that $\alpha$ is a multiple root of $f$ if and only if $f'(\alpha) = 0$.  
+\newpage
+\noindent
+{\bf 3.}  Classify all rings with 4 elements up to isomorphism.
+\newpage
+\noindent
+{\bf 4.}  Let $S = \bC[x,y]$ and suppose $I = (y^2 + x^3 - 17)$.  Which of the following are maximal ideals in $S/I$.
+\vskip 3pt
+{\bf (a)}  $(x-1,y-4)$
+\vskip 3pt
+{\bf (b)}  $(x+1, y+4)$
+\vskip 3pt
+{\bf (c)}  $(x^3 - 17, y^2)$
+\newpage
+\noindent
+{\bf 5.}  Fix $a,b, c \in \bC$ (with either $a$ or $b$ nonzero) and fix $0 \neq f(x,y) \in \bC[x,y]$.  Let $L$ be the complex ``line'' $\{(x,y) \in \bC^2 \;|\; ax + by + c = 0\}$ and let $C$ be the complex ``curve'' $\{(x,y) \in \bC^2 \;|\; f(x,y) = 0\}$.  Prove that either $L$ and $C$ intersect at $\leq \deg f$ points or at infinitely points (in which case $L \subseteq C$).
+\newpage
+\noindent
+{\bf 6.}  Which maximal ideals in the polynomial ring $\bC[x,y]$ contain both $x^2 + y^2 -5$ and $xy - 2$?
+\newpage
+\noindent
+{\bf 7.}  Euclid proved that there are infinitely many prime integers $n$ as follows.  If $p_1, \dots, p_n$ are all the prime integers, then any prime factor of $p_1 \cdot p_2 \cdots p_n + 1$ is different from all the $p$.  Use this strategy to prove that if $k$ is a field, then $k[x]$ has infinitely many monic irreducible polynomials.
+\newpage
+\noindent
+{\bf 8.}  Prove that $\bZ[\sqrt{-2}]$ is a Euclidean domain. 
+
+
+\end{document} 

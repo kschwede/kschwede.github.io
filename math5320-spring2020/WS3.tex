@@ -1,0 +1,122 @@
+\documentclass[10pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\usepackage{multicol}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+
+
+\begin{document}
+\title{Worksheet \#3-- Math 5320\\Fall 2019}
+\author{Due Friday, February 7th, in Gradescope}
+
+\maketitle
+You may work in groups of up to 3 on this assignment.  Only one assignment needs to be turned in per group.  It still needs to be turned in on gradescope.  Many of these problems are also problems in the textbook.
+
+\noindent
+{\bf 1.}  Find the maximal ideals in each of the following rings and determine which of these rings are fields:
+\vskip 9pt
+{\bf (a)}  $\bR \times \bR$.  \vskip 6pt
+{\bf (b)}  $\bR[x]/(x^2)$.  \vskip 6pt
+{\bf (c)}  $\bR[x]/(x^2 - 3x + 2)$.  \vskip 6pt
+{\bf (d)}  $\bR[x]/(x^2 + x + 1)$.  \vskip 6pt
+{\bf (e)}  $(\bZ/2\bZ)[x] / (x^3 + x + 1)$.  \vskip 6pt
+{\bf (f)}  $(\bZ/3\bZ)[x] / (x^3 + x + 1)$.
+\newpage
+\noindent
+{\bf 2.}  Is there an integral domain that contains exactly 21 elements?  Prove or disprove.
+\newpage
+\noindent
+{\bf 3.}  Suppose $R$ is an integral domain.  A subset $W \subseteq R$ is called a \emph{multiplicative set} if 
+\begin{itemize}
+    \item[(a)]  $1 \in W$.
+    \item[(b)]  If $u,v \in W$, then $uv \in W$.
+\end{itemize} 
+We form the set $W^{-1} R$ to be the set of ordered pairs $(r, w) \in R \times W$ modulo the equivalence relation that $(r, w) \sim (r', w')$ if $w'r = w r'$.  The equivalence class of $(r, w)$ is denoted $r/w$.  Thus $W^{-1}R = \{r/w \;|\; r \in R, w \in W\}$.  
+\begin{itemize}
+    \item[(a)]  Show that the relation $\sim$ is really an equivalence relation.
+    \item[(b)]  Show that the elements in $W^{-1} R$ form a ring under the usual multiplication and addition of fractions.  Please pay careful attention to the issue of well definedness.
+\end{itemize}
+\newpage
+\noindent
+{\bf 4.}  Suppose that $R$ is $\bZ$.  For each of the following $W \subseteq R$, determine if each is a multiplicative set.
+\begin{itemize}
+    \item[(a)] $W = \{1, 2, 2^2, 2^3, 2^4, \dots\}$.
+    \item[(b)] $W = \{n \in \bZ_{>0} \; |\; n \text{ is odd}\}$.
+    \item[(c)] $W = \{ 1, -1\}$.
+    \item[(d)] $W = \{ n \in \bZ \;|\; n (\text{mod}\;3) = 1 \}$.
+\end{itemize}
+\newpage
+\noindent
+{\bf 5.}  Let $R$ be an integral domain and suppose that $W$ is a multiplicative set.    Further suppose that $P \subseteq R$ is a prime ideal.  Let $W^{-1}P = \{ x/w \;|\; x \in P, w \in W\}$.  Prove that $W^{-1}P$ is an ideal and also show it is prime or that $W^{-1}P = W^{-1}R$.
+\newpage
+\noindent
+{\bf 6.}  Suppose $R$ is an integral domain, $W \subseteq R$ is a multiplicative set, and that $P \subsetneq R$ is a prime ideal such that $P \cap W = \emptyset$.  Show that there is a ring homomorphism $\eta : R \to W^{-1}R$ sending $r \mapsto r/1$.  Further show that $\eta^{-1} (W^{-1}P) = P$.  
+\newpage
+\noindent
+{\bf 7.}  Suppose $R$ is an integral domain, $W \subseteq R$ is a multiplicative set, and $\eta : R \to W^{-1}R$ is as in the previous problem.  Suppose that $Q \subsetneq W^{-1}R$ is a prime ideal.  Let $P = \eta^{-1}(Q)$.  Prove that $W^{-1}P = Q$.  
+\vskip 3pt
+Conclude that there is a bijection between the primes $P$ of $R$ such that $W \cap P = \emptyset$ and the primes of $W^{-1}R$.  
+\newpage
+\noindent
+{\bf 8.}  Let $P \subseteq R$ be a prime ideal and suppose that $W = R \setminus P$.  Prove that $W$ is a multiplicative set and show that $W^{-1}R$ has a unique maximal ideal\footnote{A ring which has a unique maximal ideal is called a \emph{local} ring.}.  For which multiplicative sets in {\bf 4.} does $W^{-1}R$ have a unique maximal ideal?
+
+\end{document} 

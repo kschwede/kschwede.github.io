@@ -1,0 +1,165 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.1in,top=1in,right=1.1in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+\theoremstyle{theorem}
+\newtheorem*{mainthm}{Main Theorem}
+\newtheorem*{mainthma}{Main Theorem A}
+\newtheorem*{mainthmb}{Main Theorem B}
+\newtheorem*{mainthmc}{Main Theorem C}
+\newtheorem*{atheorem}{Theorem}
+
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title{In class worksheet \#3, divisors and reflexive sheaves}
+\author{March 31st, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+Throughout this worksheet, you should assume that \emph{all rings are Noetherian normal domains}.
+\vskip 3pt
+\noindent
+{\bf 1.}  Show that for any finitely generated $R$-module $M$, $\Hom_R(M, R)$ is reflexive.
+\noindent
+\sol{Set $N = \Hom_R(M, R)$, and note it is torsion free.  Consider the canonical map $i : N \to N^{\vee \vee} =: \Hom(\Hom(N, R), R)$, which is a map which is generically an isomorphism between finitely generated torsion free modules.  The map $i$ is thus injective.  On the other hand, we have the map $k : M \to M^{\vee \vee} = \Hom_R(\Hom_R(M, R), R)$ (sending $m$ to the map which sends $\alpha \in \Hom_R(M, R)$ to $\alpha(m)$), applying $\Hom_R(\blank, R)$ gives us $j : N^{|vee \vee} = \Hom_R(M^{\vee \vee}, R) \to \Hom_R(M, R) = N$.  $j$ is also injective and so generically an isomorphism.  Thus we have a composition
+\[
+N \xrightarrow{i} N^{\vee \vee} \xrightarrow{j} N
+\]
+which is also generically an isomorphism and hence injective.  Let's show it's actually surjective too.  For that we interpret it.
+
+Fix $\phi \in N = \Hom_R(M, N)$.  Then for any $\alpha \in \Hom_R(N, R)$, $i(\phi)(\alpha) = \alpha(\phi)$.  On the other hand, given any $\psi \in N^{\vee \vee} = \Hom_R(M^{\vee \vee}, R)$, we see that $j(\psi)(m) = \psi(k(m))$.  Putting this together, for $\phi \in N$,
+\[
+j(i(\phi))(m) = i(\phi)(k(m)) = (k(m))(\phi) = \phi(m).
+\]
+In particular, $j(i(\phi)) = \phi$.  It follows that $j \circ i$ is also surjective.  Thus $j$ is both surjective and injective and hence an isomorphism.
+}
+\noindent
+{\bf 2.} Show that the canonical map $M \to \Hom_R(\Hom_R(M, R), R) =: M^{\vee \vee}$ is injective if and only if $M$ is torsion free.
+\sol{Since $M^{\vee\vee}$ is torsion free, if the map is injective, $M$ is a subset of a torsion free module and so also torsion free.  Conversely suppose that $M$ is torsion free, then $M \to M^{\vee \vee}$ is generically an isomorphism (since $M$ localized at the generic point of $R$, $M_{K(R)} = M \otimes_R K(R)$ is a $K(R)$-vector space).  Thus we have the diagram
+\[
+\xymatrix{
+M \ar@{^{(}->}[d] \ar[r] & M^{\vee\vee} \ar@{^{(}->}[d] \\
+M_{K(R)} \ar[r]_{\sim} & (M^{\vee\vee})_{K(R)}
+}
+\]
+A quick diagram trace implies that $M \to M^{\vee\vee}$ is injective.
+}
+\newpage
+\noindent
+{\bf 3.}  Show directly that a finitely generated $\Serre_2$-module $M$ is reflexive (you may assume that reflexive modules are $\Serre_2$).
+\vskip 3pt
+\emph{Hint:} The fact that it is $\Serre_1$ implies it is torsion free and so we have a short exact sequence
+\[
+0 \to M \to M^{\vee \vee} \to C \to 0.
+\]
+First show that $C$ is zero in codimension 1 on $R$ (localize, then $R$ is a PID, and so $M$ is a nice direct sum).  Next use the $\Serre_2$ hypothesis.
+\vskip 250pt
+\noindent
+{\bf 4.}  Suppose $\Phi \in \Hom_R(F^e_* R, R)$ generates the module (as an $F^e_* R$-module), then show \emph{carefully} that $\Delta_{\Phi} = 0 = D_{\Phi}$.  Furthermore, if we write $\phi(F^e_* \blank) = \psi(F^e_* (r \cdot \blank))$ for some $r \in R$, then $D_{\phi} = D_{\psi} + \Div_R(r)$ and so $\Delta_{\phi} = \Delta_{\psi} + {1 \over p^e - 1} \Div_R(r)$.
+\vskip 3pt
+\emph{Hint:} We sketched why this should be true in class, but didn't prove it.  You get to prove it carefully.
+\newpage
+\noindent
+{\bf 5.}  In the ring $R = k[x^3, x^2y, xy^2, y^3]$, you may pick your canonical divisor $K_R$ to be $\langle x^2y, xy^2, y^3 \rangle$.  Verify that $K_R$ is not Cartier but that $3 K_R \sim 0$ and in particular, $3 K_R$ is Cartier.
+\vskip 275pt
+\noindent
+{\bf 6.}  Consider the ring $R$ from the previous problem and set $\mathrm{char} k = 7$.  Suppose I tell you that $R \cong k[a,b,c,d]/\langle c^2 - bd, bc - ad, b^2 - ac \rangle = S/J$ and that $J^{[7]} : J$ has 4 generators, which are
+\[
+ = \left\{\begin{array}{c}
+ g_1 = c^{14}-b^7d^7,\\
+                                            g_2 = b^7c^7-a^7d^7,\\
+                                            g_3 = b^{14}-a^7c^7,\\
+                                            g_4 = a^2b^6c^{12}+a^3b^4c^{13}+a^3b^5c^{11}d+a^4b^3c^{12}d+a^5bc^{13}d+b^{12}c^6d^2\\
+                                            +a^3b^6c^9d^2+a^4b^4c^{10}d^2+a^5b^2c^{11}d^2+a^6c^{12}d^2+b^{13}c^4d^3\\
+                                            +ab^{11}c^5d^3+a^2b^9c^6d^3+a^4b^5c^8d^3+a^5b^3c^9d^3+a^6bc^{10}d^3+ab^{12}c^3d^4\\
+                                            +a^2b^{10}c^4d^4+a^3b^8c^5d^4+a^4b^6c^6d^4+a^5b^4c^7d^4+a^6b^2c^8d^4+a^7c^9d^4\\
+                                            +ab^{13}cd^5+a^2b^{11}c^2d^5+a^3b^9c^3d^5+a^4b^7c^4d^5+a^5b^5c^5d^5+a^6b^3c^6d^5\\
+                                            +a^7bc^7d^5+a^2b^{12}d^6+a^3b^{10}cd^6+a^4b^8c^2d^6+a^5b^6c^3d^6+a^6b^4c^4d^6\\
+                                            +a^7b^2c^5d^6+a^8c^6d^6+a^4b^9d^7+a^5b^7cd^7+a^6b^5c^2d^7+a^7b^3c^3d^7+a^8bc^4d^7\\
+                                            +a^6b^6d^8+a^7b^4cd^8+a^8b^2c^2d^8+a^9c^3d^8+a^8b^3d^9+a^9bcd^9+a^{10}d^{10}
+                                             \end{array} \right\}
+\]
+Verify that $R$ is $\bQ$-Gorenstein and that $6 K_R \sim 0$.  Furthermore, identify an homomorphism $\phi \in \Hom_S(F_* S, S)$ such that $\phi(F_* J) \subseteq J$ and that the induced map on $\phi_{S/J}$ generates $\Hom_R(F_* R, R)$.
+\end{document}
+
+

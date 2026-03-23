@@ -1,0 +1,123 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Gal}{\textnormal{Gal}}
+\newcommand{\Aut}{\textnormal{Aut}}
+\newcommand{\Emb}{\textnormal{Emb}}
+\newcommand{\Hom}{\textnormal{Hom}}
+\newcommand{\Ext}{\textnormal{Ext}}
+\newcommand{\Tor}{\textnormal{Tor}}
+
+\newcommand{\coker}{\textnormal{coker}}
+\newcommand{\id}{\textnormal{id}}
+
+
+\begin{document}
+\title{WS \#7 -- Math 6310\\Fall 2019}
+\author{Due: Wednesday December 4th}
+\maketitle
+
+You are encouraged to work in groups on this.  Only one write up needs to be turned in per group.  
+\vskip 6pt
+\noindent
+{\bf 1.}  Suppose that $P_{\bullet}, P'_{\bullet}$ are projective resolutions of $R$-modules $M$ and $N$.  Suppose have an $R$-module map $h : M \to N$.  Consider the diagram
+\[
+\xymatrix{
+\ldots \ar[d]  & \ldots \ar[d] \\
+P_{2} \ar[d]_d \ar@{.>}[r] & P'_{2} \ar[d]^{d'} \\
+P_{1} \ar[d] \ar@{.>}[r] & P'_{1} \ar[d] \\
+P_{0} \ar@{->>}[d] \ar@{.>}[r] & P'_{0} \ar@{->>}[d] \\
+M \ar[r]_{h} & N \\
+}
+\]
+Show that there exist the dotted arrows making the diagram commute.  This gives us a map of chain complexes $\phi : P_{\bullet} \to P'_{\bullet}$.  Was the map you constructed unique?
+\newpage 
+\noindent
+{\bf Definition:}  Two maps of chain complexes $\phi, \psi: K_{\bullet} \to L_{\bullet}$ are declared to be \emph{homotopic} (denoted $\phi \sim \psi$ frequently) if for each $n$, there is an $R$-module map $h_n : K_n \to L_{n+1}$ such that
+\[
+\phi_n - \psi_n = d_L h_n + h_{n-1} d_K
+\]
+\vskip 9pt
+\noindent
+{\bf 2.}  If $\phi, \psi$ are homotopic, show that they induce the same maps on homology.  
+\vskip 3pt
+\emph{Hint:}  First draw a diagram picturing the above equation.
+\newpage
+\noindent
+{\bf 3.}  Back in the setting of {\bf 1.}, show that any two maps $\phi, \psi : P_{\bullet} \to P'_{\bullet}$ you constructed are homotopic.  
+\newpage
+\noindent
+{\bf 4.}  
+Conclude that this homotopy is preserved after tensoring by another module $A$ and thus conclude that $\mathrm{Tor}_i(M, A)$ is independent of the choice of projective resolution of $M$.  Likewise conclude that $\mathrm{Ext}^i(M, A)$ is independent of the projective resolution of $M$.
+\newpage
+\noindent
+{\bf 5.}  Compute a free resolution of the ideal $\langle x,y \rangle$ inside $R = k[x,y]$.
+\newpage
+\noindent
+{\bf 6.}  Use this to compute directly by hand $\Tor_i( \langle x,y \rangle, k[x,y]/\langle x,y \rangle)$.
+\newpage
+\noindent
+{\bf 7.}  Likewise compute directly $\Ext^i( \langle x,y \rangle, k[x,y]/\langle x,y \rangle)$.
+
+\end{document}
+

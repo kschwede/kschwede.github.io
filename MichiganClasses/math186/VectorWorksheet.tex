@@ -1,0 +1,88 @@
+%%This is a standard LaTeX2e article document template. personal version 12/5/200%%
+\documentclass[12pt,twoside,fullpage]{amsart}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%packages%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{epsf}
+%        \usepackage{graphicx}
+%        \usepackage[scanall]{psfrag}
+%\pagestyle{empty}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{fullpage}
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{10in}
+%\setlength{\textwidth}{7in}
+%\setlength{\leftmargin}{-0.5in}
+%\setlength{\headsep}{0in}          %%%
+%\setlength{\headheight}{0in}
+%\newcommand{\tld}{\widetilde }
+%\newcommand{\bR}{\mathbb{R}}
+\renewcommand{\u}{{\bf{u}}}
+\renewcommand{\v}{{\bf{v}}}
+\newcommand{\w}{{\bf{w}}}
+\renewcommand{\t}{{\bf{t}}}
+\newcommand{\x}{{\bf{x}}}
+\newcommand{\y}{{\bf{y}}}
+\newcommand{\z}{{\bf{z}}}
+\newcommand{\0}{{\bf{0}}}
+\pagestyle{empty}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\nsubset}{\not\subset}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{excercise}[theorem]{Exercise}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{hint}[theorem]{Hint}
+\newtheorem{question}[theorem]{Question}
+
+
+\begin{document}
+\title{Worksheet on linear transformations}
+\author{Math 186--1}
+\maketitle
+
+\begin{definition}Given a function $T$ (which takes vectors as input, and outputs vectors), we say that $T$ is a \emph{linear transformation} if the following two properties hold.
+    \begin{itemize}
+    \item[(\#1)]  For any two vectors ${\bf v}$ and ${\bf v'}$, we always have $T({\bf v + v'}) = T({\bf v}) + T({\bf v'})$.  In other words, adding the vectors and then using the function gives the same result as using the function, then adding the two outputs.
+    \item[(\#2)]  For any ${\bf v}$ and any real number $c$, we have $T(c {\bf v}) = c T({\bf v})$.  In other words, if you scale the vector and then apply the function, you get the same result as if you'd applied the function and then scaled the output.
+    \end{itemize}
+\end{definition}
+\vskip 12pt
+\hskip -12pt
+{\bf 1.}  Suppose that $T : \bR^2 \to \bR^2$ is a linear transformation ($\bR^2$ we view as the set of vectors in the plane, and it includes the zero vector).  Fix $\u$ and $\v$ to be a basis.  For all other vectors we write $\x = a_x \u + b_x \v$ because $\u, \v$ are a basis.\footnote{Other common expressions for $\x$ include $(a_\x, b_\x) = \left[ \begin{array}{c} a_\x\\b_\x \end{array}\right]$.}  Show that $T(\x)$, for any $\x$, is completely determined by $T(\u)$ and $T(\v)$.  
+\vskip 175pt
+\hskip -12pt
+{\bf 2.}  Fix a basis $\u$, $\v$ for $\bR^2$.  Show that for every other pair of vectors $\x, \y \in \bR^2$, that there exists a linear transformation $T$ such that $T(\u) = \x$ and $T(\v) = \y$.  
+\newpage
+\hskip -12pt
+{\bf 3.}  Write down matrix representations of the following linear transformations also explain as well as you can what this linear transformation does geometrically.  Fix a basis $\u, \v$ for $\bR^2$ and a basis $\x, \y, \z$ for $\bR^3$.  
+\begin{itemize}
+ \item[(a)]  The map $T : \bR^2 \to \bR^2$ defined in the following way.  $T(\u) = \v$ and $T(\v) = \u$.
+\vskip 140pt
+ \item[(b)]  The map $T : \bR^2 \to \bR^2$ defined in the following way.  $T(\u) = \v$ and $T(\v) = -\u$.    
+\vskip 140pt
+ \item[(c)]  The map $T : \bR^2 \to \bR^2$ defined in the following way.  $T(\u) = \u$ and $T(\v) = \0$.   
+\vskip 140pt
+ \item[(d)]  The map $T : \bR^2 \to \bR^3$ defined in the following way.  $T(\u) = \x$ and $T(\v) = \y + \z$.  
+\vskip 140pt
+ \item[(e)]  The map $T : \bR^3 \to \bR^2$ defined in the following way.  $T(\x) = \u$ and $T(\y) = \v$ and $T(\z) = \0$.
+\end{itemize}
+
+\end{document}

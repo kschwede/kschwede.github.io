@@ -1,0 +1,145 @@
+\documentclass[10pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\usepackage{multicol}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Aut}{\mathrm{Aut}}
+
+
+\begin{document}
+\title{(Review) Worksheet \#6-- Math 5320\\Spring 2020}
+\author{Not due}
+\maketitle
+
+I'm trying to make these questions like those I might put on the final.
+\noindent
+{\bf 1.}  Short answer.
+\vskip 3pt
+{\bf (a)}  Give an example of a ring that is not an integral domain.
+\vskip 75pt
+{\bf (b)}  Give an example of a prime ideal that is not maximal.
+\vskip 75pt
+{\bf (c)}  Suppose that $R$ is an integral domain.  What does it mean for $r \in R$ to be irreducible? 
+\vskip 75pt
+{\bf (d)}  Carefully state Eisenstein's irreducibility criterion for polynomials in $\bQ[x]$.
+\vskip 75pt
+{\bf (e)}  Suppose $f(x) \in \bZ[x]$ is a monic polynomial and it is irreducible.  Let $f_7(x) \in \bZ/7\bZ[x]$ by its reduction to characteristic $7$.  Is $f_7(x)$ always irreducible?
+\vskip 75pt
+{\bf (f)}  Suppose that $R$ is an integral domain and $r \in R$ is a prime element.  Prove that $r$ is irreducible.
+\newpage
+\noindent
+{\bf 2.}  More short answer.
+\vskip 3pt
+{\bf (a)}  Give an example of an extension of fields $\bQ \subseteq K$ such that $[K : \bQ] = 5$.
+\vskip 75pt
+{\bf (b)}  What does it mean that a finite extension $F \subseteq K$ of fields in characteristic zero is \emph{Galois}?
+\vskip 75pt
+{\bf (c)}  Is there a field with $51$ elements?
+\vskip 75pt
+{\bf (d)}  Suppose $p$ is a prime number and $e > 0$.  Write down a polynomial such that every element of $\bF_{p^e}$ is a root of that polynomial.
+\vskip 75pt
+{\bf (e)}  Suppose that $\bF_9$ is the field with 9 elements.  What finite field $K$ has the property that $[K : \bF_9] = 3$?
+\vskip 75pt
+{\bf (f)}  Give an example of a field extension $F \subseteq K$ such that $\Aut(K/F)$ is not Abelian.
+\newpage
+{\bf 3.}  Even more short answer.
+\noindent
+\vskip 3pt
+{\bf (a)}  Is $\bZ[x]$ a PID?
+\vskip 75pt
+{\bf (b)}  If $\phi : R \to S$ is a ring homomorphism and $I \subseteq S$ is an ideal, is it always true that $\phi^{-1}(I)$ is an ideal?
+\vskip 75pt
+{\bf (c)}  How many elements are in the ring $\bZ/6\bZ[x]/\langle x^2 + 1 \rangle$?
+\vskip 75pt
+{\bf (d)}  Give an example of a ring that is not a UFD.
+\vskip 75pt
+{\bf (e)}  List at least 4 different numbers in $\bR$ that are \emph{not} constructible over $\bQ$ but are algebraic over $\bQ$.
+\vskip 75pt
+{\bf (f)}  State the Main Theorem of Galois Theory.
+\newpage
+\noindent
+{\bf 4.}  Suppose $\phi : R \to S$ is a ring homomorphism and $P \subseteq S$ is a prime ideal.  Prove that $\phi^{-1}(P)$ is a prime ideal of $R$.
+\vskip 275pt
+{\bf 5.}  Consider the finite field $K = \bF_2[x]/\langle x^2 + x + 1 \rangle$.  Write down addition and multiplication tables for $K$.  
+\newpage
+\noindent
+{\bf 6.}  Suppose that $k$ is a field.  Prove that $k[x]$ is a PID.
+\vskip 275pt
+\noindent
+{\bf 7.}  Suppose $F \subseteq K$ is an extension of fields and $H \subseteq \Aut(K/F)$ is a subgroup.  Carefully write down a proof that $K^H$ is a field.  
+\newpage
+\noindent
+{\bf 8.}  Let $K$ be the splitting field of $x^4 + 3$ over $\bQ$. Compute $[K : \bQ]$.  Find generators for the group $\Aut(K/F)$, is this group Abelian?  
+\vskip 275pt
+\noindent
+{\bf 9.}  Find 2 proper nontrivial subgroups of $\Aut(K/\bQ)$ (with $K$ as above) and compute their associated fixed fields. 
+\newpage
+{\bf 10.}  How many irreducible degree 4 polynomials are there over $\bF_5$.  
+\vskip 275pt
+{\bf 11.}  Let $R$ be an integral domain and suppose that $W$ is a multiplicative set.  Suppose that $P \subseteq R$ is a prime ideal and that $P \cap W = \emptyset$.  Prove that $W^{-1}P$ is not equal to $W^{-1}R$.
+\newpage
+\noindent
+{\bf 12.}  Suppose $p$ is prime and $e > 0$.  Give a careful proof that $\bF_{p^e}^{\times} = \bF_{p^e} \setminus \{0\}$ is a cyclic group.
+\vskip 275pt
+\noindent
+{\bf 13.}  Which maximal ideals in the polynomial ring $\bC[x,y]$ contain both $x^2 + y^2 -4$ and $xy - 1$?
+\end{document} 

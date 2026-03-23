@@ -1,0 +1,77 @@
+%%This is a standard LaTeX2e article document template. personal version 12/5/200%%
+\documentclass[11pt]{amsart}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%packages%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{epsf}
+%        \usepackage{graphicx}
+%        \usepackage[scanall]{psfrag}
+\pagestyle{empty}
+
+\usepackage{fullpage}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textheight}{9.5in}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\pagestyle{empty}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\nsubset}{\not\subset}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{excercise}[theorem]{Exercise}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{hint}[theorem]{Hint}
+\newtheorem{question}[theorem]{Question}
+
+\begin{document}
+\title{Notation and terminology\\Math 185--4\\Fall 2009}
+\maketitle
+
+\begin{definition}  For our purposes, a \emph{set} is a (possibly infinite or empty) collection of objects.  
+\end{definition}
+
+Yes, that is vague.  It is also not quite right.  But it's good enough for us.  Most of the time we'll be working with working with sets of real numbers, vectors, or functions.  
+
+{\bf Sets of numbers}
+\begin{itemize}
+ \item[$\bN$]  The set of \emph{natural numbers}.  The numbers $1, 2, 3, 4, \ldots$
+ \item[$\bZ$]  The set of \emph{integers}.  The numbers $\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots$
+ \item[$\bQ$]  The set of \emph{rational numbers}.  The set of all fractions ${a \over b}$ where $a$ and $b$ are integers and $b \neq 0$.  (Note, a rational number can be written in more than one way)
+ \item[$\bR$]  The set of \emph{real numbers}.  This includes things like $\pi$, $\sqrt{2}$, $-285$, ${3 \over 7}$, $\log_6.3(\pi)$, etc.
+\end{itemize}
+
+{\bf Symbols for dealing with logical conditions}
+\begin{itemize}
+ \item[$\forall$]  This symbol means \emph{for all} (or sometimes, for every).  For example, ``$\forall$ squares $D$, $D$ is a rectangle''.
+ \item[$\exists$]  This symbol means \emph{there exists}.  For example, ``$\exists$ a horse''.
+ \item[$\nexists$]  This symbol means \emph{there does not exist}.  For example, ``$\nexists$ a unicorn''.  (yet)
+\end{itemize}
+
+{\bf Symbols for dealing with elements and sets}
+\begin{itemize}
+ \item[$\in, \notin$]  The symbol $\in$ is used to denote that an element is in a set.  For example, $7 \in \bZ$, $\pi \in \bR$.  The symbol $\notin$ is used to denote that an element is not in a set.  For example, $\pi \notin \bZ$, $\sqrt{2} \notin \bQ$ (the second one might take some thought to prove).  
+ \item[$\subseteq$]  The symbol $\subseteq$ is used to denote \emph{containment} of sets.  For example, $\bZ \subseteq \bZ \subseteq \bR$. The symbol $\subset$ means the same thing (perhaps unfortunately).
+ \item[$\nsubseteq$]  The symbol $\nsubseteq$ is used to denote \emph{non-containment} of sets.  For example, $\bZ \nsubseteq \bN$ and $\{\text{the set of people}\} \nsubseteq \{\text{the set of lumberjacks}\}$.  The symbol $\nsubset$ means the same thing (perhaps unfortunately).  
+ \item[$\subsetneq$]  The symbol $\subsetneq$ is used to denote \emph{proper containment} of sets.  For example, $\bZ \subsetneq \bQ$ and $\{1,2,3\} \subsetneq \{1,2,3,4\}$.  However, you CANNOT say $\bN \subsetneq \bN$.  
+\item[$\emptyset$]  This symbol is used to denote the ``empty set''.  We assume that this set ``exists''.  Note that, for every $x \in \bR$, $x \notin \emptyset$.  Also note that $\emptyset \subseteq S$ for every set $S$.  
+\item[$\cup$]  The symbol $\cup$ means \emph{union}.  Given two sets $S$ and $T$, $S \cup T$ is used to denote the set $\{ x | x \in S \text{ or } x \in T\}$.  For example $\{1,2,3\} \cup \{3,4,5\} = \{1,2,3,4,5\}$.
+\item[$\cap$]  The symbol $\cap$ means \emph{intersection}.  Given two sets $S$ and $T$, $S \cap T$ is used to denote the set $\{ x | x \in S \text{ and } x \in T\}$.  For example $\{1,2,3\} \cap \{3,4,5\} = \{3\}$.
+\item[$\setminus$]  The symbol $\setminus$ means \emph{remove from a set}.  Given two sets $S$ and $T$, $S \setminus T$ is used to denote the set $\{ x | x \in S \text{ and } x \notin T\}$.  For example $\{1,2,3\} \setminus \{3,4,5\} = \{1,2\}$.  Often we will assume that $T \subseteq S$ as well.   Sometimes the symbol $-$ is used instead of $\setminus$.  
+\end{itemize}
+
+\end{document}

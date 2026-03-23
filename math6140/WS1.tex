@@ -1,0 +1,148 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+\usepackage{mathrsfs}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\image}{\mathrm{im}\,}
+\newcommand{\coker}{\mathrm{coker}\,}
+\newcommand{\Hom}{\mathrm{Hom}\,}
+\newcommand{\Supp}{\mathrm{Supp}\,}
+\newcommand{\sH}{\mathscr{H}\,}
+
+\begin{document}
+\title{Worksheet \#1 -- Math 6140\\Spring 2019}
+\author{Due Friday, January 18th}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+{\bf 1.}  Suppose that $\phi : \cF \to \cG$ is a map of sheaves (on $X$).  Determine which of the following presheaves are actually sheaves.  If they are, prove it.  If they are not, give an example.
+\vskip 3pt
+{\bf (a)}  the presheaf $\cH$ such that $\cH(U) = \ker\big(\cF(U) \to \cG(U)\big)$.
+\vskip 120pt
+{\bf (b)}  the presheaf $\cH(U) = \image\big(\cF(U) \to \cG(U)\big)$.
+\vskip 120pt
+{\bf (c)}  the presheaf $\cH(U) = \coker\big(\cF(U) \to \cG(U)\big) = \cG(U)/\cF(U)$.
+\vskip 120pt
+\vfill
+The sheafification of (a),(b),(c) (if sheafification is necessary) are denoted $\ker \phi$, $\image \phi$ and $\coker \phi$ respectively.
+\newpage
+\noindent
+{\bf 2.}  Suppose that $0 \to \cF \to \cG \to \cH \to 0$ is a short exact sequence of sheaves on $X$ (meaning it is short exact on the stalks).  Prove carefully that for every open $U \subseteq X$, the sequence:
+\[
+0 \to \cF(U) \to \cG(U) \to \cH(U)
+\]
+is exact.
+\vskip 160pt
+\noindent
+{\bf 3.}  A sheaf $\cF$ is \emph{flasque} if for every $V \subseteq U$ (open sets in $X$), the restriction map $\cF(U) \to \cF(V)$ is surjective.  With the notation as in {\bf 2.}, show that if $\cF$ is {flasque}, then
+\[
+0 \to \cF(U) \to \cG(U) \to \cH(U) \to 0
+\]
+is exact.
+\vskip 160pt
+\noindent
+{\bf 4.}  Suppose that $f : X \to Y$ is a map of topological spaces and $0 \to \cF \to \cG \to  \cH \to 0$ is a short exact sequence of sheaves on $X$.  Prove that
+\[
+0 \to f_* \cF \to f_* \cG \to f_* \cH
+\]
+is exact on $Y$.  Further give an example to show that $f_* \cG \to f_* \cH$ is not necessarily surjective.
+\newpage
+\noindent
+{\bf 5.}  Suppose that $\phi : X \to Y$ is a regular map of affine varieties.  Suppose that $M$ is a $k[X]$ modules and $\cF = \widetilde{M}$.  Note that $M$ can also be viewed as a $k[Y]$ module by the map $\phi^* : k[Y] \to k[X]$.  We denote this module by $M_{k[Y]}$ and let $\cG = \widetilde{M_{k[Y]}}$.  Show that $\phi_* \cF \cong \cG$.
+\vskip 200pt
+\noindent
+If $\phi : X \to Y$ is a continuous map of topological spaces and $\cG$ is a sheaf on $Y$, we define $\phi^{-1}(\cG)$ to be the sheafification of the presheaf $\cH$ where for any $U \subseteq X$, we form the direct limit:
+\[
+\cH(U) = \lim_{V \supseteq f(U)} \cG(V).
+\]
+\vskip 12pt
+\noindent
+{\bf 6.}  Suppose that $Z \subseteq X$ is a subset of a topological space and that $\cF$ is a sheaf on $X$.  Let $i : Z \to X$ be the inclusion and show that for each point $z \in Z$,
+\[
+(i^{-1}\cF)_z = \cF_z.
+\]
+In the case that $Z$ is a closed subvariety of a variety $X$, how do $i^{-1} \O_X$ and $\O_Z$ compare?
+\newpage
+\noindent
+{\bf 7.}  Suppose that $\phi : X \to Y$ is a continuous map of topological spaces.  Show that there is a natural\footnote{Actually, please don't show the \emph{natural} part, but if you don't know what \emph{natural} means, ask.} bijection of sets for any sheaves $\cG$ on $Y$ and $\cF$ on $X$.
+\[
+\Hom_X(\phi^{-1} \cG, \cF) \cong \Hom_Y(\cG, \phi_* \cF).
+\]
+\vskip 200pt
+First note that if $\cF$ is a sheaf, we define the \emph{support of $\cF$}, denoted $\Supp \cF$, to be $\{x \in X \;|\; \cF_x \neq 0\}$.  If $s \in \cF(U)$, we define $\Supp(s) = \{x \in U\;|\; s_x \neq 0\}$.  It is not difficult to show that $\Supp(s)$ is always closed but that $\Supp \cF$ is not always closed.
+\vskip 12pt
+\noindent
+{\bf 8.}  Suppose that $Z \subseteq X$ is a closed subset and let $\cF$ be a sheaf on $X$.  Consider the presheaf $\sH^0_Z(\cF)$ defined as
+\[
+\sH^0_Z(\cF)(U) = \{s \in \cF(U)\;|\; \Supp s \subseteq Z \}.
+\]
+Show that $\sH^0Z(\cF)$ is a sheaf and that if $i : (X \setminus Z) \to X$ is the inclusion, there exists an exact sequence:
+\[
+0 \to \sH^0_Z(\cF) \to \cF \to i_* (\cF|_{X \setminus Z}).
+\]
+\end{document}
+

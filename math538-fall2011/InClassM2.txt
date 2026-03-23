@@ -1,0 +1,318 @@
+
++ M2 --no-readline --print-width 114
+Macaulay2, version 1.4
+with packages: ConwayPolynomials, Elimination, IntegralClosure, LLLBases, PrimaryDecomposition, ReesAlgebra,
+               TangentCone
+
+i1 : R := QQ[x,y,z]
+
+o1 = QQ[x, y, z]
+
+o1 : PolynomialRing
+
+i2 : I := ideal(x, x-y^2)
+
+                  2
+o2 = ideal (x, - y  + x)
+
+o2 : Ideal of QQ[x, y, z]
+
+i3 : J := trim I
+
+                2
+o3 = ideal (x, y )
+
+o3 : Ideal of QQ[x, y, z]
+
+i4 : J == I
+
+o4 = true
+
+i5 : K := ideal(x^2+y^2+z^2)
+
+            2    2    2
+o5 = ideal(x  + y  + z )
+
+o5 : Ideal of QQ[x, y, z]
+
+i6 : L := trim (J + K)
+
+                2   2
+o6 = ideal (x, z , y )
+
+o6 : Ideal of QQ[x, y, z]
+
+i7 : J + K
+
+                2   2    2    2
+o7 = ideal (x, y , x  + y  + z )
+
+o7 : Ideal of QQ[x, y, z]
+
+i8 : radical L
+
+o8 = monomialIdeal (x, y, z)
+
+o8 : MonomialIdeal of QQ[x, y, z]
+
+i9 : isPrime (J+K)
+
+o9 = false
+
+i10 : isPrime (radical (J+K))
+
+o10 = true
+
+i11 : isPrimary (J+K)
+
+o11 = true
+
+i12 : I
+
+                   2
+o12 = ideal (x, - y  + x)
+
+o12 : Ideal of QQ[x, y, z]
+
+i13 : J
+
+                 2
+o13 = ideal (x, y )
+
+o13 : Ideal of QQ[x, y, z]
+
+i14 : isPrimary J
+
+o14 = true
+
+i15 : isPrimary (ideal(x^2, x*y))
+
+o15 = false
+
+i16 : L
+
+                 2   2
+o16 = ideal (x, z , y )
+
+o16 : Ideal of QQ[x, y, z]
+
+i17 : M := ideal(y^2-x^3-x-1, x^2-x^3*z+5*z^7)
+
+                3    2            7    3     2
+o17 = ideal (- x  + y  - x - 1, 5z  - x z + x )
+
+o17 : Ideal of QQ[x, y, z]
+
+i18 : intersect(L, M)
+
+              4      2    2       3 2    2 2      2    2   3 2    4      2    2     6      7    3 2     5    4   
+o18 = ideal (x  - x*y  + x  + x, x z  - y z  + x*z  + z , x y  - y  + x*y  + y , - x z - 5z  + x y z + x  - x z -
+      ------------------------------------------------------------------------------------------------------------
+       2 2    3
+      x y  + x )
+
+o18 : Ideal of QQ[x, y, z]
+
+i19 : trim intersect(L, M)
+
+              4      2    2       3 2    2 2      2    2   3 2    4      2    2    7    3     2
+o19 = ideal (x  - x*y  + x  + x, x z  - y z  + x*z  + z , x y  - y  + x*y  + y , 5z  - x z + x )
+
+o19 : Ideal of QQ[x, y, z]
+
+i20 : intersect(L, M) == (L*M)
+
+o20 = true
+
+i21 : L
+
+                 2   2
+o21 = ideal (x, z , y )
+
+o21 : Ideal of QQ[x, y, z]
+
+i22 : ass L
+
+o22 = {ideal (z, y, x)}
+
+o22 : List
+
+i23 : I := (ideal(x,y))^2*(ideal(y,z))^3
+stdio:23:1:(3): warning: local declaration of I shields variable with same name
+
+              2 3   2 2    2   2   2 3     4     3      2 2       3   5   4    3 2   2 3
+o23 = ideal (x y , x y z, x y*z , x z , x*y , x*y z, x*y z , x*y*z , y , y z, y z , y z )
+
+o23 : Ideal of QQ[x, y, z]
+
+i24 : ass I
+
+o24 = {ideal (y, x), ideal (z, y), ideal (z, y, x)}
+
+o24 : List
+
+i25 : ass (ideal(x,y))^2
+
+o25 = {ideal (y, x)}
+
+o25 : List
+
+i26 : primaryDecomposition I
+
+               2        2           3   2      2   3           2     4   5     3    4      2 2   3 2   3
+o26 = {ideal (x , x*y, y ), ideal (y , y z, y*z , z ), ideal (x , x*y , y , x*y z, y z, x*y z , y z , z )}
+
+o26 : List
+
+i27 : intersect((ideal(x,y))^2, (ideal(y,z))^3) == I
+        <menu-bar> <signals> <stop>
+
+i27 : primaryDecomposition intersect((ideal(x,y)^2, (ideal(y,z))^3)
+      primaryDecomposition intersect((ideal(x,y)^2, (ideal(y,z))^3)
+stdio:30:1:(3): error: missing semicolon or comma on previous line?
+
+i27 : primaryDecomposition intersect((ideal(x,y)^2, (ideal(y,z))^3))
+      primaryDecomposition intersect((ideal(x,y)^2, (ideal(y,z))^3)  <menu-bar> <signals> <stop>
+
+i27 : primaryDecomposition intersect((ideal(x,y))^2, (ideal(y,z))^3)
+stdio:32:43:(3):[1]: error: no method for binary operator ^ applied to objects:
+--            (x, y) (of class Sequence)
+--      ^     2 (of class ZZ)
+
+i28 : primaryDecomposition intersect((ideal(x,y))^2, (ideal(y,z))^3)
+
+               2        2           3   2      2   3
+o28 = {ideal (x , x*y, y ), ideal (y , y z, y*z , z )}
+
+o28 : List
+
+i29 : intersect((ideal(x,y))^2, (ideal(y,z))^3) == I
+
+o29 = false
+
+i30 : primaryDecomposition I
+
+               2        2           3   2      2   3           2     4   5     3    4      2 2   3 2   3
+o30 = {ideal (x , x*y, y ), ideal (y , y z, y*z , z ), ideal (x , x*y , y , x*y z, y z, x*y z , y z , z )}
+
+o30 : List
+
+i31 : exit
+
+Process M2 finished
+
++ M2 --no-readline --print-width 114
+Macaulay2, version 1.4
+with packages: ConwayPolynomials, Elimination, IntegralClosure, LLLBases, PrimaryDecomposition, ReesAlgebra,
+               TangentCone
+
+i1 : R := ZZ/17[x,y,z]
+
+     ZZ
+o1 = --[x, y, z]
+     17
+
+o1 : PolynomialRing
+
+i2 : S := R/ideal(x*y-z^2)
+
+     ZZ
+     --[x, y, z]
+     17
+o2 = -----------
+              2
+       x*y - z
+
+o2 : QuotientRing
+
+i3 : I := ideal(x_S, z_S)
+
+o3 = ideal (x, z)
+
+              ZZ
+              --[x, y, z]
+              17
+o3 : Ideal of -----------
+                       2
+                x*y - z
+
+i4 : ideal(x, z)
+
+o4 = ideal (x, z)
+
+              ZZ
+o4 : Ideal of --[x, y, z]
+              17
+
+i5 : dim R
+
+o5 = 3
+
+i6 : dim S
+
+o6 = 2
+
+i7 : isPrime ideal(x*y - z^2)
+
+o7 = true
+
+i8 : J := ideal(x, z)
+
+o8 = ideal (x, z)
+
+              ZZ
+o8 : Ideal of --[x, y, z]
+              17
+
+i9 : dim (R/J)
+
+o9 = 1
+
+i10 : dim (S/J)
+stdio:10:7:(3): error: expected ideal of the same ring
+
+i11 : dim (S/I)
+
+o11 = 1
+
+i12 : isPrime I
+
+o12 = true
+
+i13 : isPrimary I^2
+
+o13 = false
+
+i14 : ass I^2
+
+o14 = {ideal (z, x), ideal (z, y, x)}
+
+o14 : List
+
+i15 : IK
+
+o15 = IK
+
+o15 : Symbol
+
+i16 : I
+
+o16 = ideal (x, z)
+
+               ZZ
+               --[x, y, z]
+               17
+o16 : Ideal of -----------
+                        2
+                 x*y - z
+
+i17 : primaryDecomposition I^2
+
+                                 2
+o17 = {ideal(x), ideal (y, x*z, x )}
+
+o17 : List
+
+i18 : exit
+
+Process M2 finished

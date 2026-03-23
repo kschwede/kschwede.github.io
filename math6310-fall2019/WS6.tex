@@ -1,0 +1,132 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Ann}{\mathrm{Ann}}
+\newcommand{\tor}{\mathrm{tor}}
+
+
+\begin{document}
+\title{Worksheet \#6 -- Math 6310\\Fall 2019}
+\author{Due: Monday, November 18th}
+\maketitle
+
+\noindent
+\vskip 9pt
+\noindent
+In this worksheet, we study classification of groups of small order.
+
+Recall the following from worksheet \#2.  
+\vskip 9pt
+Let $N$ and $H$ be groups and let $\phi : H \to \text{Aut}(N)$ be a group homomorphism.  We get a left action of $H$ on $N$ by $h.n = (\phi(h))(n)$.
+Set
+\[
+G = N \times H
+\]
+with the following binary operation:
+\[
+(n_1, h_1)(n_2, h_2) = (n_1 (h_1.n_2), h_1 h_2).
+\]
+This is called the \emph{semi-direct product of $N$ and $H$}, and is denoted by $N \rtimes H$.
+\vskip 6pt
+\noindent
+{\bf Theorem.}  {\it Suppose $G$ is a group with $H$ an subgroup of $G$ and $N$ a normal subgroup of $G$.  Further suppose that $NH = G$ and that $N \cap H = \{ 1 \}$.  Let $\phi : H \to \mathrm{Aut}(N)$ be the map which conjugates by $h$.  In other words $\phi(h)(n) = hnh^{-1}$.  Then we have an isomorphism $N \rtimes H \cong G$.}
+\vskip 3pt
+We can use this to classify groups as follows.  Given some number $n$, suppose we can factor $n = ab$, with $\gcd(a,b) = 1$, where 
+\begin{itemize}
+    \item{} we can show (say by Sylow theorems) that groups $G$ of order $n$ have a normal subgroups $N$ of order $a$.
+    \item{} and groups $G$ of order $n$ have other subgroups $H$ of order $b$.
+\end{itemize}
+Then any group of order $n$ must be isomorphic to a semidirect product $N \rtimes H$.  Thus to classify groups of order $n$, we need to classify such semidirect products.
+\vskip 6pt
+{\bf 1.}  Let $n = 10$.  Show that any group of order 10 has a normal subgroup $N$ of order 5 and a subgroup $H$ of order 2.  Classify all homomorphisms from $H \to \Aut(N)$.  How non-isomorphic groups of order 10 are there? (What happens when the homomorphism to $\Aut(N)$ is the trivial homomorphism?)
+\newpage
+\noindent
+{\bf 2.}  Let $n = 20$.  Show that any group of order 20 has a normal subgroup $N$ of order 5 and a subgroup $H$ of order 4.  Classify groups of order 4 (they are all Abelian), and use that to classify groups of order 20.  
+\vskip 3pt
+\emph{Hint: }  There can be two different homomorphisms $\phi : H \to \Aut(N)$ that produce isomorphic semidirect products.  You'll need to figure out why that happens, at least for this particular example.  
+\newpage
+\noindent
+{\bf 3.}  Classify groups of order 12.
+\newpage
+\noindent
+{\bf 4.}  Show that if $n = p_1^{a_1} \dots p_l^{a_l}$ then $\Aut(\bZ/n\bZ)$ is isomorphic to 
+\[
+    U(\bZ/n\bZ) \cong U(\bZ/p_1^{a_1} \bZ) \oplus \dots \oplus U(\bZ/p_l^{a_l} \bZ)
+\]
+where $U(R)$ is the group of units of a ring $R$.  Additionally show that each $U(\bZ/p_i^{a_i} \bZ)$ is cyclic if $p_i \neq 2$.
+\newpage
+\noindent
+{\bf 5.}  Classify groups of order 30 as follows.  Show that every group of order 30 has a subgroup of order 15 which is necessarily normal.  Next show/recall that groups of order 15 are cyclic.  Next show that $\Aut(\bZ/15) \cong \bZ/2 \times \bZ/4$ using the previous exercise.  Find the elements of order 2 in that group of automorphisms.  You can prove various groups you produce are nonisomorphic by looking at their centers.
+\newpage
+\noindent
+{\bf 6.}  Classify all groups of order 18.
+\newpage
+\noindent
+{\bf 7.}  Classify all groups of order 75.
+\newpage
+\noindent
+{\bf 8.}  Classify all groups of order 70.
+
+\end{document}
+

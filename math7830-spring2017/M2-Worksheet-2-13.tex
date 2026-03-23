@@ -1,0 +1,242 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.25in,top=1in,right=1.25in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title[M2 Worksheet]{Macaulay2 Worksheet for characteristic $p$ commutative algebra\\February 13th, 2017}
+\author{Due February 22nd, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+
+You are encouraged to work in groups of up to 3, only one assignment is due for each group, but everyone needs to contribute.  Your solution must be LaTeX'd on this assignment.
+
+\section{Making a file to hold your functions}
+
+Create a file in your home directory (or some other directory if you are willing to deal with pathing in Macaulay2) to hold your functions.  For example, you could open a terminal and type
+\begin{verbatim}
+gedit MyFun.m2 &
+\end{verbatim}
+But you can use any other text editor you'd like (emacs, vi, etc.)  If you'd like context highlighting for {\tt gedit} or other gtk based editors, talk to me.
+
+Last time you created a function {\tt frobeniusPower} which took in an ideal $I$ and output $I^{[p]}$.
+\begin{exercise}
+This time create a function in your file that takes in an ideal and outputs $I^{[p^e]}$.  It should look something like this:
+\begin{verbatim}
+frobeniusPower = (ee, II) -> (
+    myRing := ring II;
+    myChar := char myRing;
+    myList := first entries gens II;
+    ...    --obviously you need your own bit of code that does the work
+);
+\end{verbatim}
+\end{exercise}
+
+Start {\tt Macaulay2} (ie, run {\tt emacs \&} and then hit {\tt F12}).  Test your function by running
+\begin{verbatim}
+i1 : R = ZZ/5[x,y]
+i2 : I = ideal(x,y^2)
+i3 : load "MyFun.m2" --or whatever your file is called.
+i4 : frobeniusPower(1, I)
+i5 : frobeniusPower(2, I)
+\end{verbatim}
+You should get $\langle x^5, y^{10} \rangle$ and $\langle x^{25}, y^{50} \rangle$ respectively.
+
+\section{Fedder's criterion}
+
+Recall, we showed the following last week.
+
+\begin{theorem*}[Fedder's Criterion]
+Suppose $S$ is a polynomial ring and $R = S/I$.  Suppose that $Q \in V(I) \subseteq \Spec S$, then $R_Q$ is $F$-split if and only if $(I^{[p]} : I) \not\subseteq Q^{[p]}$.
+\end{theorem*}
+
+\begin{exercise}
+Implement Fedder's criterion as a function in your file.  It should take in a (prime) ideal $Q$ in a quotient of polynomial ring and then check whether $R$ is $F$-split at $Q$.  For example I created a function:
+\begin{verbatim}
+isFSplitAt = (QQ) -> (
+    myRing := ring QQ;
+    SS := ambient myRing;
+    II := ideal myRing;
+    liftedQQ := sub(QQ, SS) + II; --lift Q to S, make it prime
+    ... --fill the rest in yourself
+);
+\end{verbatim}
+The function {\tt isSubset} in Macaulay2 might be helpful.
+
+Check your function on the following rings and maximal ideals.
+\begin{enumerate}
+\item $R = \bZ/2[x,y,z]/\langle x^2 y - z^2 \rangle$, $Q = \langle x,y,z \rangle$.
+\item $R = \bZ/5[x,y,z]/\langle x^2 y - z^2 \rangle$, $Q = \langle x,y,z \rangle$.
+\item $R = \bZ/5[x,y,z]/\langle x^3 + y^3 + z^3 \rangle$, $Q = \langle x,y,z \rangle$.
+\item $R = \bZ/7[x,y,z]/\langle x^3 + y^3 + z^3 \rangle$, $Q = \langle x,y,z \rangle$.
+\item $R = \bZ/3[x^3, x^2 y, xy^2, y^3]$, $Q = \langle x^3, x^2 y, xy^2, y^3 \rangle$ (you'll have to find the defining ideal to use Fedder's criterion).
+\end{enumerate}
+\end{exercise}
+
+\section{Inducing maps on quotient rings}
+
+Suppose that $S = k[x_1, \ldots, x_n]$, $A = S/I$ and $B = S/J$ where $I \subsetneq J$.  In particular, $B = A/\overline{J}$.  A natural question is
+\begin{question}
+What subset of $\Hom_R(F_* A, A)$ sends $F_* J$ to $J$ (and thus induces $\Hom_B(F_* B, B)$)?
+\end{question}
+For simplicity, say that $M_B = \{ \phi \in \Hom_R(F_* A, A) \;|\; \phi(F_* \overline{J}) \subseteq \overline{J} \}$.  There is an easy way to understand $M_B$.  Simply form $(I^{[p]} : I) \cap (J^{[p]} : J)$, and consider its image in $I^{[p]} : I / I^{[p]} \cong \Hom_A(F_* A, A)$.  Alternately, just work with
+\[
+\big( (I^{[p]} : I) \cap (J^{[p]} : J) \big)+ I^{[p]}
+\]
+which carries the same data.  \emph{Figure out} why all this is correct!
+\begin{exercise}
+Find an example which shows that $M_B$ is \emph{not} in general equal to the submodule $(F_* J^{[p]} : J) \cdot \Hom_R(F_* A, A)$ as it was when $A = S$.
+\vskip 3pt
+\emph{Hint:} Try making a singular ring $A$ and let $J$ be the prime ideal defining the singular locus.  Use Macaulay2 to help with this.
+\end{exercise}
+
+\begin{proposition}
+$I^{[p]} : I \subseteq J^{[p]} : J$ if and only every map $F_* A \to A$ induces a map $F_* B \to B$ by passing to the quotient.
+\end{proposition}
+\begin{exercise}
+Prove the proposition.
+\end{exercise}
+
+Remember, $M_B$ is the maps in $\Hom_A(F_* A, A)$ which induce maps in $\Hom_B(F_* B, B)$.  Another natural question along these lines is:
+
+\begin{question}
+We have a map $\rho_{A/B} : M_B \to \Hom_B(F_* B, B)$, is this map always surjective?  (Like it was in the regular case).
+\end{question}
+
+In the case that $A = S$, the reason this map was surjective was because $F_* S$ is a projective $S$-module.
+
+\begin{exercise}
+Using Macaulay2, find examples showing that $\rho_{A/B} : M_B \to \Hom_B(F_* B, B)$ can satisfy the following behaviors:
+\begin{enumerate}
+\item $\rho_{A/B}$ is the zero map.
+\vskip 3pt
+\emph{Hint:} Make $A$ highly singular and make $B$ be the maximal ideal of the singularity.
+\item $\rho_{A/B}$ is \emph{not} the zero map and is \emph{not} surjective.
+\vskip 3pt
+\emph{Hint:} Make $A$ singular and choose $J$ a height 1 non-principal prime ideal passing through the singularity (for example, a $A$ could be a quadric cone).
+\item $\rho_{A/B}$ is surjective even though $A$ is not regular and $V(J) \cap \text{SingularLocus}(A) \neq \emptyset$.
+\vskip 3pt
+\emph{Hint:} Make $A$ defined by a single equation and also make $B$ defined by a single equation.
+\end{enumerate}
+\end{exercise}
+
+\section{The projection map}
+
+(The stuff in this section requires some skill with programming, if you don't have that, find a group that does and work with them).
+
+Recall we have a map $\Phi : F^e_* S \to S$ which projects onto the term ${\bf x^{p^e - 1}}$ and which generates $\Hom_S(F^e_* S, S)$ as an $F^e_* S$-module.  The fact that $\Phi$ generates the $\Hom$ set immediately implies that for any ideal $J \subseteq S$,
+\[
+\Phi(F^e_* J) = \sum_{\phi} \phi(F^e_* J)
+\]
+where $\phi$ ranges over $\Hom_S(F^e_* S, S)$.  On the other hand, we saw that $R = S/I$ is $F$-split if and only if $\Phi(F^e_* I^{[p^e]} : I) = S$ and more generally that $\Phi(F^e_* I^{[p^e]} : I)$ defines the non-$F$-split locus.
+
+\begin{exercise}
+Create a function in Macaulay2 that takes in an ideal $J$ of $S$ and returns $\Phi(F^e_* J)$.
+\vskip 3pt
+\emph{Hint:} See the remark below.  If you have not written programs involving loops before, this might be quite hard so come talk to me.  Alternately, it is possible to use the {\tt Pushforward} package to do this computation, although this method will result in substantially slower execution times in general I think.
+\end{exercise}
+
+\begin{exercise}
+Create a function in Macaulay2 that takes in a ring $R = S/I$ and outputs the locus where $R$ is not $F$-split.
+\end{exercise}
+
+\begin{remark}[Thoughts on computing $\Phi$]
+Since $\Phi$ is additive, note that $\Phi(F^e_* \langle f_1, \ldots, \rangle f_m \rangle) = \Phi(F^e_* \langle f_1 \rangle) + \Phi(F^e_* \langle f_2 \rangle) + \dots + \Phi(F^e_* \langle f_m \rangle)$.  Hence from a computational perspective, it is sufficient to compute $\Phi(F^e_* \langle f \rangle)$.
+
+Suppose now that $k$ is perfect for simplicity, if one writes $F^e_* f$ in terms of the basis $F^e_* {\bf x^{\lambda}}$ as
+\[
+F^e_* f = F^e_* \sum f^{p^e}_{\bf \lambda} {\bf x^{\lambda}} = \sum f_{\bf \lambda} F^e_* {\bf x^{\lambda}}
+\]
+then we claim that $\Phi(F^e_* \langle f \rangle) = \langle \ldots, f_{\bf \lambda}, \ldots \rangle$.  The point is that $\Phi(F^e_* f)$ simply projects from the term $f_{\bf (p^e-1)} F^e_* {\bf x^{(p^e-1)}}$, on the other hand ${\bf x^{\lambda}} f \in \langle f \rangle$ and $\Phi(F^e_* {\bf x^{(p^e-1) - \lambda}} f )$ projects from $f_{\bf \lambda} F^e_* {\bf x^{\lambda}}$.  Doing the various projections proves that
+\[
+\Phi(F^e_* \langle f \rangle) = \langle \ldots, f_{\bf \lambda}, \ldots \rangle
+\]
+as claimed.
+
+Thus, in order to compute $\Phi$, you need to take a polynomial $f$, break it up into terms, and group the terms by their degree modulo ${\bf p^e} = (p^e, \ldots, p^e)$.
+
+Some relevant functions include the following {\tt terms, exponents}, try them out and figure out how to get them to work.  There's more than one way to do this in the end and probably this will require some serious programming work.
+\end{remark}
+
+\end{document}
+
+

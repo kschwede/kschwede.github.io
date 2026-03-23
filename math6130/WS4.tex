@@ -1,0 +1,132 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\codim}{{\mathrm{codim}}}
+\newcommand{\Map}{{\mathrm{Map}}}
+
+
+\begin{document}
+\title{Worksheet \#4 -- Math 6130\\Fall 2018}
+\author{Due Friday, September 28th}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+{\bf 1.}  Suppose $q = (a_0 : \ldots : a_n) \in \bP^n_k$ is a point and $k[x_0, \dots, x_n] = S(\bP^n_k) =: T$.  Write down a set of generators for the ideal $I(q) \subseteq T$.  Is it a maximal or prime ideal?  Is it maximal with respect to some condition? If so, what?
+\vskip 120pt
+\noindent
+{\bf 2.}  Let $I = (F_1 = y_1 y_2 - y_3, F_2 = y_1^2 - y_2) \subseteq k[y_1, y_2, y_3]$.  Show that $I$ is a prime ideal and show that $(F_1^h, F_2^h)$ is not equal to $I^h$.
+\vskip 9pt
+\emph{Hint:}  Recall the ideal of the twisted cubic $J = (x_1 x_2 - x_0 x_3, x_1^2 - x_0 x_2, x_2^2 - x_1 x_3)$.
+\newpage
+Let's do a commutative algebra problem or two.
+\vskip 9pt
+\noindent
+{\bf 3.}  Suppose that $A = \oplus_{i \geq 0} A_i$ is a graded ring where $A_0 = K$ is a field.  If $A$ is a finitely generated $A_0 = K$-algebra, show that there exists an integer $n$ such that $A^{(n)} = \bigoplus_{j \geq 0} A_{nj}$ is a standard graded $K$-algebra (in other words, generated in degree 1).
+\vskip 200pt
+\noindent
+{\bf 4.}  Suppose that $A = \oplus_{i \geq 0} A_i$ is a graded ring.  Consider the subring $A^{(n)} \subseteq A$ as in the previous problem.  Suppose that $x \in A$ is a homogeneous element.  Show that
+\[
+A^{(n)}_{(x^n)} \cong A_{(x)}.
+\]
+\newpage
+Rcall the following.  
+\vskip 9pt
+\noindent
+{\bf Definition.} A regular map $\phi : Y \to X$ between quasi-projective varieties is a continuous map such that for every open set $U \subseteq Y$ the map $\phi^* : \Map(U, k) \to \Map(\phi^{-1}(U), k)$ induces a $k$-algebra homomorphism $\O_Y(U) \to \O_X(\phi^{-1}(U))$.  
+\vskip 9pt
+The following proposition from the book (3.39) is also helpful as it lets us check locally that a map is regular.  
+\vskip 9pt
+\noindent
+{\bf Proposition.}  {\it Suppose that $X$ and $Y$ are quasi-projective varieties and $\phi : X \to Y$ is a map.  Let $\{V_i\}$ be a collection of open affine subsets covering $Y$ and $\{U_{ij}\}$ a collection of open subseteq covering $X$, such that
+\begin{enumerate}
+\item $\phi(U_{ij}) \subseteq V_i$ for all $i, j$ and
+\item the map $\phi^* : \Map(V_i, k) \to \Map(U_{ij}, k)$ induces a $k$-algebra homomorphism $\O_Y(V_i) \to \O_X(U_{ij})$ for all $i, j$.  
+\end{enumerate}
+Then $\phi$ is a regular map.}
+\vskip 9pt
+Recall that a rational map between quasi-affine varieties $X$ and $Y$ is a map only defined on an open subset of $X$.  We make the same definition with projective varieties.  
+\vskip 9pt
+\noindent
+{\bf 5.}  Suppose that $h_0, \dots, h_m \subseteq k[x_0, \dots, x_n]$ are homogeneous elements of the same degree $d > 0$.  Show that
+\[
+\xymatrix@R=3pt{
+\bP^n \ar@{.>}[r] & \bP^m\\
+(a_0: \ldots :a_n) \ar@{|->}[r] & (h_0({a_0, \dots, a_n}): \ldots: h_m({a_0, \dots, a_n}))
+}
+\]
+is a rational map.  You will need to local an open set on which is is (well) defined and verify it really is regular on that set.  
+\vskip 3pt
+\emph{Hint:} If you want to use the proposition, you can start by looking at some open sets $U_{j} = D(x_j)$.  But they might not map into $D(y_j)$.  But you can intersect them with the pre-images of $D(y_j)$.
+\vfill
+You might need an extra page to write down the details.
+\newpage
+\noindent
+{\bf 6.}  With the notation of the previous problem, suppose that $\sqrt{(h_0, \dots, h_m)} = (x_0, \dots, x_m)$ (equality here is as ideals).  Show that the induced map is defined everywhere.
+\vskip 250pt
+\noindent
+{\bf 7.}  Consider the rational map $\xymatrix{\bP^2 \ar@{.>}[r] & \bP^2}$ defined by $(x : y : z) \mapsto (yz : xz : xy)$.  Find where this map is not defined.  
+\end{document}
+

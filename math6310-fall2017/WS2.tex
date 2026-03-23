@@ -1,0 +1,125 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Aut}{\mathrm{Aut}}
+
+
+\begin{document}
+\title{Worksheet \#2 -- Math 6310\\Fall 2017}
+\author{Due Wednesday October 18th}
+\maketitle
+
+We'll have some fun with localization.
+\vskip 9pt
+\noindent
+{\bf Definition 1.}  Suppose $R$ is a integral domain.  A subset $W \subseteq R$ containing $1$ and not containing $0$ is called a \emph{multiplicative set} if for any $a,b \in W$, we have $ab \in W$.  (Note the conditions on 1 and 0 are not always assumed in the literature, we make them here for convenience).
+\vskip 9pt
+\noindent
+{\bf 1.}  Suppose that $Q \subseteq R$ is a prime ideal.  Show that $R \setminus Q$ is a multiplicative set.  In particular, note that $R \setminus \{0 \}$ is a multiplicative set in an integral domain.
+\vskip 150pt
+\noindent
+{\bf Definition 2.}  Suppose $W \subseteq R$ is a multiplicative set in an integral domain.  Consider the set of all pairs $\{(r, w) \;|\; r \in R, w \in W \}$ under the following equivalence relation $(r, w) \sim (r', w')$ if $w' r = w r'$.  The set of equivalence classes is denoted $W^{-1} R$ and equivalence classes of pairs $(r, w)$ are denoted by $r/w$.
+\vskip 9pt
+\noindent
+{\bf 2.}  Suppose that $W \subseteq R$ is a multiplicative set.  Show that $W^{-1} R$ is a ring under the operations induced by the formulae
+\[
+r/w + r'/w' = (r'w + rw')/(ww') \text{ and } (r/w)(r'/w') = (rr'/ww').
+\]
+In particular, show that those operations are well defined.  Also show that the map $\phi : R \to W^{-1} R$ defined by $\phi(r) = r/1$ is an injective ring homomorphism.
+\newpage
+\noindent
+{\bf 3.}  If $R$ is an integral domain and $W = R \setminus \{ 0 \}$ show that $W^{-1}R$ is a field.  This field is called the field of fractions of $R$.
+\vskip 100pt
+\noindent
+{\bf 4.}  If $R$ is an integral domain, $W = R \setminus \{ 0 \}$, and $K = W^{-1} R$ is the field of fractions, show that $K$ contains an isomorphic copy of $R$ as a subring.
+\vskip 100pt
+\noindent
+{\bf 5.}  Now suppose that $R$ is an integral domain, $W \subseteq R$ is a multiplicative set and $Q \subseteq R$ is a prime ideal such that $W \cap Q = \emptyset$.  Show that the set
+\[
+W^{-1} Q := \{ x/w \;|\; x \in Q, w \in W \} \subseteq W^{-1} R
+\]
+is a prime ideal of $W^{-1} R$.
+\newpage
+\noindent
+{\bf 6.}  Suppose that $R$ is an integral domain and $W \subseteq R$ is a multiplicative set.  Suppose that $P \subseteq W^{-1} R$ is a prime ideal and set $Q = P \cap R$ (where the intersection is taken with the isomorphic copy of $R \cong \phi(R)$ from {\bf 2.}).  Show that $Q \cap W = \emptyset$ and that $W^{-1} Q = P$.
+\vskip 200pt
+\noindent
+{\bf 7.}  Conclude that the prime ideals of $W^{-1} R$ are in bijection with the prime ideals $Q$ in $R$ such that $W \cap Q = \emptyset$.
+\vskip 150pt
+\noindent
+{\bf 8.}  Suppose that $W \subseteq R$ is a multiplicative set in an integral domain made up of only units (= invertible elements) of $R$.  Show that the map $\phi : R \to W^{-1} R$ you constructed in {\bf 2.} is an isomorphism.
+\newpage
+\noindent
+{\bf 9.}  Give an example of an integral domain and two multiplicative sets $W, V \subseteq R$ such that $W \neq V$, $W^{-1} R \cong V^{-1} R$ but $\phi : R \to W^{-1} R$ is not surjective.
+\vskip 200pt
+\noindent
+{\bf 10.}  Suppose that $R$ is an integral domain, $W \subseteq R$ is a multiplicative set and $\psi : R \to S$ is a ring homomorphism between commutative rings.  Further suppose that for each $w \in W$, there is some $s \in S$ such that $s \psi(w) = 1_S$.  Show that one can factor $\psi$ as follows
+\[
+\xymatrix{
+R \ar[dr]_-{\phi} \ar[rr]^{\psi} & & S\\
+& W^{-1} R \ar@{.>}[ur]_-{\alpha}
+}
+\]
+and that the map $\alpha$ is unique.  This is called the \emph{universal property of localization}.
+\end{document}
+

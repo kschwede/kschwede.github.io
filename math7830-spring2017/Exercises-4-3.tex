@@ -1,0 +1,158 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.1in,top=1in,right=1.1in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+\theoremstyle{theorem}
+\newtheorem*{mainthm}{Main Theorem}
+\newtheorem*{mainthma}{Main Theorem A}
+\newtheorem*{mainthmb}{Main Theorem B}
+\newtheorem*{mainthmc}{Main Theorem C}
+\newtheorem*{atheorem}{Theorem}
+
+
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title{Exercises for Characteristic $p$ commutative algebra\\April 3rd, 2017}
+\author{Due, Friday April 14th, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+
+\begin{enumerate}[label=(\arabic*)]
+\item Suppose $R$ is an $F$-finite normal domain and that $0 \neq \phi \in \Hom_R(F^e_* R, R)$ and $0 \neq \psi \in \Hom_R(F^d_* R, R)$.  Find a formula for $\Delta_{\phi \circ F^e_* \psi}$ in terms of $\Delta_{\phi}$ and $\Delta_{\psi}$.
+\item Suppose that $\Delta \geq 0$ is a $\bQ$-divisor on a normal domain $R$.  Consider the subset
+\[
+S := \Hom_R(F^e_* R(\lceil (p^e - 1)\Delta \rceil), R) \subseteq \Hom_R(F^e_* R, R)
+\]
+induced by contravariance of $\Hom$.
+
+Show that $S$ is equal to:
+\[
+\begin{array}{rl}
+= & \{ \phi \in \Hom_R(F^e_* R, R)\;|\; \phi \text{ factors through the inclusion $R \subseteq R(\lceil (p^e-1)\Delta \rceil)$} \} \\
+= & \{ \phi \in \Hom_R(F^e_* R, R) \;|\; \Delta_{\phi} \geq \Delta \}
+\end{array}
+\]
+\item Suppose that $L / K$ is a finite extension of characteristic $p > 0$ fields and $x \in L \setminus K$ but $x^p \in K$.  Show that if $\phi : K^{1/p^e} \to K$ extends to $L^{1/p^e} \to L$, then $\phi$ is the zero map on $K$.
+\item Using the previous problem, conclude in general that if $L/K$ is finite and inseparable, then no nonzero $\phi : K^{1/p^e} \to K$ can extend to $L^{1/p^e} \to L$.
+    \vskip 3pt
+    \emph{Hint:} Suppose such a map did extend to $\phi_L$.  Let $K'$ denote the separable closure of $K$ in $L$. Show that $\phi_L(K'^{1/p^e}) \subseteq K'$ and the reduce to the previous exercise.
+\item Now fix a normal $F$-finite Noetherian domain $R$ (with $\Hom_R(F_* R, \omega_R) \cong F_* \omega_R$ if you'd like) and a nonzero $\phi \in \Hom_R(F^e_* R, R)$.  In this case we define the \emph{test ideal of $(R, \phi)$} to be the smallest nonzero ideal $J$ such that
+    \[
+    \phi(F^e_* J) \subseteq J,
+    \]
+    if it exists.  The test ideal is denoted by $\tau(R, \phi)$.
+    In the following steps, we will show that it always exists.
+    \begin{enumerate}
+    \item Suppose first that $R$ is strongly $F$-regular and that $\phi$ generates $\Hom_R(F^e_* R, R)$ as an $F^e_* R$-module.  Show that for every $0 \neq c \in R$, there is an $n > 0$ such that $\phi^n(F^{ne}_* cR) = R$.  Conclude that $\tau(R, \phi) = R$.
+        \vskip 3pt
+        \emph{Hint:} We know there exists a $d > 0$ and $\psi \in \Hom_R(F^d_* R, R)$ such that $\psi(F^e_* c) = 1$.  Show that you can choose $d$ such that $e$ divides $d$. In this case, $\psi$ is a pre-multiple of some $\phi^n$.
+    \item Show there exists $b \in R$ such that $R_b = R[b^{-1}]$ is strongly $F$-regular and $\phi_b$, the image of $\phi$, generates $\Hom_{R_b}(F^e_* R_b, R_b)$ as an $F^e_* R_b$-module.
+        \vskip 3pt
+        \emph{Hint:} First invert some $b'$ to make $R_{b'}$ regular (and hence strongly $F$-regular).  Then invert $b''$ contained in all the ideals that make up $D_{\phi}$.  Let $b = b'b''$.  Show that the image of $\phi$ in $\Hom_{R_{b}}(F^e_* R_b, R_b)$ corresponds to the zero divisor.
+    \item Now fix $b$ as in the previous problem.  For any $0 \neq c \in R$, show that $b^{m_c} \in \phi^n(F^{ne}_* cR)$ for some $n > 0$ ($m_c$ depends on $c$).
+        \vskip 3pt
+        \emph{Hint:} We know that $1 \in \phi^n_b(F^{ne}_* cR_b)$ for some $n$.  Clear denominators.
+    \item We can write $b^{m_1} \in \phi^{n_1}(F^{n_1 e}_* R)$ for some integers $n_1, m_1$.  Show that $b^{2 m_1} = (b^{m_1})^2 \in \phi^{l n_1}(F^{ln_1e}_* R)$ for all integers $l$.
+        \vskip 3pt
+        \emph{Hint:} Start by showing that $b^{\lceil m_1/p^{n_1 e} \rceil} b^{m_1} \in \phi^{n_1}(F^{n_1e}_* b^{m_1}R) \subseteq \phi^{2n_1}(F^{2n_1e}_* R)$.  Then do the general case.
+        %\phi^{n}(F^{ne}_* b^{\lceil m_1/p^{ne} \rceil + m_1} R)
+    \item Now fix $0 \neq c \in R$, and so $b^{m_c} \in \phi^{n_c}(F^{n_c e}_* c R)$ for some integers $m_c$ and $n_c$.  Conclude that $b^{3 m_1} \in \phi^N(F^{Ne}_* cR)$ for some integer $N > 0$.
+        \vskip 3pt
+        \emph{Hint:}  Apply $\phi^{n_1}$ until the result is obtained.
+    \item Set $a = b^{3m_1}$.  Suppose that $J$ is any nonzero ideal such that $\phi(F^e_* J) \subseteq J$.  Show that $a \in J$.
+    \item Show that $\tau(R, \phi) = \sum_{n \geq 0} \phi^n(F^{ne}_* aR)$ and hence the test ideal exists.
+    \end{enumerate}
+    \vskip 24pt
+    \noindent
+    {\bf Remark.}  Remember, $\phi$ corresponds to a divisor $\Delta_{\phi}$.  One can define $\tau(R, \Delta_{\phi}) := \tau(R, \phi)$, note that any two $\phi$ defining the same divisor are unit multiples.  Now, start with $R$ of finite type over a field of characteristic zero with some divisor $\Delta$ such that $K_R + \Delta \sim_{\bQ} 0$, then for all $p \gg 0$ we have that $(1-p^e)(K_R + \Delta) \sim 0$ for some $e$.  Hence if one reduces\footnote{In the case that $R$ is finite type over $\bQ$, we write that $R = R_{\bZ} \otimes_{\bZ} \bQ$ for some $R_{\bZ}$ of finite type over $\bQ$, then $R_p = R_{\bZ} \otimes_{\bZ} {\bZ/p\bZ}$.} $R$ to $R_p$, a characteristic $p \gg 0$ ring, one can choose $\phi_p$ corresponding to $\Delta_p$ (the reduction mod $p$ of $\Delta$ -- done for the primes defining $\Delta$).  In this case, it is a theorem that if $\mJ(R, \Delta)$ is the multiplier ideal, then
+    \[
+        \mJ(R, \Delta) \;\mathrm{mod}\; p = \tau(R_p, \Delta_p)
+    \]
+    for $p \gg 0$.  This was proven by Takagi in this generality.  Smith, Hara and Hara-Yoshida previously or simultaneously proved similar results.
+\end{enumerate}
+
+
+
+\end{document}
+
+

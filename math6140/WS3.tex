@@ -1,0 +1,138 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+\usepackage{mathrsfs}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bA}{\mathbb{A}}
+%\newcommand{\cF}{\mathcal{F}}
+%\newcommand{\cG}{\mathcal{G}}
+%\newcommand{\cH}{\mathcal{H}}
+\newcommand{\image}{\mathrm{im}\,}
+\newcommand{\coker}{\mathrm{coker}\,}
+\newcommand{\Hom}{\mathrm{Hom}\,}
+\newcommand{\Supp}{\mathrm{Supp}\,}
+\newcommand{\Ann}{\mathrm{Ann}\,}
+\newcommand{\sH}{\mathscr{H}\,}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\Div}{\mathrm{Div}}
+
+\begin{document}
+\title{Worksheet \#3 -- Math 6140\\Spring 2019}
+\author{Due Monday, February 18th}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+We begin by recording some definitions (we'll talk about these soon).
+\vskip 9pt
+\noindent
+{\bf Definition.}
+We work on a normal quasi-projective variety $X$ and we fix $\cK(X)$ to be the constant sheaf made out of the function field $K(X)$ of $X$.
+Suppose $D$ is a Weil divisor.  Set $\O_X(D) \subseteq \cK(X)$ denote the sheaf of $\O_X$-modules with the property that
+\[
+\Gamma(U, \O_X(D)) = \{f \in K(X) \;|\; \Div_U(f) + D \geq 0 \}.
+\]
+
+A divisor $D$ is called a \emph{Cartier divisor} if $\O_X(D)$ is an invertible sheaf.  In other words, for each $p \in X$, we have isomorphisms of stalks $\O_X(D)_p = \O_{X,p}$.
+\vskip 12pt
+\noindent
+{\bf 1.}  Show that every principal divisor on a non-singular variety is Cartier.  
+\vskip 180pt
+\noindent
+{\bf 2.}  Suppose that $D$ is a Cartier divisor and $E$ is a Weil divisor.  Prove that $$\O_X(D) \otimes_{\O_X} \O_X(E) \cong \O_X(D) \cdot \O_X(E) = \O_X(D+E) \subseteq \cK(X).$$
+\newpage
+\noindent
+{\bf 3.}  Consider $X = Z(xy-z^2) \subseteq \bA^3$.  Verify that the ideal $\langle x, z \rangle \subseteq k[x,y,z]/\langle xy-z^2 \rangle = k[X]$ is prime of height one and so determines a prime divisor $E$.  Show that $E$ is not Cartier but that $2E$ is.
+\vskip 200pt
+Suppose that $\pi : Y \to X$ is a finite surjective morphism of normal affine varieties (so that $\pi^* : k[X] \to k[Y]$ makes $k[Y]$ into a finite $k[X]$-modules).  For every prime divisor $E$ on $X$, with corresponding prime ideal $I_E$ and discrete valuation $v_E$, there exist finitely many prime divisors $F_1, \dots, F_n \subseteq Y$ that map onto $E$.  Suppose that $e \in \O_{X, E}$ is an element with $v_E(e) = 1$.  Write $a_i = v_{F_i}(e)$.  We write
+\[
+\pi^* E = \sum_i a_i F_i.
+\]
+For more general divisors $\sum b_j E_j$, we extend by linearity.  
+\vskip 12pt
+\noindent
+{\bf 4.}  Consider the map $\pi : \bA^1 \to \bA^1$ defined by $\pi(t) = t^2$.  Compute $\pi^* (2 \cdot Z(x) - 3 \cdot Z(x-1) + 1 \cdot Z(x+1))$.
+\newpage
+\noindent
+{\bf 5.}  Suppose that $\pi : Y \to X$ is a finite surjective morphism of normal affine varieties and that $f \in K(X)$.  Show that 
+\[
+\pi^* \Div_X(f) = \Div_Y(f).
+\]
+\vskip 170pt
+Suppose that $\pi : Y \to X$ is a surjective morphism of normal varieties.  Suppose that $D$ is a Cartier divisor on $X$.  For every sufficiently small open chart $U$ on $X$, since $\O_X(D)$ is locally free, we can write $f_i \cdot \O_{U_i} = \O_X(D)|_{U_i}$ for some $f_i \in K(X)$.  We define $\pi^* D$ to be the divisor $\Div_{\pi^{-1}(U_i)}(f_i)$ on $\pi^{-1}(U_i)$.
+\vskip 12pt
+\noindent
+{\bf 6.}   Suppose that $\pi : Y \to X$ is a surjective morphism of normal affine varieties and $D$ is a Cartier divisor on $X$.  Prove that the two definitions of $\pi^* D$ agree.
+\vskip 200pt
+\noindent
+{\bf 7.}  Consider $\pi : Y \to X = \bA^2$ to be the blowup of the origin.  Let $D = \Div_X( (y^2- x^3)/y)$.  Write $\pi^* D$ as a sum of prime divisors.  
+\end{document}
+

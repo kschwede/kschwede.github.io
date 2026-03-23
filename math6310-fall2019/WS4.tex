@@ -1,0 +1,140 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Ann}{\mathrm{Ann}}
+\newcommand{\tor}{\mathrm{tor}}
+
+
+\begin{document}
+\title{Worksheet \#4 -- Math 6310\\Fall 2019}
+\author{Due: Friday, October 18th}
+\maketitle
+
+\noindent
+{\bf Definition: }  Suppose $R$ is a ring.  A \emph{left $R$-module} $M$ is an Abelian group under $+$ with a multiplication map by elements of $R$:
+\[
+    \xymatrix@R=1pt{
+        R \times M \ar[r] & M\\
+        (r, m) \ar@{|->}[r] & r.m
+    }
+\]
+satisfying the following axioms.
+\begin{itemize}
+\item[(1)] $r_1.(r_2.m) = (r_1 r_2).m$ for all $r_i \in R$, $m \in M$.
+\item[(2)] $1.m = m$ for all $m \in M$.
+\item[(3)] $r(m+n) = rm + rn$ for all $r \in R$, $m,n \in M$.
+\item[(4)] $(r_1 + r_2)m = r_1 m + r_2 m$ for all $r_i \in R$, $m \in M$.
+\end{itemize}
+We can define a right $R$-module likewise (there is no real difference if $R$ is commutative).
+\vskip 9pt
+It is important to note that if $R$ is a field, an $R$-module is nothing more than an $R$-vector space.
+
+Another important example, the left ideals of $R$ are exactly the $R$-submodules of $R$ acting on itself.
+\vskip 9pt
+\noindent
+{\bf 1.}  Suppose that $\phi : R \to S$ is a ring homomorphism and $M$ is any $S$-module.  Show that we can view $M$ as an $R$-module via $r.m = \phi(r).m$.
+\newpage
+\noindent
+{\bf 2.}  Show that every Abelian group $G$ under $+$ is a $\bZ$-module.
+\newpage
+\noindent
+{\bf 3.}  Suppose $R$ is a ring and $M$ is an $R$-module.  Define
+\[
+    \Ann_R(M) = \{r \in R\;|\; rm = 0 \;\forall m \in M \}.
+\]
+Prove that this is an ideal of $R$ and that we can also view $M$ as an $R/\Ann_R(M)$-module.
+\newpage
+\noindent
+{\bf 4.}  Suppose that $N \subseteq M$ is a submodule of a module.  Define the $R$-module $M/N$ and prove the $R$-module action you define is well defined.
+\newpage
+\noindent
+A homomorphism of (left) $R$-modules is a function $\phi : M \to N$ between $R$-modules that is a homomorphism of Abelian groups (under addition) and such that $\phi(r.m) = r.\phi(m)$.
+\vskip 9pt
+\noindent
+{\bf 5.}  Formulate and prove the first isomorphism theorem for homomorphisms of left $R$-modules.
+\newpage
+\noindent
+{\bf 6.}  Suppose that $A \subseteq B \subseteq C$ are left $R$-modules.  Prove that $C/B \cong (C/A)/(B/A)$ as left $R$-modules.
+\newpage
+\noindent
+{\bf 7.}  Suppose $R$ is a commutative integral domain and that $M$ is an $R$-module.  Consider the set
+\[
+    M_{\tor} = \{m \in M \;|\; rm = 0 \text{ for some nonzero } r\in R\}.
+\]
+\begin{itemize}
+    \item[(a)]  Prove that $M_{\tor}$ is a submodule of $M$ (called the \emph{torsion submodule} of $M$).
+    \item[(b)]  If $M_{\tor} = \{0\}$ then $M$ is called \emph{torsion free}.  Prove that $M/M_{\tor}$ is torsion free.
+\end{itemize}
+\newpage
+\noindent
+{\bf 8.}  Suppose $R$ is a commutative integral domain, $W \subseteq R$ is a multiplicative set and $M$ is an $R$-module.
+Consider the set of pairs $(m, w)$ with $m \in M$ and $w \in W$ and declare two pairs $(m, w) \sim (m', w')$ to be equivalent if there exists $v \in W$ such that $v w' m = v w m'$.
+\begin{itemize}
+    \item[(a)]  Show that this defines an equivalence relation.  The equivalence class of $(m,w)$ is denoted by $m/w$.
+    \item[(b)]  Prove that $W^{-1} M$ is a $W^{-1}R$-module (and also an $R$-module via the map $R \to W^{-1}R$).
+    \item[(c)]  If $R = \bZ$, $W = \{1, 2, 2^2, 2^3, \dots\}$ and $M = \bZ/6\bZ$.  Prove that $W^{-1} M$ is isomorphic to $\bZ/3\bZ$.
+\end{itemize}
+
+\end{document}
+

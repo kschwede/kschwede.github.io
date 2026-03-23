@@ -1,0 +1,127 @@
+\documentclass[10pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\usepackage{multicol}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+
+
+\begin{document}
+\title{Homework \#5 -- Math 5320\\Spring 2020}
+\author{Due Wednesday, April 15th, in Gradescope}
+
+\maketitle
+
+Note, you can find the book's material on group actions, including solutions to some of these exercises, in section 6.7.  Note I use $.$ to denote the group action, the book uses $*$.  
+\noindent
+{\bf 1.}  Suppose a group $G$ acts on a set $X$.  Suppose $x \in X$.  Prove that
+\[
+    \mathrm{stab}_G(x) = \{g \in G\;|\; gx = x\}
+\]
+is a subgroup of $G$.  
+\newpage
+\noindent
+{\bf 2.}  Suppose a group $G$ acts on a set $X$.  Suppose that $x,y \in X$ and that 
+\[
+    \mathrm{orbit}_G(x) \bigcap \mathrm{orbit}_G(y) \neq \emptyset.
+\]
+Prove that $\mathrm{orbit}_G(x) = \mathrm{orbit}_G(y)$.  Then use this show that the distinct orbits partition $X$ (that is, that $X$ is the union of the distint orbits, and distinct orbits have nothing in common).
+\vskip 3pt
+\emph{Hint:}  Recall that $\mathrm{orbit}_G(x) = \{g.x \;|\; g \in G\} = G.x$
+\newpage
+\noindent
+{\bf 3.}  Suppose a finite group $G$ acts on a set $X$ and that $x \in X$.  Show that 
+\[
+    |\mathrm{orbit}_G(x)| = |G| / |\mathrm{stab}_G(x)|.
+\]   
+This result is sometimes called the \emph{orbit-stabilizer theorem}.
+\newpage
+\noindent
+{\bf 4.}  Consider the group $G = S_4$ acting on $\{1, 2, 3, 4\}$.  Show that $H = \mathrm{stab}_G(4)$ is identified with $S_3$.  Now, let $H$ act on $\{1,2,3,4\}$.  What is the orbit of $3$?
+\newpage
+\noindent
+{\bf 5.}  Let $f$ be a polynomial of degree $n$ with coefficients in $F$ and let $K$ be a splitting field for $f$ over $F$.  Prove that $[K : F] \leq n!$.
+\newpage
+\noindent
+{\bf 6.}  Determine the degrees of the splitting fields of the following polynomials over $\bQ$.
+\begin{enumerate}
+    \item $x^3 - 2$.
+    \item $x^6 - 1$.
+    \item $x^4 + 1$.
+\end{enumerate}
+\newpage
+\noindent
+{\bf 7.}  Let $K = \bQ(\sqrt{2}, \sqrt{3}, \sqrt{5})$.  Compute $[K : \bQ]$.  Prove that $K$ is a Galois extension of $\bQ$.
+\newpage
+\noindent
+{\bf 8.}  Let $K$ be the field from {\bf 7.}  Tell me everything you can about $\mathrm{Aut}(K/\bQ) = G(K/\bQ)$.  For example, is it cyclic? Abelian?  How many elements does it have?
+\newpage
+\noindent
+{\bf 9.}  For each of the following extensions $K \supset \bQ$, determine which are Galois.  If they are not Galois, find a larger extension $K' \supset K$ such that $K' \supset \bQ$ is Galois.
+\begin{enumerate}
+    \item $\bQ[\sqrt{6}] \supseteq \bQ$.
+    \item $\bQ[\sqrt{6}, i] \supseteq \bQ$.
+    \item $\bQ[5^{1/4}] \supseteq \bQ$.
+\end{enumerate}
+\newpage
+\noindent
+{\bf 10.}  Suppose that $K$ is the splitting field of $x^4 + 5$ over $\bQ$.  Let $H$ be the subgroup of $\mathrm{Aut}(K)$ with two elements, complex conjugation ($a + bi\mapsto a - bi$) and the identity.  Compute the fixed field $K^H$.
+\end{document} 

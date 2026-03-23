@@ -1,0 +1,252 @@
+\documentclass[12pt]{amsart}
+%   \overfullrule=5pt
+\usepackage[active]{srcltx}
+\usepackage{calc,amssymb,amsthm,amsmath,amscd, eucal,ulem}
+\usepackage{alltt}
+%\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\synctex=1
+%\usepackage{mathtools}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+\input{mabliautoref.sty}
+\input{xy}
+\xyoption{all}
+\input{kmacros3.sty}
+\usepackage{tikz}
+\usepackage{amsfonts, mathrsfs}
+\usepackage{calligra}
+\usepackage{stmaryrd} %power series bracket
+%\usepackage{dcpic, pictexwd}
+%\usepackage{pdfsync}
+\usepackage[left=1.1in,top=1in,right=1.1in,bottom=1in]{geometry}
+\usepackage{enumitem}
+
+\numberwithin{equation}{theorem}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\D}{\displaystyle}
+\newcommand{\til}{\widetilde}
+\newcommand{\ol}{\overline}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\E}{E}
+\renewcommand{\:}{\colon}
+\newcommand{\eg}{{\itshape e.g.} }
+\renewcommand{\m}{\mathfrak{m}}
+\renewcommand{\n}{\mathfrak{n}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\RamiT}{\mathcal{R_{T}}}
+\DeclareMathOperator{\edim}{edim}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\monomials}{monomials}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\newcommand{\Frob}[2]{{#1}^{1/p^{#2}}}
+\newcommand{\Frobp}[2]{{(#1)}^{1/p^{#2}}}
+\newcommand{\FrobP}[2]{{\left(#1\right)}^{1/p^{#2}}}
+\newcommand{\extends}{extends over $\Tt${}}
+\newcommand{\extension}{extension over $\Tt${}}
+\newcommand{\fg}{\pi_1^{\textnormal{\'{e}t}}} %Fundamental group
+\DeclareMathOperator{\ns}{ns}
+%\newcommand{\Spec}{\text{Spec}} %Spectrum
+\newcommand{\pSpec}{\text{Spec}^{\circ}} %Puntured Spectrum
+\newcommand{\etInCdOne}{\etale{} in codimension $1$}
+\DeclareMathOperator{\DIV}{Div}
+%\renewcommand{\char}{\charact}
+
+
+\usepackage{setspace}
+\usepackage{hyperref}
+%\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+
+\usepackage{verbatim}
+
+%The todo box!
+\def\todo#1{\textcolor{Mahogany}%
+{\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{\textbf{todo:
+} #1}}}\newline}}
+
+%What is going on?  Why isn't \O a script O?!?
+\renewcommand{\O}{\mathscr O}
+
+\begin{document}
+\title{Macaulay2 Worksheet for characteristic $p$ commutative algebra\\January 23rd, 2017}
+\author{Due February 6th, 2017}
+%\address{Department of Mathematics\\ University of Utah\\ Salt Lake City\\ UT 84112}
+%\email{schwede@math.utah.edu}
+
+
+%  \subjclass[2010]{14F18, 13A35, 14B05}
+
+\maketitle
+
+%\section{Reduction to characteristic $p > 0$}
+%\chapter{Frobenius and Kunz's theorem}
+%\bibliographystyle{skalpha}
+%\bibliography{MainBib}
+
+You are encouraged to work in groups of up to 3, only one assignment is due for each group, but everyone needs to work together.  Your solution must be LaTeX'd on this assignment.
+
+There are lots of commands below.  You are expected to play around with them to figure out how they work on your own.  You can always use {\tt help commandname} or possibly {\tt viewhelp commandname}, or look at the documentation on Macaulay2's website.
+
+\section{Running Macaulay2 for the first time}
+
+It is easiest to run Macaulay2 from within emacs, so we will explain how to do that.  If you are already running Macaulay2 in emacs regularly, you can probably skip this step.  Once you have Macaulay2 installed, to set it up from your account for the first time open up a terminal and execute
+\begin{verbatim}
+M2
+\end{verbatim}
+It should show you something like:
+\begin{verbatim}
+Macaulay2, version 1.8.2
+with packages: ConwayPolynomials, Elimination, IntegralClosure, LLLBases,
+               PrimaryDecomposition, ReesAlgebra, TangentCone
+
+i1 :
+\end{verbatim}
+From here, execute the command
+\begin{verbatim}
+i1 : setup()
+\end{verbatim}
+which should probably ask you some questsions, answer yes to all of them.
+
+Now exit out of the command line Macaulay2 by running
+\begin{verbatim}
+exit
+\end{verbatim}
+Once you are back in the regular terminal, run
+\begin{verbatim}
+emacs &
+\end{verbatim}
+Once emacs starts, hit the {\tt F12} key, this should start Macaulay2 (I hope).  You may want to hide the existing emacs buffer by hitting {\tt ctrl+X} followed by {\tt 1}.  Now you are running emacs in a happy little window with what most people find is a nicer interface than the command line (ie, there is reasonable Macaulay2 syntax highlighting, autocompletion of commands works).
+
+\section{Making a ring and a map of rings}
+From within Macaulay2 execute the following commands.
+\begin{verbatim}
+i1 : R = ZZ/5[x,y,z]
+i2 : S = ZZ/5[a,b]
+i3 : f = map(S, R, {a, a*b, b^2})
+i4 : I = ker f
+i5 : T = R/I
+\end{verbatim}
+Commands {\tt i1} and {\tt i2} simply create two rings $R$ and $S$.  Command {\tt i3} creates a ring map $f : R \to S$ (note the first entry is the source, the second is the target).  Indeed, to specify such a ring map one must say where the variables $\{x, y, z\}$ go, this is done by the list ${\tt \{a, a*b, b^2\}}$ which says that $x \mapsto a, y \mapsto ab, z \mapsto b^2$.
+
+Next we compute the kernel of $f$ and form the quotient ring $T = R/I$ so that $T \cong \Image(f)$ by construction.
+
+\section{Frobenius}
+
+\begin{exercise*}
+Define the Frobenius maps $F_R : R \to R$ and $F_T : T \to T$ in your Macaulay2 session.  I called my maps {\tt FR} and {\tt FT} respectively.
+\vskip 3pt
+\emph{Hint:} If you are having trouble convincing Macaulay2 which ring your variables live in, you can always use the commands {\tt use R} and {\tt use T} respectively.
+\end{exercise*}
+
+We want to view $R$ as an $R$-module via Frobenius, to do that we need the {\tt PushForward} package, which we start by running.
+\begin{verbatim}
+i7 : loadPackage "PushForward"
+\end{verbatim}
+Once the package is loaded, we can pushforward modules.  For example, first I'm going to create a rank-1 free $R$-module $M$ and then push it forward by Frobenius (for $R$).
+\begin{verbatim}
+i13 : M = R^1
+i14 : FM = pushFwd(M, FR)
+\end{verbatim}
+Verify that Macaulay2 gives you something reasonable.
+
+\begin{exercise*}
+Next, make $N$, a free $T$-module of rank 1 and push it forward by $F_T$ to obtain a module I am calling {\tt FN}.  Verify that it is not locally free via the command {\tt pdim} which computes the projective dimension.  What answer should it give you if it was free.
+\emph{Aside:}
+Note this only computes the projective dimension up to a certain limit, in this case 4.  If you want to compute a longer (partial) projective resolution, you can use the command {\tt resolution(FN, LengthLimit=>10)} and observe that it will compute a longer partial resolution.
+\vskip 3pt
+\emph{Warning \#1:} I suspect that Macaulay2 will not always give the right answer for projective dimension if $R$ is not a graded ring and $M$ is not a graded module.  You have been warned!  Note in this case, if you set {\tt k = T/ideal(x,y,z)} and compute
+\begin{verbatim}
+dim Ext^1(FN, k)
+\end{verbatim}
+you'll get something $> -1$ which pretty well proves that {\tt FN} is not projective.
+\vskip 3pt
+\emph{Warning \#2:} Note the command {\tt isFree} only checks whether Macaulay2 is thinking of a module as locally free at the moment, it \emph{does not check} whether the module is actually locally free.
+\end{exercise*}
+
+We have just verified that $T$ is not regular by checking that $F_* T$ is not locally free.  That's a ridiculous way to do this.  The next section gives us another option.
+
+\section{Functions}
+We are going to create a function which takes an ideal $I = \langle f_1, \ldots, f_n \rangle$ and returns the ideal $I^{[p]} = \langle f_1^p, \ldots, f_n^p \rangle$.  First let's learn the necessary commands, like how to extract a list of generators from an ideal.
+\begin{verbatim}
+i38 : use T
+i39 : J = ideal(x^4, x*y- z^5, y^6 - z^3)
+i41 : L = first entries gens J
+\end{verbatim}
+At this point $L$ is a list a generators of $J$.  Let's make a list of these generators to higher powers by running the command:
+\begin{verbatim}
+i43 : p = char T
+i44 : Lp = apply(L, u -> u^p)
+i45 : Jp = ideal(Lp)
+\end{verbatim}
+The command {\tt apply} applies a function to every element in the list.  In our case, we made an inline ad-hoc function {\tt u->u{\textasciicircum}p}.
+
+More generally, the command {\tt myFunction = u -> {u = u+1; 2*u} } should create a function that takes in a number, adds one to that, and then doubles the output.  Indeed, try {\tt myFunction(5)}.
+
+\begin{exercise*}
+Create a function {\tt frobeniusPower} which takes an ideal $I$ and returns $I^{[p]}$.  \vskip 3pt
+\emph{Hint:} If you are trying to grab the characteristic, note that {\tt char ring I} should give you the characteristic of the ring.
+\end{exercise*}
+
+After you've made this function, run the following commands.
+\begin{verbatim}
+i54 : use T
+i55 : m = ideal(x,y,z)
+i56 : mp = frobeniusPower(m)
+i57 : degree(T^1/mp)
+i58 : (char T)^(dim T)
+\end{verbatim}
+Note {\tt degree} computes the length of a module.  Hopefully those two numbers you constructed are different.  On the other hand, if $T$ was regular of dimension $2$ at the origin, by the completion argument we did earlier in class, $T/\fram^{[p]}$ should have length $p^{\dim T} = 5^2 = 25$.  Indeed, this sounds like a good non-Macaulay2 exercise.
+
+\begin{exercise*}
+Prove that if $(R, \fram, k)$ is a regular local ring of dimension $d$, characteristic $p > 0$ and with a perfect residue field $k$, then
+\[
+\text{length}_R (F_* R)/\fram = \text{length}_R F_* (R/\fram^{[p]}) = \text{length}_R (R/\fram^{[p]}) = p^d.
+\]
+Make sure to explain why we can remove the $F_*$ in the second to last equality.
+\end{exercise*}
+
+\section{The other way to check regularity}
+
+There is one other obvious way to check regularity, via the Jacobian condition.  I'll step you through this and then show you the easy way to get it.
+
+\begin{verbatim}
+i62 : use T
+i63 : I = ideal T
+i64 : jacobian I
+i65 : minors(1, jacobian I)
+i66 : jac = sub(minors(1, jacobian I), T)
+i67 : jac == ideal(1_T)
+\end{verbatim}
+Note the Jacobian of an ideal is a matrix (as it probably should be).  We then compute the $1 \times 1$ minors of that matrix.  Finally we substitute that matrix back into $T$ and check whether we get the whole ring.
+
+Another way to accomplish the same thing is via the command {\tt singularLocus}.
+
+\begin{exercise*}
+Play around with the {\tt singularLocus} command and figure out how to use it to construct the ideal {\tt jac} we constructed above.  Turn in a sequence of commands that does it.
+\end{exercise*}
+
+Finally, let's make a more interesting singular ring.  Run the following commands.
+
+\begin{verbatim}
+i72 : restart
+i1 : R = ZZ/5[a,b]
+i2 : S = ZZ/5[x,y,z,u,v,w]
+i3 : f = map(R, S, {a^5, a^4*b, a^3*(b^2 - b), a^2*b^3, a*b^4, b^5})
+i4 : I = ker f
+i5 : T = S/I
+\end{verbatim}
+Feel free to make your own more singular ring $T$, the way I am constructing it, we will definitely get a domain though.
+
+\begin{exercise*}
+Verify that the ring $T$ (or your own more interesting ring) is singular.  Compute the singular locus and use Macaulay2 to help you write it in as simple a way as possible.  What is the dimension of $T$, what is the dimension of the singular locus of $T$?
+\vskip 3pt
+\emph{Hint:} The command {\tt minimalPrimes} should give you the minimal primes in a primary decomposition of an ideal.
+\end{exercise*}
+\end{document}
+
+

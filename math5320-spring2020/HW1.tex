@@ -1,0 +1,128 @@
+\documentclass[10pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\usepackage{multicol}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+
+
+\begin{document}
+\title{Worksheet \#2-- Math 5320\\Spring 2020}
+\author{Due Friday, January 31st, in Gradescope}
+
+\maketitle
+
+
+\noindent
+{\bf 1.}  An \emph{automorphism} of a ring $R$ is a ring isomorphism $\phi : R \to R$.  Let $A$ be a ring and consider the map $\phi : A[x,y] \to A[x,y]$ which sends elements of $A$ to themselves, sends $x \mapsto y$ and $y \mapsto x$.  Prove that $\phi$ is a ring homomorphism and an isomorphism.  
+\vskip 3pt
+\emph{Hint:}  You may use material from the text.
+\newpage
+\noindent
+{\bf 2.}  Find all ring automorphisms of the polynomial ring $\mathbb{Z}[x]$.
+\newpage
+\noindent
+{\bf 3.}  Let $R$ be a ring of prime characteristic $p$ (in other words, $p = 0$, where $p$ is $1+1+ \dots + 1$ repeated $p$-times, $\bZ/p\bZ$ has characteristic $p > 0$).  Consider the ring map 
+\[
+    F : R \to R
+\]
+defined by $F(r) = r^P$.  Prove that $F$ is a ring homomorphism.  It is called the \emph{Frobenius} homomorphism.
+\newpage
+\noindent
+{\bf 4.}  For each of the following, produce an example of a ring of prime characteristic $p > 0$ where:
+\begin{itemize}
+    \item[(a)]  The Frobenius homomorphism is \emph{bijective}.
+    \item[(b)]  The Frobenius homomorphism is \emph{injective} but \emph{not surjective}.
+    \item[(c)]  The Frobenius homomorphsim  is \emph{surjective} but \emph{not injective}.
+\end{itemize}
+\newpage
+\noindent
+{\bf 5.}  Suppose $S = \mathbb{Q}[x]$ and let $f = x^4 + x^3 + x^2 + x + 1$.  Let $R = S/(f)$ and suppose $\overline{x}$ denotes $x + (f)$ (the image of $x$ in $R$).  Express the element 
+\[
+    (\overline{x}^3 + \overline{x}^2 + \overline{x})(\overline{x}^5 + \overline{1})
+\]
+as a $\bQ$-linear combination of $\{\overline{1}, \overline{x}, \overline{x}^2, \overline{x}^3\}$.  
+\newpage
+\noindent
+{\bf 6.}  Is there a field $k$ such that $k[x]/(x^2)$ is isomorphic (as a ring) to $k[x]/(x^2-1)$.
+\newpage
+\noindent
+{\bf 7.}  Let $R$ be a ring and suppose $a \in R$.  Let $R' = R[x]/(ax - 1)$.  Let $\alpha$ denote the image of $a$ in $R'$.  Note that $\alpha$ is an inverse of $x$.
+\begin{itemize}
+    \item[(a)]  Show that every element in $R'$ can be written in the form $\alpha^k b$ for some $b \in R$.
+    \item[(b)] Prove that the kernel of $R \to R'$ (sending an element to its coset) is the set of $b \in B$ such that $a^n b = 0$ for some $n > 0$.
+    \item[(c)] Prove that $R'$ is the zero ring if and only if $a$ is nilpotent\footnote{If a power of $a$ is zero in $R$.}.
+\end{itemize}
+\newpage
+\noindent
+{\bf 8.}  Suppose we adjoin an element $\alpha$ such that $\alpha^2 = 1$ to the ring $\mathbb{R}$.  Prove that the resulting ring is isomorphic (as a ring) to $\mathbb{R} \times \mathbb{R}$.  
+\newpage
+\noindent
+{\bf 9.}  In each case, describe the ring obtained by adjoining an element $\alpha$ to $\bF_2 \cong \bZ/2\bZ$ satisfying the given relation.
+\begin{itemize}
+    \item[(a)]  $\alpha^2 + \alpha + 1 = 0$.
+    \item[(b)]  $\alpha^2 + 1 = 0$.
+    \item[(c)]  $\alpha^2 + \alpha = 0$.
+\end{itemize}
+In particular, in each case, identiy the zero divisors, the nilpotent elements, and the units.
+
+
+\end{document} 

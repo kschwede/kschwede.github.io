@@ -1,0 +1,94 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bA}{\mathbb{A}}
+
+
+\begin{document}
+\title{Worksheet \#2 -- Math 6130\\Fall 2018}
+\author{Due Friday, September 7th}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+\vskip 9pt
+\noindent
+{\bf 1.}  Suppose that $R$ is a ring.  An nonzero and nonunit element $r \in R$ is called \emph{irreducible} if $r = ab$ implies that either $a$ or $b$ is a unit.  Find a affine variety $X$ an irreducible element $r \in k[X]$ such that $Z_X(r)$ is \emph{not} irreducible.  
+\vskip 300pt
+\noindent
+{\bf 2.}   Let $X \subseteq \bA^3$ be the algebraic set defined by the ideal $I = (x^2-yz, xz - x)$.  Show that $X$ is the union of three irreducible components $X=X_1 \cup X_2 \cup X_3$.  Compute $I(X_1), I(X_2)$ and $I(X_3) \subseteq k[x,y,z] = k[\bA^3]$.  
+\newpage
+\noindent
+{\bf 2.}  Suppose that $U \subseteq \bA^n$ is an open set (in the Zariski topology).  Show that $U$ is quasi-compact (every open cover has a finite subcover). 
+\vskip 3pt
+\emph{Hint:} Convert the open cover into a statement about ideals.
+\vskip 200pt
+\noindent
+{\bf 4.}  Define a regular map $\phi : \bA^1 \to \bA^3$ defined by $\phi(t) = (t^2, t^3, t^4)$.  Show that the image of $\phi$ is closed with $X = \phi(\bA^1)$ and find a finite set of generators of the ideal $I(X)$.  Is $\phi$ an injection?  Is it an isomorphism onto its image?
+\newpage
+I'll ask a group to present this next Friday.
+\vskip 3pt
+\noindent
+{\bf 5.}  Define a regular map $\phi : \bA^1 \to \bA^3$ defined by $\phi(t) = (t^3, t^4, t^5)$.  Show that the image of $\phi$ is closed with $X = \phi(\bA^1)$.  Find a finite set of generators of the ideal $I(X)$.  
+\vskip 3pt
+\emph{Hint:} The only way I know how to prove that the ``not really obvious'' set of elements really are generators is to weight the variables of $\bA^3$ appropriately and analyze the heck out of the situation.  An extensive hint is provided for this problem in exercise 2.76 in the text.
+\end{document}
+

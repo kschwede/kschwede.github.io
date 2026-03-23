@@ -1,0 +1,145 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+%\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\coker}{\mathrm{coker}}
+
+
+\begin{document}
+\title{HW \#6 -- Math 6310\\Fall 2019}
+\author{Due: Tuesday, November 26th}
+\maketitle
+\noindent
+{\bf 1.}  Suppose $R$ is a commutative ring.  Consider the functor:
+\[
+    \bullet \mapsto \Hom_R(\Hom_R(\bullet, R), R).
+\]
+This is called the \emph{reflexification} functor.  
+
+Show that there is a natural transformation of the identity function to the reflexification functor.  (Essentially, I am asking you to show that there is a map from any module $M$ to the reflexification of $M$, and it is compatible with maps from $M \to N$).
+\newpage
+\noindent
+{\bf 2.}  Suppose that $R \to S$ is a map of commutative rings.  Show that $\Hom_R(S, R)$ is an $S$-module.  Then, in the case that $R = \bZ$ and $S = \bZ[i]$, prove that $\Hom_R(S, R)$ is a free $S$-module of rank $1$.  
+\newpage
+\noindent
+{\bf 3.}  Suppose $R$ is a commutative ring.  Given modules $B, \ldots, D, B', \ldots, D'$ and $R$-module maps $b, \ldots, d, a', \ldots, c', \beta, \ldots, \gamma$ as in the commutative diagram below:
+\[
+\xymatrix{
+&  B \ar[r]^b \ar[d]^{\beta} &  C  \ar[r]^c \ar[d]^{\gamma} & D  \ar[d]^{\delta} \ar[r]^d & 0 \\
+0 \ar[r]_{a'}        & B' \ar[r]_{b'} & C' \ar[r]_{c'} & D' & \\
+}
+\]
+If the rows are exact, then we have an exact sequence
+\[
+\ker \beta \to \ker \gamma \to \ker \delta \xrightarrow{\phi} \coker \beta \to \coker \gamma \to \coker \delta
+\]
+where the maps between the kernels and cokernels are induced by $b,c,b',c'$ and the map $\phi$ is magic (in the proof, the exactness that I really want to read about is the exactness at $\phi$).
+\newpage
+\noindent
+{\bf 4.}  Suppose $R$ is a commutative ring and $I, J \subseteq R$ are ideals.  Prove that
+\[
+    (R/I) \otimes_R (R/J) \cong R/(I + J)
+\]
+as $R$-modules.
+\newpage
+\noindent
+{\bf 5.}  Suppose that $M$ is an $R$-module and $W \subseteq R$ is a multiplicative set.  Prove that
+\[
+    W^{-1} M \cong (W^{-1}R) \otimes_R M
+\]
+as $R$-modules.  Here $W^{-1} M$ is as defined in 
+\newpage
+\noindent
+{\bf 6.}  A short exact sequence of $R$-modules
+\[
+    0 \to A \xrightarrow{\alpha} B \xrightarrow{\beta} C \to 0
+\]
+is called \emph{split} if either of the following equivalent conditions hold.
+\begin{itemize}
+    \item[(a)]  There exists $f : B \to A$ such that $A \xrightarrow{\alpha} B \xrightarrow{f} A$ is an isomorphism.
+    \item[(b)]  There exists $g : C \to B$ such that $C \xrightarrow{g} B \xrightarrow{\beta} C$ is an isomorphism.    
+\end{itemize}
+Prove they are indeed equivalent.  Then show if the short exact sequence is split, that $B \cong \alpha(A) \oplus C$.
+\newpage
+\noindent
+{\bf 7.}  Suppose that $0 \to A \to B \to C \to 0$ is split.  For any $R$-module $M$, prove that
+\[
+    \begin{array}{c}
+        0 \to \Hom(M, A) \to \Hom(M, B) \to \Hom(M, C) \to 0\\
+        0 \to \Hom(C, M) \to \Hom(B, M) \to \Hom(A, M) \to 0\\
+        0 \to M \otimes A \to M \otimes B \to M \otimes C \to 0
+    \end{array}
+\]
+are all exact sequences.
+\newpage
+\noindent
+{\bf 8.}  Suppose that $A \to B \to C$ is a sequence of maps between $R$-modules and also that $0 \to \Hom_R(C, N) \xrightarrow{g'} \Hom_R(B, N) \xrightarrow{f'} \Hom_R(A, N)$ is exact for \emph{every} $R$-module $N$.  Prove that $A \to B \to C \to 0$ is exact.
+\vskip 3pt
+\emph{Hint:} The trick is clever choices of $N$ to get different parts of the exactness.
+\vfill
+The following is also true:  Suppose that $A \to B \to C$ is a sequence of maps between $R$-modules and also that $0 \to \Hom_R(M, A) \xrightarrow{f''} \Hom_R(M, B) \xrightarrow{g''} \Hom_R(M, C)$ is exact for \emph{every} $R$-module $M$.  Then $0 \to A \to B \to C$ is exact.  I won't ask you to prove it however.
+\end{document}
+

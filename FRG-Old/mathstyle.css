@@ -1,0 +1,124 @@
+/*
+ *   math.css
+ * 
+ *   This is the stylesheet for the math template.
+ */
+@import url("core.css");
+@import url("bars.css");
+
+body { margin: 0.6em 0.9em;}
+
+div#content,
+div.header{
+    padding: -13em;
+    margin-left: -13em;
+}
+div.footer {
+  clear  : both;
+  margin : 0;
+  padding: 0; }
+
+div#content { margin: 2em;  }
+div#content.left { margin-left: 11em;}
+div#content.right { margin-right: 11em }
+
+div.header, div.footer {
+  border-color: #000000;
+  border-style: none none solid none;
+  border-width: 0.0625em }
+
+div.header a:first-child { float: left }
+
+div.header h1 {
+  font-size     : 2em;
+  line-height   : 1.6875em;
+  margin        : 0;
+/*overflow      : hidden;*/
+  padding       : 0 4.4375em 0 0;
+  text-align    : center;
+  vertical-align: middle }
+
+div.header img {
+  height: 4.875em;
+  width : 8.875em }
+
+div.footer {
+  border-style: none;
+  clear       : both }
+
+div.footer p {
+  color      : #808080;
+  font-size  : 0.7em;
+  margin     : 0;
+  text-align : center }
+
+div.footer p:first-child {
+  font-size : 0.8em;
+  text-align: right }
+
+div.footer p:first-child a:first-child { float: left }
+
+/* This is only here because most Firefox versions can't handle inline-block */
+div.footer table {
+  background-color: #07085A;
+  border-collapse : collapse;
+  height          : 1.5em;
+  min-height      : 1.5em;
+  width           : 100% }
+
+div.footer table a {
+  color         : #FFFFFF;
+  display       : block;
+  font-size     : 0.75em;
+  font-weight   : bold;
+  line-height   : 2em;
+  text-align    : center;
+  vertical-align: middle;
+  width         : 17em }
+
+div.footer table td { padding: 0 }
+
+
+
+.sidebar {
+  background-color: #FFFFFF;
+  display  : block;
+  font-size: 0.8em;
+  position : fixed;
+  top      : 8em;
+  width    : 13em }
+
+#sidebar-left { left: 0.5em }
+#sidebar-right { right: 0.5em }
+
+/* for UG menu */
+#sidebar-left li a {
+  display    : block;
+  font-weight: bold;
+  padding    : 0.3em 0 }
+
+.meta .terms { display: none }
+
+
+
+
+.error { color: #E55 }
+div.error { border: 1px solid #D77 }
+div.error, tr.error {
+  background: #Fcc;
+  color: #200;
+  padding: 2px }
+
+.warning { color: #E09010 }
+div.warning { border: 1px solid #F0C020 }
+div.warning, tr.warning {
+  background: #FFD;
+  color: #220;
+  padding: 2px }
+
+.message { color: #008000 }
+div.message { border: 1px solid #00AA00 }
+div.message, tr.message {
+  background: #DFD;
+  color: #020;
+  padding: 2px }

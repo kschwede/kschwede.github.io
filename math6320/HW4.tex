@@ -1,0 +1,104 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Gal}{\textnormal{Gal}}
+\newcommand{\Aut}{\textnormal{Aut}}
+\newcommand{\Emb}{\textnormal{Emb}}
+\newcommand{\Tr}{\textnormal{Tr}}
+\newcommand{\N}{\textnormal{N}}
+\newcommand{\Hom}{\textnormal{Hom}}
+
+
+\begin{document}
+\title{HW \#4 -- Math 6320\\Spring 2015}
+\author{Due: Thursday February 26th}
+\maketitle
+
+\begin{enumerate}
+\item Determine the Galois group of $x^4-25$ over $\bQ$.
+\item Let $K$ be a field of characteristic $\neq 2$.  Suppose that $\alpha, \beta \in K$.  Figure out exactly when $K(\sqrt{\alpha}) = K(\sqrt{\beta})$.  Use this to determine whether or not $\bQ(\sqrt{1 - \sqrt{2}}) = \bQ(i, \sqrt{2})$.
+\item Let $K = \bQ(a^{1/n})$ where $a \in \bQ_{> 0}$ and that $x^n - a$ is irreducible so that $[K : \bQ] = n$.  Suppose that $E$ is a subfield of $K$ with $[E : \bQ] = d$.  Prove that $E = \bQ(a^{1/d})$.  
+    \vskip 3pt
+    \emph{Hint:} Consider $N_{K/E}(a^{1/n}) \in E$ (remember, $N_{K/E}(a^{1/n})$ was defined in the previous homework).
+\item  Suppose that $m, n > 0$ are integers.  What is $(\bZ/m\bZ) \otimes (\bZ/n\bZ)$?  Of course your answer will depend on $m$ and $n$.
+\item  Let $A$ be a ring, $M$ and $A$-module and $I$ an ideal.  Show that $M \otimes_A (A/I) \cong M/IM$.  
+\item  Suppose that $R$ is a local ring and $M, N$ are finitely generated $R$-modules.  Prove that if $M \otimes_R N = 0$ then $M = 0$ or $N = 0$.  Find counter examples to this statement if $R$ is nonlocal or if $M, N$ are not finitely generated.
+    \vskip 3pt
+    \emph{Hint:} Use Nakayama's lemma.
+\item Let $R$ be a ring $\neq 0$ with $R^{n} \cong R^{m}$ for some integers $m,n > 0$.  Show that $m = n$.
+    \vskip 3pt
+    \emph{Hint:}  Use Nakayama's lemma.
+\item Suppose that $R$ is a ring and that $L, M, N$ are $R$-modules.  Show that $\Hom_R(L \otimes M, N) \cong \Hom_R(L, \Hom_R(M, N))$.  Additionally, choose one of the modules $L, M, N$ and show that this isomorphism is functorial in that variable.  In other words, if you choose $L$ and if $L \to L'$ is a module map, show that
+    \[
+    \xymatrix{
+        \Hom_R(L' \otimes_R M, N) \ar[r] \ar@{<->}[d]^{\sim} & \Hom_R(L \otimes_R M, N) \ar@{<->}[d]^{\sim}  \\
+        \Hom_R(L', \Hom_R(M, N)) \ar[r] & \Hom_R(L, \Hom_R(M, N))
+    }
+    \]
+    commutes where the vertical maps are the isomorphisms from earlier in this problem and the horizontal maps are the ones coming from the contravariant nature of $\Hom$.  
+    \vskip 3pt
+    \emph{Hint:}  This is easier than you might think, try writing down where something has to go.
+\end{enumerate}
+
+\end{document}
+

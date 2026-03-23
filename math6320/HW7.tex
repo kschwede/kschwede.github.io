@@ -1,0 +1,140 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Gal}{\textnormal{Gal}}
+\newcommand{\Aut}{\textnormal{Aut}}
+\newcommand{\Emb}{\textnormal{Emb}}
+\newcommand{\Tr}{\textnormal{Tr}}
+\newcommand{\N}{\textnormal{N}}
+\newcommand{\Hom}{\textnormal{Hom}}
+\newcommand{\Ext}{\textnormal{Ext}}
+\newcommand{\Spec}{\textnormal{Spec}}
+\newcommand{\fram}{\mathfrak{m}}
+\newcommand{\id}{\textnormal{id}}
+
+
+\begin{document}
+\title{HW \#7 -- Math 6320\\Spring 2015}
+\author{Due: Thursday April 16th}
+\maketitle
+
+\begin{enumerate}
+\item Suppose that $M$ is a finitely generated module over a $R$.  Suppose that $f : M \to M$ is a surjective $R$-module homomorphism.  Show that $f$ is an isomorphism.
+    \vskip 3pt
+    \emph{Hint: } Nakayama's lemma is a good approach.  View $M$ as an $R[x]$ module where $x$ acts via $f$.
+    \vskip 6pt
+\item Suppose that $M$ is a finitely generated projective module over a local ring $(R, \mathfrak{m})$.  Show that $M$ is actually a free module.  Another way to say this is that \emph{projective modules are locally free}.  
+    \vskip 3pt
+    \emph{Hint: } Use the previous problem.
+    \vskip 6pt
+\item Suppose that $R$ is a ring and $M$ is an $R$-module.  Show that $M$ is injective if and only if for every ideal $J \subseteq R$ and every $R$-module homomorphism $g : J \to M$, $g$ can be extended to $g' : R \to M$.  
+    \vskip 3pt
+    \emph{Hint: } Replacing $J \subseteq R$ with an arbitrary inclusion of modules gives you the definition of \emph{injective}.  Hence say $N' \subseteq N$ and $g : N' \to M$ is a map.  Consider the set of submodules of $N$ to which $g$ extends, use Zorn's lemma to make a biggest submodule of $N$ to which $g$ extends and then make a bigger one for a contradiction.
+    \vskip 6pt
+\item Suppose that $R$ is a ring.
+\begin{itemize}
+\item[(a)]  If $W\subseteq R$ is a multiplicative set and $I$ is an injective $R$-module, show that $W^{-1} I$ is an injective $W^{-1} R$-module.
+\item[(b)]  Show that an arbitrary direct sum $\bigoplus_\lambda I_{\lambda}$ of injective $R$-modules is an injective $R$-module.
+\end{itemize}
+\vskip 6pt
+\item Suppose that $\phi : R \to S$ is a ring homomorphism and $I$ is an injective $R$-module.  Show that $\Hom_R(S, I)$ is an injective $S$-module.
+    \vskip 3pt
+    \emph{Hint: } This is not so hard, you need to prove/use a special case of a jazzed up version of $\Hom-\otimes$ adjointness:  for any $S$-module $M$, $\Hom_R(M, I) \cong \Hom_S(M, \Hom_R(S, I))$ as $S$-modules.  
+\vskip 6pt
+\item If $R$ is a PID.  Show that an $R$-module $I$ is injective if and only if it is divisible\footnote{For an integral domain $R$, an $R$-module $M$ is called divisible if for every $0 \neq r \in R$, and every $m \in M$, there is some $m' \in M$ with $rm' = m$.}.
+    \vskip 6pt
+\item Show that every $\bZ$-module can be embedded into an injective $\bZ$-module
+\vskip 3pt
+\emph{Hint: } First show that a free $\bZ$-module can be embedded into an injective $\bZ$-module.  For $M$ an arbitrary $\bZ$-module, write $F \to M \to 0$ where $F$ is a free $\bZ$-module and $F \to M$ has kernel $K$.  Mod out some appropriate injective module by $K$.
+\vskip 6pt
+\item Conclude that for any ring $R$, any $R$-module can be embedded into an injective $R$-module.  Hence show that injective resolutions exist.  This result is an assertion that \emph{the category of $R$-modules has enough injectives}.
+\end{enumerate}
+Continued on the next page.
+\begin{enumerate}
+\setcounter{enumi}{9}
+\item Suppose that $M, N$ are $R$-modules and that $\Ext^1(M, N) = 0$.  Show that every extension $0 \to N \to E \to M \to 0$ is split.  More generally, identify a particular (obstruction) class in $\Ext^1(M, N)$ which is zero if and only if a given extension $0 \to N \to E \to M \to 0$ is split.
+    \vskip 3pt
+    \emph{Hint:} Compute the long exact sequence associated to $\Hom(M, \bullet)$ and think about what it means.   The class should be the image of particular identity map in $\Ext^1$.  
+\vskip 6pt
+\item We will show that $\Ext^1(M, N)$ is in bijection with the set of equivalence classes of extensions $0 \to N \to E \to M \to 0$.\footnote{Remember, two extensions are equivalent if there is a commutative diagram 
+    \[
+        \xymatrix{
+            0 \ar[r] & N \ar[d]_{\id_N} \ar[r] & E \ar[d]_{\sim} \ar[r] & M \ar[r] \ar[d]_{\id_M}  & 0 \\
+            0 \ar[r] & N \ar[r] & E' \ar[r] & M \ar[r] & 0 
+            }
+    \]}
+    \begin{itemize}
+    \item[(a)]  Start with an exact sequence $0 \to K \xrightarrow{i} P \xrightarrow{\rho} M \to 0$ with $P$ projective and induce a map $\partial : \Hom(K, N) \to \Ext^1(M, N) \to 0$.  Thus each class $x$ in $\Ext^1$ gives us a (non-canonical) $\beta \in \Hom(K, N)$ with $\partial(\beta) = x$.  Let $X$ be the cokernel of $K \to P \oplus N$ defined by $k \mapsto (i(k), \beta(k))$.  Prove that there is a commutative diagram
+        \[
+        \xymatrix{
+            0 \ar[r] & K \ar[r] & P \ar[d] \ar[r] & M \ar[d]_{\id_M} \ar[r] & 0 \\
+            0 \ar[r] & N \ar[r] & X \ar[r] & M \ar[r] & 0 
+        }
+        \]
+        with exact rows.  Explain in particular what the map $X \to M$ is.  
+    \item[(b)]  In the previous problem, you constructed an element in $\Ext^1(M, N)$ which was zero if and only if a given extension was split.  Show that the element $x \in \Ext^1$ corresponds to the extension $0 \to N \to X \to M \to 0$.  
+    \item[(c)]  Use what you have already done to complete the proof of the desired statement.  
+    \end{itemize}
+\end{enumerate}
+\end{document}
+

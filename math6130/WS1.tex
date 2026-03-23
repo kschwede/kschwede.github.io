@@ -1,0 +1,98 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bA}{\mathbb{A}}
+
+
+\begin{document}
+\title{Worksheet \#1 -- Math 6130\\Fall 2018}
+\author{Due Friday, August 31st}
+
+\maketitle
+You may work in groups of up to 3.  Only one worksheet needs to be turned in per group.
+
+Recall the following results that we started the class with.
+\vskip 9pt
+{\bf Theorem.} {\it Suppose that $\phi : X \to \bA^m$ is a regular map.  Then $\overline{\phi(X)} = Z(\ker \phi^*)$.}
+\vskip 9pt
+{\bf Theorem.} {\it A regular map $\phi : X \to Y$ is an isomorphism if and only if $\phi^* : k[Y] \to k[X]$ is an isomorphism.}
+\vskip 9pt
+\noindent
+{\bf 1.} Show that a regular map $\phi : X \to Y$ is dominant if and only if $\phi^*$ injects.  
+\vskip 200pt
+{\bf 2.}  Show that $\phi : X \to Y$ induces an isomorphism of $X$ onto a closed subset of $Y$ if and only if $\phi^*$ surjects.  
+\noindent
+\newpage
+\noindent
+{\bf 3.}  Let $X = Z(y-x^2) \subseteq \bA^2$.  Show that $X$ is a variety isomorphic to $\bA^1$.   Then show that $Y = Z(xy - 1)$ is not isomorphic to $\bA^1$.  
+\vskip 300pt
+\noindent
+{\bf 4.}  Let $X = Z(y^2 - x^3) \subseteq \bA^2$.  Consider the regular map $\phi : \bA^1 \to X$ defined by $\phi(t) = (t^3, t^2)$.  Show that $\phi$ is a bijection but not an isomorphism.
+\newpage
+\noindent
+{\bf 5.}  Let $f \in k[x,y]$ be an irreducible quadratic polynomial.  If $\mathrm{char} k \neq 2$, show that either $Z(f)$ is isomorphic to $\bA^1$ or isomorphic to $Z(xy-1)$.
+\vskip 300pt
+\noindent
+{\bf 6.}  Suppose that $X$ is an irreducible topological space.  If $U \subseteq X$ is a non-empty open set, show that $U$ is also irreducible.  Further show that if $U_1$ and $U_2$ are two non-emtpy sets, that $U_1 \cap U_2$ is non-empty.
+
+\end{document}
+

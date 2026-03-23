@@ -1,0 +1,114 @@
+\documentclass[11pt]{amsart}
+\usepackage{calc,amssymb,amsmath,ulem,stmaryrd,fullpage}
+\usepackage{enumerate}
+\usepackage{alltt}
+\RequirePackage[dvipsnames,usenames]{color}
+\let\mffont=\sf
+\normalem
+%\input{kmacros3.sty}
+\input{xy}
+\xyoption{all}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all,cmtip]{xy}
+\usepackage{verbatim}
+\usepackage[left=0.95in,top=0.95in,right=0.95in,bottom=0.95in]{geometry}
+\newcommand{\tauCohomology}{T}
+\newcommand{\FCohomology}{S}
+
+
+\theoremstyle{theorem}
+%\newtheorem*{mainthm*}{Main Theorem}
+
+\newcommand{\note}[1]{\marginpar{\sffamily\tiny #1}}
+
+\def\todo#1{\textcolor{Mahogany}%
+{\sffamily\footnotesize\newline{\color{Mahogany}\fbox{\parbox{\textwidth-15pt}{#1}}}\newline}}
+
+\renewcommand{\O}{\mathcal O}
+\newcommand{\ie}{{\itshape i.e.} }
+\newcommand{\roundup}[1]{\lceil #1 \rceil}
+\newcommand{\rounddown}[1]{\lfloor #1 \rfloor}
+\renewcommand{\to}[1][]{\xrightarrow{\ #1\ }}
+\newcommand{\onto}[1][]{\protect{\xrightarrow{\ #1\ }\hspace{-0.8em}\rightarrow}}
+\newcommand{\into}[1][]{\lhook \joinrel \xrightarrow{\ #1\ }}
+%\newcommand{DBDual}[1]{{\underline{\omega}_{#1}}}
+\newcommand{\DBDual}[1]{{{\uuline \omega}{}^{\mydot}_{#1}}}
+\newcommand{\Tt}{{\mathfrak{T}}}
+%\newcommand{\bn}{{\mathfrak{n}} }
+\newcommand{\sol}[1]{ \vskip 6pt{\color{blue} {\bf Solution:} #1} \vskip 6pt}
+
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\va}{{\vec{a}}}
+\newcommand{\vb}{{\vec{b}}}
+\newcommand{\vzero}{{\vec{0}}}
+\newcommand{\vi}{{\vec{i}}}
+\newcommand{\vj}{{\vec{j}}}
+\newcommand{\vk}{{\vec{k}}}
+\newcommand{\vh}{{\vec{h}}}
+\newcommand{\vr}{{\vec{r}}}
+\newcommand{\vu}{{\vec{u}}}
+\newcommand{\vv}{{\vec{v}}}
+\newcommand{\vw}{{\vec{w}}}
+\newcommand{\vx}{{\vec{x}}}
+\newcommand{\vy}{{\vec{y}}}
+\newcommand{\vz}{{\vec{z}}}
+\newcommand{\vT}{{\vec{T}}}
+\newcommand{\vN}{{\vec{N}}}
+\newcommand{\vF}{{\vec{F}}}
+\newcommand{\vG}{{\vec{G}}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Stab}{\mathrm{Stab}}
+
+
+\begin{document}
+\title{Worksheet \#2 -- Math 6310\\Fall 2019}
+\author{Due Wednesday, September 18th, 2019}
+\maketitle
+
+\noindent
+{\bf 1.}  Suppose that $G$ has a subgroup $H$ of index $n$.  Show that $H$ contains a normal subgroup of $G$ of index a divisor of $n!$.
+\newpage
+\noindent
+{\bf 2.}  Suppose $G$ acts transitively in a finite set $X$ and let $H$ be a normal subgroup of $G$.  Thus $H$ acts on $X$ too.  Let $O_1, \dots, O_r$ denote the distinct orbits of $H$s action on $X$.
+\vskip 9pt
+\noindent
+{\bf (a)}  Prove that $G$ acts transitively on the set of $H$-orbits $\{ O_i \}$ by left multiplication.  Use this to deduce that all the orbits have the same cardinality.  
+\vskip 300pt
+\noindent
+{\bf (b)}  Prove that if $a \in O_1$ then $|O_1| = |H : H \cap \Stab_G(a)|$ and show that $r = |G : H\cdot \Stab_G(a)|$.
+\newpage
+\noindent
+Let $H$ and $K$ be groups and let $\phi : K \to \text{Aut}(H)$ be a group homomorphism.  We get a left action of $K$ on $H$ by $k.h = (\phi(k))(h)$.
+Set
+\[
+G = H \times K
+\]
+with the following binary operation:
+\[
+(h_1, k_1)(h_2, k_2) = (h_1 (k_1.h_2), k_1 k_2).
+\]
+This is called the \emph{semi-direct product of $K$ and $H$}, and is denoted by $H \rtimes K$.
+\vskip 9pt
+\noindent
+{\bf 3.}  Show that $G = H \rtimes K$ is a group.
+
+\newpage
+\noindent
+{\bf 4.}  If we identify $H$ with $\{ (h, 1) \}$, then show that $H$ is a \emph{normal} subgroup of $G$.  This helps explain the notation, the $H$ is the normal factor in $H \rtimes K$.
+\newpage
+\noindent
+{\bf 5.}  Let $H = \bZ/4 \bZ$ and $K = \bZ/2\bZ$.  Let the map $\phi : K \to \text{Aut}(Hs)$ be the map which sends $[1]$ to the inversion bijection.  In other words, $\phi([1])(k) = -k$ and $\phi([0])(k) = k$.
+Show that $H \rtimes K$ is isomorphic $D_{4}$ (the dihedral group on the square).
+\newpage
+\noindent
+{\bf 6.}  Suppose $G$ is a group with $K$ an subgroup of $G$ and $H$ a normal subgroup of $G$.  Further suppose that $HK = G$ and that $H \cap K = \{ 1 \}$.  Let $\phi : K \to \text{Aut}(H)$ be the map which conjugates by $k$.  In other words $\phi(k)(h) = khk^{-1}$.  Show that $G \cong H \rtimes K$.
+\vskip 3pt
+\emph{Hint:} First show that every element of $HK$ can be written uniquely as $hk$ for some $h \in H$ and $k \in K$.  Then define a map $HK \to H \rtimes K$ sending $hk \mapsto (h, k)$.  You need to show that this is a homomorphism (it is obviously a bijection).
+
+
+\end{document}

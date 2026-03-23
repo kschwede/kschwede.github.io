@@ -1,0 +1,56 @@
+
+ul.navbar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 11em;
+  left: 1em;
+  float:left;
+  width: 11em; }
+  
+ul.navbar a:active { color: #008080 }
+h1 {
+  font-family: Helvetica, Geneva, Arial,
+        SunSans-Regular, sans-serif; color: #006666;}
+ul.navbar li {
+  background: lightgrey;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1.5em solid #006666;
+  }
+  
+  body#index a#indexnav li {
+border-right: 1.5em solid #000000;
+} 
+  
+body#faculty a#facultynav li {
+border-right: 1.5em solid #000000;
+} 
+
+body#pubs a#pubsnav li {
+border-right: 1.5em solid #000000;
+} 
+
+body#events a#eventsnav li {
+border-right: 1.5em solid #000000;
+} 
+  
+ul.navbar a {
+  text-decoration: none }
+a:link {
+  color: #0077AA }
+a:visited {
+  color: #005566 }
+  
+ul.navbar li:hover {
+  background: #F0F0F0;}
+
+body {
+  padding-left: 13em;
+  font-family: Georgia, "Times New Roman",
+        Times, serif;        
+}
+
+#container { width: 500px; } 
+table { display: inline-table;}
