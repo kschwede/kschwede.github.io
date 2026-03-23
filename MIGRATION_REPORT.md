@@ -41,6 +41,7 @@ Jekyll rendering was verified locally with `jekyll build`.
 - Added GitHub Pages compatible FRG entry page: `FRG/index.html`
 - Updated lingering internal self-links in `FRG-Old/faculty.html` and `FRG-Old/index.html`
 - Replaced the repository README with GitHub Pages migration instructions
+- Removed unlinked non-site artifacts after repository-wide reference checks: `index.old.html`, `index.restored.html`, `FRG/index.php`, `FRG/index_body.php`, `M2RTG/Backup.html`, `math7800/WStest.html`, `MichiganClasses/math185-Fall2007/.DS_Store`, `MichiganClasses/math185-Fall2007/TempX.out`, and `MichiganClasses/math217/.DS_Store`
 
 ## Redirects and compatibility stubs added
 
@@ -51,7 +52,5 @@ Jekyll rendering was verified locally with `jekyll build`.
 
 ## Unresolved issues
 
-- `index.old.html` remains as an archival frameset snapshot and still contains legacy frame markup
-- `FRG/index.php` and `FRG/index_body.php` are retained for archival/reference purposes even though GitHub Pages serves `FRG/index.html`
 - Some archival subsites copied from `public_html/` remain in the repository and are not linked from the new layout
 - The migrated teaching pages intentionally preserve much of their legacy HTML structure for low-maintenance hand editing, so their markup is not fully modernized

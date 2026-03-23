@@ -13,7 +13,7 @@ Migrated GitHub Pages version of Karl Schwede's academic website.
 - Top-level content pages such as `contact.html`, `papers.html`, `Slides.html`, `StudentsAndPostdocs.html`, `notes.html`, `M2.html`, and `linkplaces.html`: migrated to the shared layout.
 - Course and seminar directories such as `math2200/`, `math6310/`, `math7800/`, `M2RTG/`, `MichiganClasses/`, `Camp2014/`, and `readingseminar/`: preserved in place, with their `index.html` pages adapted to the shared layout where practical.
 - `FRG/`: preserved with a static `index.html` replacement for the legacy PHP entry point.
-- Legacy archival files such as `index.old.html`, `index.restored.html`, and older subsite content remain in the repository for reference.
+- Legacy course and subsite content remain in place where they are part of the public site structure.
 - `DocumentAccessibility.md`: preserved from the preexisting repository.
 
 ## Local preview
@@ -42,4 +42,5 @@ No custom GitHub Actions workflow is required for this migration.
 
 - A stable `cv.pdf` alias is provided alongside the dated CV filename.
 - The legacy frame entry points were replaced with a shared responsive layout plus redirect stubs for backward compatibility.
+- Obvious non-site artifacts from the source tree, such as editor backups, test pages, and unused archival entry points, were removed after link verification.
 - See `MIGRATION_REPORT.md` for the URL mapping, changed-file summary, and unresolved items.
