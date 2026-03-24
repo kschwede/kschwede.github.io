@@ -8,6 +8,8 @@ Legacy content from `public_html/` was copied into the GitHub Pages repository r
 
 Jekyll rendering was verified locally with `jekyll build`.
 
+An accessibility cleanup pass was also completed on the migrated site content, including improved global focus and link styling, semantic course-page headers, better top-level heading structure, accessible table/button behavior on the reading seminar page, and improved image alt text on the active FRG site.
+
 ## Old URL to new URL mapping
 
 | Old URL | New URL |
@@ -41,6 +43,12 @@ Jekyll rendering was verified locally with `jekyll build`.
 - Added GitHub Pages compatible FRG entry page: `FRG/index.html`
 - Updated lingering internal self-links in `FRG-Old/faculty.html` and `FRG-Old/index.html`
 - Replaced the repository README with GitHub Pages migration instructions
+- Improved accessibility across the active site pages:
+  - strengthened global keyboard focus, link visibility, and responsive reading styles in `_layouts/default.html` and `assets/css/site.css`
+  - converted repeated legacy course-page headers from centered/font-based markup to semantic `header` and `dl` structures
+  - added page-level headings and cleaner list/table markup on `linkplaces.html`, `linkpeople.html`, `seminars.html`, `notes.html`, `M2.html`, `Camp2014/index.html`, `Camp2016/index.html`, and `StudentsAndPostdocs.html`
+  - converted `readingseminar/index.html` abstract toggles from clickable table cells and fake links to real buttons with proper table headers
+  - added or improved descriptive alt text on active image-based pages including `FRG/index.html`
 - Removed unlinked non-site artifacts after repository-wide reference checks: `index.old.html`, `index.restored.html`, `FRG/index.php`, `FRG/index_body.php`, `M2RTG/Backup.html`, `math7800/WStest.html`, `MichiganClasses/math185-Fall2007/.DS_Store`, `MichiganClasses/math185-Fall2007/TempX.out`, and `MichiganClasses/math217/.DS_Store`
 
 ## Redirects and compatibility stubs added
@@ -53,4 +61,4 @@ Jekyll rendering was verified locally with `jekyll build`.
 ## Unresolved issues
 
 - Some archival subsites copied from `public_html/` remain in the repository and are not linked from the new layout
-- The migrated teaching pages intentionally preserve much of their legacy HTML structure for low-maintenance hand editing, so their markup is not fully modernized
+- The archival `FRG-Old/` subsite still contains legacy presentational HTML and was left largely unchanged to preserve the copied archive

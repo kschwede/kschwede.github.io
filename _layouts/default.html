@@ -10,10 +10,10 @@
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
-      <aside class="site-sidebar">
+      <aside class="site-sidebar" aria-label="Site sidebar">
         {% include sidebar.html %}
       </aside>
-      <main id="main-content" class="site-main">
+      <main id="main-content" class="site-main" tabindex="-1">
         {{ content }}
       </main>
     </div>

@@ -11,24 +11,22 @@ title: 'AG/CA Paper Reading Seminar'
     .u_style #content h3 { margin-bottom: 25px; }
     .u_style #content table { border-collapse: collapse; max-width: 100%; width: 100%; table-layout: fixed; }
     .u_style #content td { vertical-align: top; text-align: left; padding: 10px; }
-    .u_style #content .abstract { display: none; border-left: 1px dashed #777; width: 98%; margin: 10px 0 0 0; padding: 0 0 0 10px; }
+    .u_style #content .abstract { border-left: 1px dashed #777; width: 98%; margin: 10px 0 0 0; padding: 0 0 0 10px; }
     .u_style #content .institution { line-height: 1.6em; font-style: italic; }
     .u_style #content .extraordinary { line-height: 1.6em; font-style: italic; }
     .u_style #content hr { margin: 20px 0; color: #ccc; background-color: #ccc; }
-    .u_style #content a { text-decoration: none; }
-    .u_style #content a:hover { text-decoration: underline; }
+    .u_style #content .toggle-button { text-decoration: none; }
   </style>
 
   <script type="text/javascript">
-    function toggleAbstract(object) {
-       var abs = object.getElementsByTagName('div')[0];
-       if (abs) {
-          if (abs.style.display=='block') {
-              abs.style.display='none';
-          } else {
-              abs.style.display='block';
-          }
+    function toggleAbstract(button) {
+       var abs = button.nextElementSibling;
+       if (!abs) {
+          return;
        }
+       var expanded = button.getAttribute('aria-expanded') === 'true';
+       button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+       abs.hidden = expanded;
     }
   </script>
 
@@ -37,18 +35,22 @@ title: 'AG/CA Paper Reading Seminar'
   <h3>Spring 2016 &mdash; Thursdays 2 - 3+ PM, location LCB 323</h3>
   
   <h2>Rules</h2>
-  <li> These talks should be on <i>recent</i> papers written by other people.
-  <li> Graduate students are encouraged to present papers directly related to their own research projects.
-  <li> Postdocs and faculty are asked to speak on papers <i>not</i> directly related to their previous research.
-<br><br>
-  <table border="0">
+  <ul class="legacy-list">
+    <li>These talks should be on <i>recent</i> papers written by other people.</li>
+    <li>Graduate students are encouraged to present papers directly related to their own research projects.</li>
+    <li>Postdocs and faculty are asked to speak on papers <i>not</i> directly related to their previous research.</li>
+  </ul>
+
+  <div class="table-wrap">
+    <table border="0">
+      <caption>Spring 2016 seminar schedule with optional abstracts.</caption>
 
     <thead>
       
       <tr class="tableHeader">
-        <td width="20%" >Date</td> 
-        <td width="25%" >Speaker</td>
-        <td width="55%" >Title <small>&mdash; click for abstract (if available)</small></td>
+        <th scope="col" width="20%">Date</th> 
+        <th scope="col" width="25%">Speaker</th>
+        <th scope="col" width="55%">Title <small>&mdash; use the button to show an abstract when available</small></th>
       </tr>
 
     </thead>
@@ -63,11 +65,11 @@ title: 'AG/CA Paper Reading Seminar'
          <a href="http://www.math.utah.edu/research/ag">Everyone</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
             Organizational meeting
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
           </div>
         </td>
       </tr>
@@ -78,10 +80,10 @@ title: 'AG/CA Paper Reading Seminar'
          <a href="http://www.math.utah.edu/people/info/wrapper.php?lquanma">Linquan Ma</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
-Vanishing of the higher direct images of the structure sheaf          </a>
-          <div class="abstract">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
+Vanishing of the higher direct images of the structure sheaf          </button>
+          <div class="abstract" hidden>
           <a href="http://front.math.ucdavis.edu/1404.1827">arXiv:1404.1827</a>, Paper by Andre Chatzistamatiou and Kay Rülling
           </div>
         </td>
@@ -94,11 +96,11 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a href="http://www.math.utah.edu/~honigs/">Katrina Honigs</a><br>(Special Time, 1:30)<br>(Special Place LCB 222)<br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
 	A characterization of ordinary abelian varieties by the Frobenius push-forward of the structure sheaf
-          </a><br>(Special Time, 1:30)<br>(Special Place LCB 222)
-          <div class="abstract">
+          </button><br>(Special Time, 1:30)<br>(Special Place LCB 222)
+          <div class="abstract" hidden>
 		<a href="http://arxiv.org/abs/1411.5294">arXiv:1411.5294</a>, Paper by Akiyoshi Sannai and Hiromu Tanaka
           </div>
         </td>
@@ -110,11 +112,11 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a href="http://www.math.utah.edu/~boocher/">Adam Boocher</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
           Supernatural analogues of Beilinson monads
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
 		<a href="http://arxiv.org/abs/1506.07558">arXiv:1506.07558</a>, Paper by Daniel Erman and Steven V Sam
           </div>
         </td>
@@ -126,11 +128,11 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a href="http://www.math.utah.edu/~shipman/">Ian Shipman</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
             Geometricity for derived categories of algebraic stacks
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
        <a href="http://arxiv.org/abs/1601.04465">arXiv:1601.04465</a>, Paper by Daniel Bergh, Valery A. Lunts and Olaf M. Schnrer
           </div>
         </td>
@@ -142,11 +144,11 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a href="http://www.math.utah.edu/~ywang/">Yuan Wang</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
         A note on the abundance conjecture
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
 		<a href="http://arxiv.org/abs/1406.6554">arXiv:1406.6554</a>, Paper by Tobian Dorsch and Vladimir Lazic
           </div>
         </td>
@@ -158,11 +160,11 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a href="http://www.math.unl.edu/~ecanton2/">Eric Canton</a><br />
           <span class="institution">University of Nebraska</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
             The augmented base locus of real divisors over arbitrary fields
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
        <a href="http://arxiv.org/abs/1312.0239">arXiv:1312.0239</a>, Paper by Caucher Birkar
           </div>
         </td>
@@ -174,10 +176,10 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          No talk this week.<br />
           <span class="institution"></span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
-          </a>
-          <div class="abstract">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
+          </button>
+          <div class="abstract" hidden>
           </div>
         </td>
       </tr>
@@ -188,10 +190,10 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a> Spring Break </a><br />
           <span class="institution"> </span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
-          </a>
-          <div class="abstract">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
+          </button>
+          <div class="abstract" hidden>
        
           </div>
         </td>
@@ -203,11 +205,11 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a href="http://www.math.utah.edu/~tu/">Yu-Chao Tu</a><br />
           <span class="institution"></span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
           Toward the structure of fibered fundamental groups of projective varieties
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
 <a href="http://arxiv.org/abs/1510.07692">arXiv:1510.07692</a>, Paper by Donu Arapura
           </div>
         </td>
@@ -219,11 +221,11 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a href="http://www.math.utah.edu/~tliu/">Tiankai Liu</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
             Algebraic approximation of Kahler threefolds of Kodaira dimension zero
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
        		<a href="http://arxiv.org/abs/1601.04307">arXiv:1601.04307</a>, Paper by Patrick Graf
           </div>
         </td>
@@ -235,11 +237,11 @@ Vanishing of the higher direct images of the structure sheaf          </a>
          <a href="http://www.math.utah.edu/~moraga/">Joaquin Moraga</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
 Polyhedral Divisors and Algebraic Torus Actions
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
 <a href="http://arxiv.org/abs/math/0306285">arXiv:0306285</a>, Paper by Klaus Altmann and Juergen Hausen
           </div>
         </td>
@@ -252,11 +254,11 @@ Polyhedral Divisors and Algebraic Torus Actions
 No meeting this week<br />
           <span class="institution"> </span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
  		TBA
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
 
           </div>
         </td>
@@ -268,11 +270,11 @@ No meeting this week<br />
          <a href="http://www.math.utah.edu/~bydlon/">Andrew Bydlon</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
           <a href="http://front.math.ucdavis.edu/1112.2161">Bertini theorems for F-singularities</a>
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
        <a href="http://front.math.ucdavis.edu/1112.2161">arXiv:1112.2161</a>, Paper by Karl Schwede and Wenliang Zhang
           </div>
         </td>
@@ -285,11 +287,11 @@ No meeting this week<br />
          <a href="http://www.math.utah.edu/people/info/wrapper.php?hamid">Hamid Hassanzadeh</a><br />
           <span class="institution">University of Utah</span>
         </td>
-        <td onclick="toggleAbstract(this)">
-          <a href="#" onclick="return false;">
+        <td>
+          <button type="button" class="toggle-button" aria-expanded="false" onclick="toggleAbstract(this)">
            <a href="http://arxiv.org/abs/1507.05734">On the number of generators of ideals in Polynomial ring</a>
-          </a>
-          <div class="abstract">
+          </button>
+          <div class="abstract" hidden>
        <a href="http://arxiv.org/abs/1507.05734">arXiv:1507.05734</a>, Paper by Jean Fasel
           </div>
         </td>
