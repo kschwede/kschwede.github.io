@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+  <div class="site-shell">
+    <aside class="site-sidebar">
+      {% include sidebar.html %}
+    </aside>
+    <div class="site-main">
+      <header class="site-header">
+        <p class="site-kicker">Department of Mathematics</p>
+        <h1 class="site-title"><a href="{{ '/index.html' | relative_url }}">Yekaterina Epshteyn</a></h1>
+        <p class="site-tagline">Numerical and Applied Analysis, Scientific Computing, Applied Mathematics</p>
+      </header>
+      <main class="content-card legacy-content">
+        {{ content }}
+      </main>
+    </div>
+  </div>
+</body>
+</html>
