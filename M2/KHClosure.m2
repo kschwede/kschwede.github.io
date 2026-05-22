@@ -1,7 +1,7 @@
 newPackage(
         "KHClosure",
-        Version => "0.6", 
-        Date => "4/2/2025",
+        Version => "0.7", 
+        Date => "6/18/2025",
         Authors => {
           {Name => "Neil Epstein", 
           Email => "nepstei2@gmu.ed", 
@@ -22,7 +22,7 @@ newPackage(
 
         Headline => "a package for computing Koszul-Hironaka closure, and related operations",
         DebuggingMode => true,
-        PackageExports => {"BGG", "Complexes", "ReesAlgebra", "PushForward"},
+        PackageExports => {"BGG", "ReesAlgebra", "PushForward"},
         Reload => true           
         )
 
@@ -80,6 +80,7 @@ koszulHironakaClosure(Ideal, Complex) := Ideal => opts -> (I1, comp1) -> ( --the
     --S1 := reesAlgebra(m1);--blowup of m1
     --J2 := saturate(J1*S1, m1*S1);--compute the strict transform
     K1 := complex koszul(gens sub(I1, A1));
+ --   K1 := complex koszul(gens sub(I1, A1));
     C1 := complex(A1^1);
     myHash1 := hashTable{0 => map(K1_0, C1_0, 1_A1)};
     f1 := map(K1, C1, myHash1);
@@ -87,7 +88,7 @@ koszulHironakaClosure(Ideal, Complex) := Ideal => opts -> (I1, comp1) -> ( --the
 )
 
 
-cmComplex = method(Options=>{cache=>true, ComputeInQuotient=>false, LengthLimit => null, CanonicalModule => null}); --create a Cohen-Macaulay complex corresponding to RGamma(O_Y).
+cmComplex = method(Options=>{Verbose=>false,cache=>true, ComputeInQuotient=>false, LengthLimit => null, CanonicalModule => null}); --create a Cohen-Macaulay complex corresponding to RGamma(O_Y).
 
 cmComplex(Module) := Complex => opts -> (M1) -> (    --create it from Gamma(omega_Y)
     R1 := ring M1;
@@ -96,13 +97,13 @@ cmComplex(Module) := Complex => opts -> (M1) -> (    --create it from Gamma(omeg
     if (opts.ComputeInQuotient) then ( --if we do not lift to the ambient ring, ie if we are using the CanonicalModule option.
    
         if (opts.cache) and (R1#?cache) and (R1#cache)#?(cmComplex, Module, ComputeInQuotient) then (
-                if (debugLevel > 2) then print "cmComplex: using cached value";
+                if opts.Verbose or (debugLevel > 2) then print "cmComplex: using cached value";
                 return (R1#cache)#(cmComplex, Module, ComputeInQuotient);   
         );
         local len;
         if (opts.LengthLimit === null) then len = 2*(dim R1) + 2 else len = opts.LengthLimit;
         N1 = res(M1, LengthLimit => len);
-        if (opts.CanonicalModule === null) then myDual = complex (Hom(N1, R1^1)) else myDual = complex (Hom(N1, opts.CanonicalModule));
+        if (opts.CanonicalModule === null) then myDual = (Hom(N1, R1^1)) else myDual = (Hom(N1, opts.CanonicalModule));
         if (opts.cache) then (
             if not (R1#?cache) then R1#cache = new CacheTable from {};
             (R1#cache)#(cmComplex, Module, ComputeInQuotient) = myDual;
@@ -111,7 +112,7 @@ cmComplex(Module) := Complex => opts -> (M1) -> (    --create it from Gamma(omeg
     )
     else (    
         if (opts.cache) and (R1#?cache) and (R1#cache)#?(cmComplex, Module) then (
-            if (debugLevel > 2) then print "cmComplex: using cached value";
+            if opts.Verbose or (debugLevel > 2) then print "cmComplex: using cached value";
             return (R1#cache)#(cmComplex, Module);    
         );
         A1 := ambient R1;
@@ -126,9 +127,9 @@ cmComplex(Module) := Complex => opts -> (M1) -> (    --create it from Gamma(omeg
             N1 = res ((pushFwd(pi1, M1))); --take a resolution     
         );
         --N1 = res prune ((sub(M1, A1))**(A1^1/J1));
-        if (debugLevel > 1) then print  "cmComplex: took the resolution";
-        if (debugLevel > 2) then print N1;
-        myDual =complex (Hom(N1, A1^1))[-(dim A1)+d1];
+        if opts.Verbose or (debugLevel > 1) then print  "cmComplex: took the resolution";
+        if opts.Verbose or (debugLevel > 2) then print N1;
+        myDual = (Hom(N1, A1^1))[-(dim A1)+d1];
         if (opts.cache) then (
             if not (R1#?cache) then R1#cache = new CacheTable from {};
             (R1#cache)#(cmComplex, Module) = myDual;
@@ -145,10 +146,14 @@ cmComplex(Ideal) := Complex => opts -> (I1) -> (    --create it from an ideal wh
     A1 := ambient R1;    
     m1 := sub(I1, A1);
     S1 := reesAlgebra(m1);--blowup of m1
-    J2 := saturate(J1*S1, m1*S1);--compute the strict transform
-    K1 := complex koszul(gens sub(I1, A1));
-    if (debugLevel > 1) then print "koszulHironakaClosure: computing directImageComplex";
-    comp1 := complex directImageComplex(S1^1/J2);
+    S2 := ambient S1;
+    I2 := ideal S1;
+--    J2 := saturate(J1*S1, m1*S1);--compute the strict transform
+    J2 := saturate(J1*S2+I2, m1*S2);--compute the strict transform
+    if (debugLevel > 1) then print "cmComplex: computing directImageComplex";
+--    1/0;
+--    comp1 := complex directImageComplex(S2^1/J2);
+    comp1 := directImageComplex(S2^1/J2);
     if (opts.cache) then (
         if not (R1#?cache) then R1#cache = new CacheTable from {};
         (R1#cache)#(cmComplex, Ideal) = comp1;
@@ -165,7 +170,7 @@ hironakaClosure(Ideal, Module) := Ideal => opts -> (I1, M1) -> (
     d1 := dim R1;
     C1 := complex(R1^1);
     local K1;
-    if (opts.LengthLimit === null) then (K1 = complex res(R1^1/I1), LengthLimit=>d1+1) else (K1 = complex res(R1^1/I1, LengthLimit => opts.LengthLimit));
+    if (opts.LengthLimit === null) then (K1 = res(R1^1/I1, LengthLimit=>d1+1)) else (K1 = res(R1^1/I1, LengthLimit => opts.LengthLimit));
     if (debugLevel > 2) then print "hironakaClosure : making complex map";
     myHash1 := hashTable{0 => map(K1_0, C1_0, 1_R1)};    
     if (debugLevel > 2) then print "hironakaClosure : computing CM complex";
@@ -687,6 +692,7 @@ end
 --0.4  Improvements to hironakaClosure and to cmComplex.
 --0.5  Hironaka closure in non-Gorenstein rings
 --0.6  renaming functions to conform to Macaulay2 conventions
+--0.7  made it compatible with M2 version 1.25
 
 --examples
 restart
